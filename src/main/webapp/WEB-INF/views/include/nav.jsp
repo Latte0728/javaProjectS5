@@ -33,7 +33,7 @@
 					<li>
 						<a href="${ctp}/exhibition/exhiBition">전시</a> | 
 						<a href="${ctp}/education/edu">교육</a> | 
-						<a href="${ctp}/guide/guide">도감</a> |
+						<a href="${ctp}/guide/guideList">도감</a> |
 						<a href="${ctp}/reservation/reserVation">프로그램 예약</a> |
 						<a href="${ctp}/page/menagerPage">관리자 페이지</a> |
 						<a href="${ctp}/sign/signReCheck">비밀번호 재확인</a> |

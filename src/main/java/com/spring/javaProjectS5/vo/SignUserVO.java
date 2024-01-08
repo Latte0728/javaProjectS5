@@ -3,7 +3,7 @@ package com.spring.javaProjectS5.vo;
 import lombok.Data;
 
 @Data
-public class SignVO {
+public class SignUserVO {
 	private int idx;
 	private String mid;
 	private String pwd;

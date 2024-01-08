@@ -93,7 +93,7 @@
 				</a>
 			</div>	
 			<div class="review" style="margin-left:100px; display:inline-block">
-				<a style="text-decoration:none;" href="${ctp}//">
+				<a style="text-decoration:none;" href="${ctp}/guide/guideWrite">
 				<i class="fa-solid fa-dragon fa-4x" style="color:white;"></i>
 				<p><br/></p>
 	  		<font color="white">도감 작성</font>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaProjectS5.dao.GuideDAO">
+	<select id="getGuideList" resultType="com.spring.javaProjectS5.vo.GuideVO">
+		select * from	guide order by bird_name;
+	</select>
+	
+	<select id="getGuideContent" resultType="com.spring.javaProjectS5.vo.GuideVO">
+		select * from	guide where idx = #{idx};
+	</select>
+  
+  
+  
+  <insert id="setGuideWrite">
+    insert into guide values(default,#{vo.bird_name},#{vo.bird_SName},#{vo.bird_class},#{vo.bird_species},#{vo.bird_advent},#{vo.bird_observe},#{vo.bird_frequency},#{vo.bird_Breedtype},#{vo.bird_Habitattype},#{vo.bird_Mainbreed},#{vo.bird_Mainhabit},#{vo.bird_shape},#{vo.bird_beak},#{vo.bird_tail},#{vo.bird_size},#{vo.bird_system},#{vo.bird_hunt},#{vo.bird_food},#{vo.bird_etc},#{vo.photo});
+  </insert>
+</mapper>

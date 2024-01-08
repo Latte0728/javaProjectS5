@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.javaProjectS5.dao.SignUserDAO">
 
-  <select id="getSignIdCheck" resultType="com.spring.javaProjectS5.vo.SignVO">
+  <select id="getSignUserIdCheck" resultType="com.spring.javaProjectS5.vo.SignUserVO">
     select * from sign where mid = #{mid};
   </select>  
   
-  <select id="getSignNickCheck" resultType="com.spring.javaProjectS5.vo.SignVO">
+  <select id="getSignUserNickCheck" resultType="com.spring.javaProjectS5.vo.SignUserVO">
     select * from sign where nickName = #{nickName};
   </select>  
 
-  <select id="getSignEmailSearch" resultType="com.spring.javaProjectS5.vo.SignVO">
+  <select id="getSignUserEmailSearch" resultType="com.spring.javaProjectS5.vo.SignUserVO">
     select * from sign where email = #{email};
   </select>  
   
-  <select id="getSignNickNameEmailCheck" resultType="com.spring.javaProjectS5.vo.SignVO">
+  <select id="getSignUserNickNameEmailCheck" resultType="com.spring.javaProjectS5.vo.SignUserVO">
     select * from sign where nickName = #{nickName} and email = #{email};
   </select>
   
-  <insert id="setSignUpOk">
+  <insert id="setSignUpUserOk">
     insert into sign values (default,#{vo.mid},#{vo.pwd},#{vo.nickName},#{vo.name},#{vo.gender},#{vo.birthday},#{vo.tel},#{vo.address},#{vo.email},#{vo.homePage},#{vo.job},#{vo.hobby},#{vo.photo},#{vo.content},#{vo.userInfor},default,default,default,default,default,default,default);
   </insert>
   
-  <insert id="setKakaoSignInput">
+  <insert id="setKakaoSignUserInput">
     insert into sign (mid,pwd,nickName,email,name) values (#{mid},#{pwd},#{nickName},#{email},#{nickName});
   </insert>
   
@@ -30,17 +30,17 @@
     update sign set pwd = #{pwd} where mid = #{mid};
   </update>
   
-  <update id="setSignUpdateOk">
+  <update id="setSignUserUpdateUserOk">
     update sign set nickName=#{vo.nickName},name=#{vo.name},gender=#{vo.gender},birthday=#{vo.birthday},tel=#{vo.tel},address=#{vo.address},email=#{vo.email},homePage=#{vo.homePage},job=#{vo.job},hobby=#{vo.hobby},photo=#{vo.photo},content=#{vo.content},userInfor=#{vo.userInfor} where mid=#{vo.mid};
   </update>
   
-  <update id="setSignPasswordUpdate">
+  <update id="setSignUserPasswordUpdate">
     update sign set pwd = #{pwd} where mid = #{mid};
   </update>
   
   
   
-  <delete id="setSignDel">
+  <delete id="setSignUserDel">
     update sign set signDel = 'OK' where mid = #{mid};
   </delete>
 </mapper>

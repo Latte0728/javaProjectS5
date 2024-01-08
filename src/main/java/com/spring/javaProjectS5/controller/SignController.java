@@ -30,15 +30,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.spring.javaProjectS5.service.SignService;
-import com.spring.javaProjectS5.vo.SignVO;
+import com.spring.javaProjectS5.service.SignUserService;
+import com.spring.javaProjectS5.vo.SignUserVO;
 
 @Controller
 @RequestMapping("/sign")
 public class SignController {
 
 	@Autowired
-	SignService signService;
+	SignUserService signUserService;
 	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
@@ -69,7 +69,7 @@ public class SignController {
 			@RequestParam(name="mid", defaultValue = "admin1234", required=false) String mid,
 			@RequestParam(name="pwd", defaultValue = "1234", required=false) String pwd,
 			@RequestParam(name="idSave", defaultValue = "", required=false) String idSave) {
-		SignVO vo = signService.getSignIdCheck(mid);
+		SignUserVO vo = signUserService.getSignUserIdCheck(mid);
 		
 		if(vo != null && vo.getUserDel().equals("NO") && passwordEncoder.matches(pwd, vo.getPwd())) {
 			// 1.세션처리
@@ -116,7 +116,7 @@ public class SignController {
 		session.setAttribute("sAccessToken", accessToken);
 		
 		// 카카오로그인한 회원이 현재 우리 회원인지를 조사한다.(넘어온 이메일의 @를 기준으로 아이디와 이메일을 분리후 signUser테이블의 정보와 비교한다.)
-		SignVO vo = signService.getSignNickNameEmailCheck(nickName, email);
+		SignUserVO vo = signUserService.getSignUserNickNameEmailCheck(nickName, email);
 		//System.out.println("vo : " + vo);
 		// 현재 카카오로그인한 회원이 우리회원이 아니였다면, 자동으로 우리회원에 가입처리한다.(필수입력사항:아이디,닉네임,이메일) - 단, 성명은 '닉네임'과 동일하게 가입처리한다.
 		if(vo == null) {
@@ -124,7 +124,7 @@ public class SignController {
 			String mid = email.substring(0, email.indexOf("@"));
 			
 			// 만약에 기존에 같은 아이디가 존재한다면 가입처리할수 없도록 한다.
-			SignVO vo2 = signService.getSignIdCheck(mid);
+			SignUserVO vo2 = signUserService.getSignUserIdCheck(mid);
 			if(vo2 != null) return "redirect:/message/midSameSearch";
 			
 			// 임시 비밀번호를 발급처리후 메일로 전송처리한다.
@@ -134,13 +134,13 @@ public class SignController {
 			
 			// 새로 발급받은 임시비밀번호로 암호화 처리후 DB에 저장처리한다.
 			// 자동 회원 가입처리(DB에 앞에서 만들어준 값들로 가입처리한다.)
-			signService.setKakaoSignInput(mid, passwordEncoder.encode(pwd), nickName, email);
+			signUserService.setKakaoSignUserInput(mid, passwordEncoder.encode(pwd), nickName, email);
 			
 			// 새로 발급된 임시비밀번호를 메일로 전송한다.
 			mailSend(email, pwd);	
 			
 			// 새로 가입처리된 회원의 정보를 다시 vo에 담아준다.
-			vo = signService.getSignIdCheck(mid);
+			vo = signUserService.getSignUserIdCheck(mid);
 		}
 			
 		// 1.세션처리
@@ -242,16 +242,16 @@ public class SignController {
 	}
 	
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
-	public String signUpPost(SignVO vo) {
+	public String signUpPost(SignUserVO vo) {
 		// 아이디/닉네임 중복체크
-		if(signService.getSignIdCheck(vo.getMid()) != null) return "redirect:/message/idCheckNo";
-		if(signService.getSignNickCheck(vo.getNickName()) != null) return "redirect:/message/nickCheckNo";
+		if(signUserService.getSignUserIdCheck(vo.getMid()) != null) return "redirect:/message/idCheckNo";
+		if(signUserService.getSignUserNickCheck(vo.getNickName()) != null) return "redirect:/message/nickCheckNo";
 		
 		// 비밀번호 암호화
 		vo.setPwd(passwordEncoder.encode(vo.getPwd()));
 		
 		// 회원사진 처리(service객체에서 처리후 DB에 저장한다.)
-		int res = signService.setSignUpOk(vo);
+		int res = signUserService.setSignUpUserOk(vo);
 		
 		if(res == 1) return "redirect:/message/signUpOk";
 		else return "redirect:/message/signUpNo";
@@ -260,7 +260,7 @@ public class SignController {
 	@ResponseBody
 	@RequestMapping(value = "/signIdCheck", method = RequestMethod.POST)
 	public String signIdCheckPost(String mid) {
-		SignVO vo = signService.getSignIdCheck(mid);
+		SignUserVO vo = signUserService.getSignUserIdCheck(mid);
 		
 		if(vo  != null) return "1";
 		else return "0";
@@ -269,7 +269,7 @@ public class SignController {
 	@ResponseBody
 	@RequestMapping(value = "/signNickCheck", method = RequestMethod.POST)
 	public String signNickCheckPost(String nickName) {
-		SignVO vo = signService.getSignNickCheck(nickName);
+		SignUserVO vo = signUserService.getSignUserNickCheck(nickName);
 		
 		if(vo  != null) return "1";
 		else return "0";
@@ -279,7 +279,7 @@ public class SignController {
 	@RequestMapping(value = "/signDel", method = RequestMethod.POST)
 	public String userDelPost(HttpSession session) {
 		String mid = (String) session.getAttribute("sMid");
-		int res = signService.setSignDel(mid);
+		int res = signUserService.setSignUserDel(mid);
 		
 		if(res == 1) {
 			session.invalidate();
@@ -298,7 +298,7 @@ public class SignController {
 	@RequestMapping(value = "/signPwdCheck", method = RequestMethod.POST)
 	public String signPwdCheckPost(String pwd, HttpSession session) {
 		String mid = (String) session.getAttribute("sMid");
-		SignVO vo = signService.getSignIdCheck(mid);
+		SignUserVO vo = signUserService.getSignUserIdCheck(mid);
 		
 		if(passwordEncoder.matches(pwd, vo.getPwd())) return "1";
 		else return "0";
@@ -309,7 +309,7 @@ public class SignController {
 	public String signPwdChangeOkPost(String pwd, HttpSession session) {
 		String mid = (String) session.getAttribute("sMid");
 		pwd = passwordEncoder.encode(pwd);
-		int res = signService.setPwdChangeOk(mid, pwd);
+		int res = signUserService.setPwdChangeOk(mid, pwd);
 		
 		if(res != 0) return "1";
 		else return "0";
@@ -318,19 +318,19 @@ public class SignController {
 	@RequestMapping(value = "/signUpdate", method = RequestMethod.GET)
 	public String signUpdateGet(Model model, HttpSession session) {
 		String mid = (String) session.getAttribute("sMid");
-		SignVO vo = signService.getSignIdCheck(mid);
+		SignUserVO vo = signUserService.getSignUserIdCheck(mid);
 		model.addAttribute("vo", vo);
 		return "sign/signUpdate";
 	}
 	
 	@RequestMapping(value = "/signUpdate", method = RequestMethod.POST)
-	public String signUpdatePost(SignVO vo, HttpSession session) {
+	public String signUpdatePost(SignUserVO vo, HttpSession session) {
 		// 닉네임 체크
 		String nickName = (String) session.getAttribute("sNickName");
-		if(signService.getSignNickCheck(vo.getNickName()) != null && !nickName.equals(vo.getNickName())) {
+		if(signUserService.getSignUserNickCheck(vo.getNickName()) != null && !nickName.equals(vo.getNickName())) {
 			return "redirect:/message/nickCheckNo";
 		}
-		int res = signService.setSignUpdateOk(vo);
+		int res = signUserService.setSignUserUpdateOk(vo);
 		if(res != 0) {
 			session.setAttribute("sNickName", vo.getNickName());
 			return "redirect:/message/signUpdateOk";
@@ -342,14 +342,14 @@ public class SignController {
 	@ResponseBody
 	@RequestMapping(value = "/signPasswordSearch", method = RequestMethod.POST)
 	public String signPasswordSearchPost(String mid, String email) throws MessagingException {
-		SignVO vo = signService.getSignIdCheck(mid);
+		SignUserVO vo = signUserService.getSignUserIdCheck(mid);
 		if(vo != null && vo.getEmail().equals(email)) {
 			// 정보 확인후, 임시비밀번호를 발급받아서 메일로 전송처리한다.
 			UUID uid = UUID.randomUUID();
 			String pwd = uid.toString().substring(0,8);
 			
 			// 발급받은 비밀번호를 암호화후 DB에 저장한다.
-			signService.setSignPasswordUpdate(mid, passwordEncoder.encode(pwd));
+			signUserService.setSignUserPasswordUpdate(mid, passwordEncoder.encode(pwd));
 			
 			// 발급받은 임시번호를 회원 메일주소로 전송처리한다.
 			String title = "임시 비밀번호를 발급하셨습니다.";
@@ -418,9 +418,9 @@ public class SignController {
 	@ResponseBody
 	@RequestMapping(value = "/signEmailSearch", method = RequestMethod.POST)
 	public String signEmailSearchPost(String email) {
-		List<SignVO> vos = signService.getSignEmailSearch(email);
+		List<SignUserVO> vos = signUserService.getSignUserEmailSearch(email);
 		String res = "";
-		for(SignVO vo : vos) {
+		for(SignUserVO vo : vos) {
 			res += vo.getMid() + "/";
 		}
 		if(vos.size() == 0) return "0";

@@ -4,30 +4,30 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.spring.javaProjectS5.vo.SignVO;
+import com.spring.javaProjectS5.vo.SignUserVO;
 
 public interface SignUserDAO {
 
-	public SignVO getSignIdCheck(@Param("mid") String mid);
+	public SignUserVO getSignUserIdCheck(@Param("mid") String mid);
 
-	public SignVO getSignNickCheck(@Param("nickName") String nickName);
+	public SignUserVO getSignUserNickCheck(@Param("nickName") String nickName);
 
-	public int setSignUpOk(@Param("vo") SignVO vo);
+	public int setSignUpUserOk(@Param("vo") SignUserVO vo);
 
-	public int setSignDel(@Param("mid") String mid);
+	public int setSignUserDel(@Param("mid") String mid);
 
 	public int setPwdChangeOk(@Param("mid") String mid, @Param("pwd") String pwd);
 
-	public int setSignUpdateOk(@Param("vo") SignVO vo);
+	public int setSignUserUpdateOk(@Param("vo") SignUserVO vo);
 
-	public void setSignPasswordUpdate(@Param("mid") String mid, @Param("pwd") String pwd);
+	public void setSignUserPasswordUpdate(@Param("mid") String mid, @Param("pwd") String pwd);
 
-	public List<SignVO> getSignEmailSearch(@Param("email") String email);
+	public List<SignUserVO> getSignUserEmailSearch(@Param("email") String email);
 
-	public SignVO getSignNickNameEmailCheck(@Param("nickName") String nickName, @Param("email") String email);
+	public SignUserVO getSignUserNickNameEmailCheck(@Param("nickName") String nickName, @Param("email") String email);
 
-	public void setKakaoSignInput(@Param("mid") String mid, @Param("pwd") String pwd, @Param("nickName") String nickName, @Param("email") String email);
+	public void setKakaoSignUserInput(@Param("mid") String mid, @Param("pwd") String pwd, @Param("nickName") String nickName, @Param("email") String email);
 
-	public void signUp(@Param("vo") SignVO vo);
+	public void signUpUser(@Param("vo") SignUserVO vo);
 
 }
