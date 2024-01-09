@@ -14,4 +14,8 @@ public interface GuideService {
 
 	public GuideVO getGuideContent(int idx);
 
+	public List<GuideVO> getGuideSearch(String search);
+
+	public List<GuideVO> getGuideSearchList(String search, String searchString);
+
 }

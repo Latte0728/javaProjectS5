@@ -14,4 +14,8 @@ public interface GuideDAO {
 
 	public GuideVO getGuideContent(@Param("idx") int idx);
 
+	public List<GuideVO> getGuideSearch(@Param("search") String search);
+
+	public List<GuideVO> getGuideSearchList(@Param("search") String search, @Param("searchString") String searchString);
+
 }

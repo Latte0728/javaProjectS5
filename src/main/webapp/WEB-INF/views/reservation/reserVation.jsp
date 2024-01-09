@@ -5,39 +5,52 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>예약</title>
+	<title>예약시스템</title>
 	<jsp:include page="/WEB-INF/views/include/bs4.jsp" />
+<style>
+ .interpretation{
+ 		background-color:#006666;
+ 		
+ }	
+</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
 <p><br/></p>
 <div class="container">
-	<h1>생태 해설 예약 프로그램</h1>
+	<h1 style="text-align:center">예약 시스템</h1>
 	<p><br/></p>
-	<span>예약상황을 알고 싶은 날짜를 클릭하면 해당 날짜에 등록된 프로그램의 예약상황을 실시간으로 확인할 수 있습니다.</span>
+	<h3 style="text-align:center">현재 진행 중인 
+	<span style="color:#0040FF">프로그램</span>
+	</h3>
 	<p><br/></p>
-	<div class="reserve1">
-		<h2>
-			<span class="fa-solid fa-play"></span> &nbsp; 1.
-			날짜선택
-		</h2>
-			<form class="reform" method="post">
-				<table border="1">
-					<tr>
-						<th scope="col">월</th>
-						<th scope="col">화</th>
-						<th scope="col">수</th>
-						<th scope="col">목</th>
-						<th scope="col">금</th>
-						<th scope="col">토</th>
-						<th scope="col">일</th>
-					</tr>
-					<tr>
-						<td></td>
-					</tr>
-				</table>
-			</form>
-	</div>		
+		<div class="program">
+			<div>
+				<ul>
+					<li>
+						<a href="" >
+							<span class="interpretation"><font style="color:#ffffff">생태해설</font></span>
+							<span>
+								<img src=""/>
+							</span>
+							<div class="program_content">
+								<p class="kinds">
+									<span>단체</span>
+									<span>유아</span>
+									<span>초등</span>
+									<span>중등</span>
+									<span>고등</span>
+									<span>성인</span>
+								</p>
+							</div>
+						</a>
+					</li>
+				</ul>	
+			</div>
+		</div>
+		<div class="re_service">
+			
+		</div>
 </div>
 <p><br/></p>
 </body>

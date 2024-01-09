@@ -34,10 +34,6 @@ public class GuideController {
 		if(res !=0) return "redirect:/message/guideWriteOk";
 		else return "redirect:/message/guideWriteNo";
 	}
-	@GetMapping(value="/abbGuide")
-	public String abbGuideGet() {
-		return "guide/abbGuide";
-	}
 	
 	@RequestMapping(value="/guideList", method=RequestMethod.GET)
 	public String guideListGet(Model model) {
@@ -45,6 +41,22 @@ public class GuideController {
 		model.addAttribute("vos", vos);
 		return "guide/guideList";
 	}
+	
+	@RequestMapping(value="/guideList", method=RequestMethod.POST)
+	public String guideListPost(Model model, String searchString, String search) {
+		List<GuideVO> vos = guideService.getGuideSearchList(search,searchString);
+		model.addAttribute("vos", vos);
+		model.addAttribute("search", search);
+		return "guide/guideList";
+	}
+	
+	@RequestMapping(value="/guideSearch", method=RequestMethod.GET)
+	public String guideSearchGet(Model model, String search) {
+		List<GuideVO> vos = guideService.getGuideSearch(search);
+		model.addAttribute("vos", vos);
+		return "guide/guideList";
+	}
+	
 	
 	@GetMapping(value="/guideContent")
 	public String guideContentGet(Model model, int idx) {
