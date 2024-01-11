@@ -95,4 +95,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return reservationDAO.getReservationDuplicate(mid, wDate);
 	}
 
+	@Override
+	public List<ReservationVO> getReservationMidList(String mid) {
+		return reservationDAO.getReservationMidList(mid);
+	}
+
 }

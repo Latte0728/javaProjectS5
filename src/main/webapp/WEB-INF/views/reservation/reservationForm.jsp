@@ -113,7 +113,8 @@
 				<input type="submit" class="btn btn-primary" value="신청하기" />
 				<input type="reset"  class="btn btn-danger"  value="취소하기" />
 				<input type="button" class="btn btn-info" 	 value="돌아가기" onclick="location.href='reservationList';"/>
-			</div>	
+			</div>
+			<input type="hidden" name="reservationIdx" value="${vo.idx}"/>
 		</form>
 	</div>
 </div>  

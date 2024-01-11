@@ -115,7 +115,7 @@
   	<img src="${ctp}/resources/images/1.jpeg" style="width:1110px; height:300px"/>
   <hr class="new" />
   <div class="ok" style="display:inline-block;">
-  	<a style="text-decoration:none;" href="${ctp}/reservation/reserVation">
+  	<a style="text-decoration:none;" href="${ctp}/reservation/reservationConfirm">
 	  	<i class="fa-regular fa-calendar-days fa-4x" style="color:white"></i>
 	  	<p><br/></p>
 	  	<font color="white">예약 확인</font>

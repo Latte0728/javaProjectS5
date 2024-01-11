@@ -55,7 +55,7 @@ public class MessageController {
 		}
 		else if(msgFlag.equals("reservationFormOk")) {
 			model.addAttribute("msg", "예약이 완료되었습니다.");
-			model.addAttribute("url", "sign/signMain");
+			model.addAttribute("url", "reservation/reservationConfirm");
 		}
 		else if(msgFlag.equals("reservationFormNo")) {
 			model.addAttribute("msg", "예약 실패.");

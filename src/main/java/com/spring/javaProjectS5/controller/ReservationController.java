@@ -74,5 +74,13 @@ public class ReservationController {
 		return "reservation/reservationInfo";
 	}
 	
+	@RequestMapping(value="/reservationConfirm", method=RequestMethod.GET)
+	public String reservationConfirmGet(HttpSession session, Model model) {
+		String mid = (String)session.getAttribute("sMid");
+		List<ReservationVO> vos = reservationService.getReservationMidList(mid);
+		model.addAttribute("vos", vos);
+		return "reservation/reservationConfirm";
+	}
+	
 }
 

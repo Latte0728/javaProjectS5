@@ -14,13 +14,18 @@
 	<select id="getReservationDuplicate" resultType="com.spring.javaProjectS5.vo.ReservationInfoVO">
 		select * from reservationInfo where mid = #{mid} and wDate = #{wDate} limit 1;
 	</select>
+	
+	<select id="getReservationMidList" resultType="com.spring.javaProjectS5.vo.ReservationInfoVO">
+		select i.*,r.title,r.startDate,r.endDate, datediff(r.startDate, now()) as date_diff from reservationInfo i, reservation r 
+		where i.reservationIdx = r.idx and i.mid = #{mid} order by idx desc;
+	</select>
 
 	<insert id="setReservationWrite">
 		insert into reservation values (default,#{vo.title},default,#{vo.startDate},#{vo.endDate},#{vo.training},#{vo.recruit},#{vo.content},default); 
 	</insert>
 	
 	<insert id="setReservationFormOk">
-		insert into reservationInfo values (default,#{vo.mid},#{vo.wDate},#{vo.recruit},#{vo.content});
+		insert into reservationInfo values (default,#{vo.reservationIdx},#{vo.mid},#{vo.wDate},#{vo.recruit},#{vo.content});
 	</insert>
 
 </mapper>

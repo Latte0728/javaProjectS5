@@ -19,4 +19,6 @@ public interface ReservationDAO {
 
 	public ReservationInfoVO getReservationDuplicate(@Param("mid") String mid, @Param("wDate") String wDate);
 
+	public List<ReservationVO> getReservationMidList(@Param("mid") String mid);
+
 }
