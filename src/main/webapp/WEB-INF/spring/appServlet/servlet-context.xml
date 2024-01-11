@@ -17,11 +17,13 @@
 	<resources mapping="/turnjs/**" location="/resources/turnjs/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 	<resources mapping="/video/**" location="/resources/video/" />
-	<resources mapping="/member/**" location="/resources/data/member/" />
-	<resources mapping="/board/**" location="/resources/data/ckeditor/board/" />
+	<resources mapping="/sign/**" location="/resources/data/sign/" />
+	<resources mapping="/bulletinBoard/**" location="/resources/data/ckeditor/bulletinBoard/" />
 	<resources mapping="/ckeditor/**" location="/resources/ckeditor/" />
 	<resources mapping="/data/**" location="/resources/data/" />
 	<resources mapping="/guide/**" location="/resources/data/guide/" />
+	<resources mapping="/reservation/**" location="/resources/data/reservation/" />
+	<!-- <resources mapping="/page/**" location="/resources/data/page/" /> -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -3,44 +3,44 @@
 <mapper namespace="com.spring.javaProjectS5.dao.SignUserDAO">
 
   <select id="getSignUserIdCheck" resultType="com.spring.javaProjectS5.vo.SignUserVO">
-    select * from sign where mid = #{mid};
+    select * from signUser where mid = #{mid};
   </select>  
   
   <select id="getSignUserNickCheck" resultType="com.spring.javaProjectS5.vo.SignUserVO">
-    select * from sign where nickName = #{nickName};
+    select * from signUser where nickName = #{nickName};
   </select>  
 
   <select id="getSignUserEmailSearch" resultType="com.spring.javaProjectS5.vo.SignUserVO">
-    select * from sign where email = #{email};
+    select * from signUser where email = #{email};
   </select>  
   
   <select id="getSignUserNickNameEmailCheck" resultType="com.spring.javaProjectS5.vo.SignUserVO">
-    select * from sign where nickName = #{nickName} and email = #{email};
+    select * from signUser where nickName = #{nickName} and email = #{email};
   </select>
   
   <insert id="setSignUpUserOk">
-    insert into sign values (default,#{vo.mid},#{vo.pwd},#{vo.nickName},#{vo.name},#{vo.gender},#{vo.birthday},#{vo.tel},#{vo.address},#{vo.email},#{vo.homePage},#{vo.job},#{vo.hobby},#{vo.photo},#{vo.content},#{vo.userInfor},default,default,default,default,default,default,default);
+    insert into signUser values (default,#{vo.mid},#{vo.pwd},#{vo.nickName},#{vo.name},#{vo.gender},#{vo.birthday},#{vo.tel},#{vo.address},#{vo.email},#{vo.homePage},#{vo.job},#{vo.hobby},#{vo.photo},#{vo.content},#{vo.userInfor},default,default,default,default,default,default,default);
   </insert>
   
   <insert id="setKakaoSignUserInput">
-    insert into sign (mid,pwd,nickName,email,name) values (#{mid},#{pwd},#{nickName},#{email},#{nickName});
+    insert into signUser (mid,pwd,nickName,email,name) values (#{mid},#{pwd},#{nickName},#{email},#{nickName});
   </insert>
   
   <update id="setPwdChangeOk">
-    update sign set pwd = #{pwd} where mid = #{mid};
+    update signUser set pwd = #{pwd} where mid = #{mid};
   </update>
   
   <update id="setSignUserUpdateUserOk">
-    update sign set nickName=#{vo.nickName},name=#{vo.name},gender=#{vo.gender},birthday=#{vo.birthday},tel=#{vo.tel},address=#{vo.address},email=#{vo.email},homePage=#{vo.homePage},job=#{vo.job},hobby=#{vo.hobby},photo=#{vo.photo},content=#{vo.content},userInfor=#{vo.userInfor} where mid=#{vo.mid};
+    update signUser set nickName=#{vo.nickName},name=#{vo.name},gender=#{vo.gender},birthday=#{vo.birthday},tel=#{vo.tel},address=#{vo.address},email=#{vo.email},homePage=#{vo.homePage},job=#{vo.job},hobby=#{vo.hobby},photo=#{vo.photo},content=#{vo.content},userInfor=#{vo.userInfor} where mid=#{vo.mid};
   </update>
   
   <update id="setSignUserPasswordUpdate">
-    update sign set pwd = #{pwd} where mid = #{mid};
+    update signUser set pwd = #{pwd} where mid = #{mid};
   </update>
   
   
   
   <delete id="setSignUserDel">
-    update sign set signDel = 'OK' where mid = #{mid};
+    update signUser set signDel = 'OK' where mid = #{mid};
   </delete>
 </mapper>

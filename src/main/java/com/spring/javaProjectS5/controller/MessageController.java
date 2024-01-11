@@ -41,6 +41,30 @@ public class MessageController {
 			model.addAttribute("msg", "글이 등록 실패");
 			model.addAttribute("url", "guide/guideWrite");
 		}
+		else if(msgFlag.equals("reservationWriteOk")) {
+			model.addAttribute("msg", "이벤트 등록이 완료되었습니다.");
+			model.addAttribute("url", "reservation/reservationList");
+		}
+		else if(msgFlag.equals("reservationWriteNo")) {
+			model.addAttribute("msg", "이벤트 등록이 오류.");
+			model.addAttribute("url", "reservation/reservationWrite");
+		}
+		else if(msgFlag.equals("certificationNo")) {
+			model.addAttribute("msg", "로그인하셔서 예약해주세요.");
+			model.addAttribute("url", "reservation/reservationList");
+		}
+		else if(msgFlag.equals("reservationFormOk")) {
+			model.addAttribute("msg", "예약이 완료되었습니다.");
+			model.addAttribute("url", "sign/signMain");
+		}
+		else if(msgFlag.equals("reservationFormNo")) {
+			model.addAttribute("msg", "예약 실패.");
+			model.addAttribute("url", "reservation/reservationFormNo");
+		}
+		else if(msgFlag.equals("reservationDuplicate")) {
+			model.addAttribute("msg", "이미 다른 프로그램을 같은 날짜에 신청하셨습니다.");
+			model.addAttribute("url", "sign/signMain");
+		}
 		
 		
 		

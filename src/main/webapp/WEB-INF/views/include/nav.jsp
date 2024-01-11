@@ -34,11 +34,12 @@
 						<a href="${ctp}/exhibition/exhiBition">전시</a> | 
 						<a href="${ctp}/education/edu">교육</a> | 
 						<a href="${ctp}/guide/guideList">도감</a> |
-						<a href="${ctp}/reservation/reserVation">프로그램 예약</a> |
+						<a href="${ctp}/reservation/reservationList">프로그램 예약</a> |
 						<a href="${ctp}/page/menagerPage">관리자 페이지</a> |
 						<a href="${ctp}/sign/signReCheck">비밀번호 재확인</a> |
 						<a href="${ctp}/sign/signMain">회원 방</a> |
 						<a href="${ctp}/sign/signUpdate">정보 수정</a> |
+						<a href="${ctp}/bulletinBoard/bulletinBoard">게시판</a> |
 						<c:if test="${empty sMid}">
 							<a href="${ctp}/sign/signIn">로그인</a> |
 						</c:if>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaProjectS5.dao.ReservationDAO">
+
+
+	<select id="getReservationList" resultType="com.spring.javaProjectS5.vo.ReservationVO">
+		select * from reservation order by idx desc;
+	</select>
+	
+	<select id="getReservationIdxSearch" resultType="com.spring.javaProjectS5.vo.ReservationVO">
+		select * from reservation where idx = #{idx};
+	</select>
+
+	<select id="getReservationDuplicate" resultType="com.spring.javaProjectS5.vo.ReservationInfoVO">
+		select * from reservationInfo where mid = #{mid} and wDate = #{wDate} limit 1;
+	</select>
+
+	<insert id="setReservationWrite">
+		insert into reservation values (default,#{vo.title},default,#{vo.startDate},#{vo.endDate},#{vo.training},#{vo.recruit},#{vo.content},default); 
+	</insert>
+	
+	<insert id="setReservationFormOk">
+		insert into reservationInfo values (default,#{vo.mid},#{vo.wDate},#{vo.recruit},#{vo.content});
+	</insert>
+
+</mapper>
