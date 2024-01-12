@@ -19,12 +19,29 @@
       transform: translateY(-50%);
       cursor: pointer;
 		}
-			.fa-solid fa-magnifying-glass{
+		.fa-solid fa-magnifying-glass{
 			position: absolute;
       top: 50%;
       left: 8px;
       transform: translateY(-50%);
-    }  
+    } 
+    #searchBox{
+    	display:inline;
+    }
+    #selectBox{
+    	display:inline;
+    	margin-right:10px;
+    	
+    } 
+    .searching {
+			width: 100%;
+	    box-sizing: border-box;
+	    border: 1px solid #ddd;
+	    padding: 24px 77px;
+	    margin: 0 0 30px;
+	    overflow: hidden;
+		
+    }
 	</style>  
 </head>
 <body>
@@ -36,7 +53,18 @@
 		<div class="searching">
 			<i class="fa-solid fa-xmark"></i>
 			<i class="fa-solid fa-magnifying-glass"></i>
-			<span><input type="text" id="" name="" class="form-control" style="width:30%"></span>
+			<span>
+				<select class="form-control" id="search" name="search" style="width:10%" id="selectBox">
+					<option value="total">통합</option>
+					<option value="idx">번호</option>
+					<option value="title">제목</option>
+					<option value="writer">작성자</option>
+					<option value="cDate">작성일</option>
+				</select>
+			</span>
+			<span>
+				<input type="text" id="searchBox" name="searchBox" class="form-control" style="width:70%" >
+			</span>
 		</div>
 		<p><br/></p>
 		<table class="table table-hover text-align:center">
@@ -51,13 +79,13 @@
 				<td>${vo.number}</td>
 				<td>${vo.title}</td>
 				<td>${vo.writer}</td>
-				<td>${vo.wDate}</td>
+				<td>${vo.WDate}</td>
 				<td>${vo.check}</td>
 			</tr>
 		</table>
 		<p><br/></p>
 		<div>
-			<input type="button" onclick="location.href='';" class="btn btn-info" value="글쓰기"/>
+			<input type="button" onclick="location.href='${ctp}/bulletinBoard/boardInput';" class="btn btn-info" value="글쓰기"/>
 		</div>
 </div>  
 <p><br/></p>

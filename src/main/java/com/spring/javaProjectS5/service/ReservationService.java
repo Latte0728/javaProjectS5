@@ -19,4 +19,8 @@ public interface ReservationService {
 
 	public List<ReservationVO> getReservationMidList(String mid);
 
+	public void getSchedule();
+
+	public List<ReservationVO> getScheduleMenu(String ymd);
+
 }

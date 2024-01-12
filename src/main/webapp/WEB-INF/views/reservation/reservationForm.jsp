@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+	String today = java.time.LocalDate.now().toString().substring(0, 10);
+  pageContext.setAttribute("today", today);
+%>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -50,6 +54,17 @@
 		}
 		 
   </style>
+  <script>
+  	'use strict';
+  	function dateCheck() {
+  		let startDate = '${fn:substring(vo.startDate,0,10)}';
+  		let wDate = document.getElementById("wDate").value;
+  		if(startDate <= wDate || '${today}' > wDate) {
+  			alert('신청일자를 확인하세요');
+  			return false;
+  		}
+  	}
+  </script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
@@ -98,7 +113,7 @@
 				</tr>
 				<tr>	
 					<th>신청 일자</th>
-					<td><input type="date" name="wDate" value="<%=java.time.LocalDate.now() %>" class="form-control"></td>
+					<td><input type="date" onBlur="dateCheck()" name="wDate" id="wDate" value="<%=java.time.LocalDate.now() %>" class="form-control"></td>
 				</tr>
 				<tr>	
 					<th>참가 인원</th>

@@ -25,6 +25,18 @@ public class MessageController {
 			model.addAttribute("msg", "회원 삭제 실패~~");
 			model.addAttribute("url", "user/userList");
 		}
+		else if(msgFlag.equals("signInOk")) {
+			model.addAttribute("msg", mid + "회원님 로그인 되었습니다.");
+			model.addAttribute("url", "sign/signMain");
+		}
+		else if(msgFlag.equals("kakaosignInOk")) {
+			model.addAttribute("msg", mid + "회원님 로그인 되었습니다.");
+			model.addAttribute("url", "sign/signMain");
+		}
+		else if(msgFlag.equals("signOut")) {
+			model.addAttribute("msg", mid + "회원님 로그아웃 되었습니다.");
+			model.addAttribute("url", "sign/signIn");
+		}
 		else if(msgFlag.equals("user2InputOk")) {
 			model.addAttribute("msg", "회원 가입 성공!!!");
 			model.addAttribute("url", "user2/user2List");

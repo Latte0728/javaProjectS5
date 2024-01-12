@@ -21,4 +21,8 @@ public interface ReservationDAO {
 
 	public List<ReservationVO> getReservationMidList(@Param("mid") String mid);
 
+	public List<ReservationVO> getScheduleList(@Param("ym") String ym);
+
+	public List<ReservationVO> getScheduleMenu(@Param("ymd") String ymd);
+
 }

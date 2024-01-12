@@ -117,8 +117,8 @@
   	<div class="guideTotal">
 	    <div class="guideEa" style="width:280px;height:280px;margin:20px;">
 	      ${vo.bird_name}<br/>
-	      <c:set var="bird_imgs" value="${fn:split(vo.photo,'/')}" />
-	      <a href="guideContent?idx=${vo.idx}"><img src="${ctp}/guide/${bird_imgs[0]}" width="250px" /></a><br/>
+	      <c:set var="bird_imgs"   value="${fn:split(vo.photo,'/')}" />
+	      <a href="guideContent?idx=${vo.idx}"><img src="${ctp}/guide/${bird_imgs[0]}"  class="w3-border"  style="padding:10px" width="250px" /></a><br/>
 	      □ 학명 : ${vo.bird_SName}<br/>
 	      □ 목/과 : ${vo.bird_class}<br/>
 	    </div>

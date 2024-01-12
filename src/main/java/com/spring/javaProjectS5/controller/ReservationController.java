@@ -82,5 +82,22 @@ public class ReservationController {
 		return "reservation/reservationConfirm";
 	}
 	
+	@RequestMapping(value="/reservationAdminView", method=RequestMethod.GET)
+	public String reservationAdminViewGet() {
+		reservationService.getSchedule();
+		return "reservation/reservationAdminView";
+	}
+	
+	@RequestMapping(value="/scheduleMenu", method=RequestMethod.GET)
+	public String scheduleMenuGet(String ymd, Model model) {
+    List<ReservationVO> vos = reservationService.getScheduleMenu(ymd);
+		System.out.println("ymd :" + ymd);
+		System.out.println("vos :" + vos);
+		model.addAttribute("vos",vos);
+		model.addAttribute("ymd", ymd);
+		model.addAttribute("scheduleCnt", vos.size());
+		return "reservation/scheduleMenu";
+	}
+	
 }
 

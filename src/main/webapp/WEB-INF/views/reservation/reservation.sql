@@ -1,5 +1,6 @@
 show tables; 
 
+/*이벤트  등록*/
 create table reservation(
 	idx 			int not null auto_increment primary key,
 	title 		varchar(100) not null,								/* 교육 제목 #  */
@@ -20,6 +21,7 @@ select * from reservation order by idx desc;
 
 select * from reservation where  order by idx desc;
 
+/*예약 정보 등록 */
 create table reservationInfo(
 	idx int not null auto_increment primary key,
 	reservationIdx int  not null,  /* 이벤트 고유 번호*/
@@ -36,5 +38,11 @@ drop table reservationInfo;
 select i.*,r.title from reservationInfo i, reservation r where i.reservationIdx = r.idx and i.mid = 'qkrwjdgkgk12' order by idx desc;
 
 
-select i.*,r.title,r.startDate,r.endDate,datediff(r.startDate, now()) as date_diff from reservationInfo i, reservation r where i.reservationIdx = r.idx and i.mid = 'qkrwjdgkgk12' order by idx desc; 
+select i.*,r.title,r.startDate,r.endDate,datediff(r.startDate, now()) as date_diff from reservationInfo i, reservation r where i.reservationIdx = r.idx and i.mid = 'qkrwjdgkgk12' order by idx desc;
+
+select i.*,r.title,r.startDate,r.endDate,datediff(r.startDate, now()) as date_diff,r.content as imgContent from reservationInfo i, reservation r where i.reservationIdx = r.idx and i.mid = 'qkrwjdgkgk12' order by idx desc; 
  
+select * from reservationInfo where date_format(wDate, '%Y-%m') = '2024-01' group by wDate order by wDate;
+
+select * from reservationInfo where date_format(wDate, '%Y-%m-%d')='2024-01-12';
+

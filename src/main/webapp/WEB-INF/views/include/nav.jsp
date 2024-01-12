@@ -19,6 +19,9 @@
 				  window.location.href = "https://kauth.kakao.com/oauth/logout?client_id=01abf913d97f588ec72ae806bb807a86&logout_redirect_uri=http://localhost:9090/javaProjectS5/sign/signOut";
 			  });
 		  }
+		  else {
+			  location.href = "${ctp}/sign/signOut";
+		  }
 	  }
 	</script>
 	<style>
@@ -35,7 +38,9 @@
 						<a href="${ctp}/education/edu">교육</a> | 
 						<a href="${ctp}/guide/guideList">도감</a> |
 						<a href="${ctp}/reservation/reservationList">프로그램 예약</a> |
-						<a href="${ctp}/page/menagerPage">관리자 페이지</a> |
+						<c:if test="${sLevel == 1}">
+					    <a href="${ctp}/page/menagerPage">관리자 페이지</a> |
+						</c:if>
 						<a href="${ctp}/sign/signReCheck">비밀번호 재확인</a> |
 						<a href="${ctp}/sign/signMain">회원 방</a> |
 						<a href="${ctp}/sign/signUpdate">정보 수정</a> |

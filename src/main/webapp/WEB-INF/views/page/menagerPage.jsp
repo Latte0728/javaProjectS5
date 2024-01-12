@@ -108,30 +108,30 @@
 			<hr class="new" />
 			<div class="complaint" style="margin-left:10px; display:inline-block">
 				<a style="text-decoration:none;" href="${ctp}//">
-				<i class="fa-solid fa-clipboard-check fa-4x" style="color:white;"></i>
-				<p><br/></p>
-	  		<font color="white">신고 확인</font>
+					<i class="fa-solid fa-clipboard-check fa-4x" style="color:white;"></i>
+					<p><br/></p>
+		  		<font color="white">신고 확인</font>
 				</a>
 			</div>	
 			<div class="review" style="margin-left:60px; display:inline-block">
 				<a style="text-decoration:none;" href="${ctp}/guide/guideWrite">
-				<i class="fa-solid fa-dragon fa-4x" style="color:white;"></i>
-				<p><br/></p>
-	  		<font color="white">도감 작성</font>
+					<i class="fa-solid fa-dragon fa-4x" style="color:white;"></i>
+					<p><br/></p>
+		  		<font color="white">도감 작성</font>
 				</a>
 			</div>
 			<div class="book" style="margin-left:60px; display:inline-block">
-				<a style="text-decoration:none;" href="${ctp}/reservation/reservationWrite">
-				<i class="fa-solid fa-book-open-reader fa-4x" style="color:white;"></i>
-				<p><br/></p>
-	  		<font color="white">프로그램 예약 작성</font>
+				<a style="text-decoration:none;" href="${ctp}/reservation/reservationAdminView">
+					<i class="fa-solid fa-book-open-reader fa-4x" style="color:white;"></i>
+					<p><br/></p>
+		  		<font color="white">프로그램 예약 현황</font>
 				</a>
 			</div>
 			<div class="statics" style="margin-left:60px; display:inline-block">
 				<a style="text-decoration:none;" href="${ctp}//">
-				<i class="fa-solid fa-chart-pie  fa-4x" style="color:white;"></i>
-				<p><br/></p>
-	  		<font color="white">선호 프로그램 통계</font>
+					<i class="fa-solid fa-chart-pie  fa-4x" style="color:white;"></i>
+					<p><br/></p>
+		  		<font color="white">선호 프로그램 통계</font>
 				</a>
 			</div>	
 </div>

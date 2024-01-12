@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+	String today = java.time.LocalDate.now().toString().substring(0, 10);
+  pageContext.setAttribute("today", today);
+%>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -11,7 +15,6 @@
   <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
 	<style>
 		.h2_info{
-			/* margin-left:100px */
 			text-align:center;
 		}
 		.h4_info{
@@ -104,7 +107,7 @@
 				<div class="row">
 					<c:forEach var="i" begin="0" end="3" varStatus="st">
 						  <c:set var="nextImg" value="${fn:substring(vos[i].content,fn:indexOf(vos[i].content,'src=')+37,fn:length(vos[i].content))}"/>
-						  <div class="col"><img src="${ctp}/reservation/${fn:substring(nextImg,0,fn:indexOf(nextImg,'\"'))}" /></div>
+						  <div class="col"><img src="${ctp}/reservation/${fn:substring(nextImg,0,fn:indexOf(nextImg,'\"'))}" class="w3-round-large" style="width:100%"/></div>
 					</c:forEach>
 			  </div>
 			</div>
@@ -124,7 +127,14 @@
 					  <c:set var="imageOne" value="${fn:substring(nextImg,0,fn:indexOf(nextImg,'\"'))}"/>
 						<tr>	
 							<td>${st.count}</td>
-							<td><a href="#" onclick="imgCheck('${vo.idx}','${vo.title}','${imageOne}')" data-toggle="modal" data-target="#myModal">${vo.title}</a></td>
+							<td>
+							  <c:if test="${today < fn:substring(vo.startDate,0,10)}">
+							  	<a href="#" onclick="imgCheck('${vo.idx}','${vo.title}','${imageOne}')" data-toggle="modal" data-target="#myModal">${vo.title}</a>
+								</c:if>
+							  <c:if test="${today >= fn:substring(vo.startDate,0,10)}">
+							  	<a href="javascript:alert('예약신청일이 지나 예약을 할 수 없습니다.');">${vo.title}</a>
+								</c:if>
+							</td>
 							<td>${fn:substring(vo.startDate,0,10)}</td>
 							<td>${fn:substring(vo.endDate,0,10)}</td>
 							<td>${vo.training}</td>
