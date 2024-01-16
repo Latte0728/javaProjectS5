@@ -21,6 +21,7 @@ create table guide (
 	bird_hunt					varchar(50) not null, 			/* 사냥 방식*/
 	bird_food					varchar(30) not null, 			/* 먹이*/
 	bird_etc					text not null, 							/* 기타*/
+	part							varchar(20) not null,				/* 분야..(bulletinBoard:게시판, 도감 목록:guide, ...) */
 	photo		  				varchar(250) default 'noimage.jpg',
 	unique key (bird_name)
 );
@@ -28,3 +29,5 @@ create table guide (
 drop table guide;
 
 desc guide;
+
+select count(*) from guide;

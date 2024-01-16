@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -75,17 +76,20 @@
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
-			<tr>
-				<td>${vo.number}</td>
-				<td>${vo.title}</td>
-				<td>${vo.writer}</td>
-				<td>${vo.WDate}</td>
-				<td>${vo.check}</td>
-			</tr>
+			<c:forEach  var="vo" items="${vos}" varStatus="st">
+				<tr>
+					<td>${vo.idx}</td>
+					<td><a href="bulletinBoardContent?idx=${vo.idx}">${vo.title}</a></td>
+					<td>${vo.nickName}</td>
+					<td>${fn:substring(vo.WDate,0,19)}</td>
+					<td>${vo.readNum}</td>
+				</tr>
+			</c:forEach>
+			<tr><td colspan="5" class="m-0 p-0"></td></tr>
 		</table>
 		<p><br/></p>
 		<div>
-			<input type="button" onclick="location.href='${ctp}/bulletinBoard/boardInput';" class="btn btn-info" value="글쓰기"/>
+			<input type="button" onclick="location.href='${ctp}/bulletinBoard/bulletinBoardInput';" class="btn btn-info" value="글쓰기"/>
 		</div>
 </div>  
 <p><br/></p>

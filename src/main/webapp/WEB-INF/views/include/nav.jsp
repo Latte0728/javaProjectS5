@@ -44,7 +44,7 @@
 						<a href="${ctp}/sign/signReCheck">비밀번호 재확인</a> |
 						<a href="${ctp}/sign/signMain">회원 방</a> |
 						<a href="${ctp}/sign/signUpdate">정보 수정</a> |
-						<a href="${ctp}/bulletinBoard/bulletinBoard">게시판</a> |
+						<a href="${ctp}/bulletinBoard/bulletinBoardList">게시판</a> |
 						<c:if test="${empty sMid}">
 							<a href="${ctp}/sign/signIn">로그인</a> |
 						</c:if>

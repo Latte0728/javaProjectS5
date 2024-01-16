@@ -10,34 +10,58 @@
 	</select>
 	
 	<select id="getGuideSearchList" resultType="com.spring.javaProjectS5.vo.GuideVO">
-	  <if test="search == 'total'">
+	  <if test="search == '전체'">
 			select * from	guide where bird_name like concat('%',#{searchString},'%') or bird_SName like concat('%',#{searchString},'%');
 		</if>
-	  <if test="search != 'total'">
+	  <if test="search != '전체'">
 			select * from	guide where ${search} like concat('%',#{searchString},'%');
 		</if>
 	</select>
   
-  <select id="getGuideSearch" resultType="com.spring.javaProjectS5.vo.GuideVO">
+  <select id="getGuidePart" resultType="com.spring.javaProjectS5.vo.GuideVO">
 		<!-- select * from	guide where bird_name like concat(#{search},'%'); -->
-		<if test='search == "ㄱ"'>select * from	guide where bird_name rlike '^(ㄱ|ㄲ)' or (bird_name >= '가'  and <![CDATA[bird_name < '나']]>) order by bird_name;</if>
-		<if test='search == "ㄴ"'>select * from	guide where bird_name rlike '^(ㄴ)' or (bird_name >= '나'  and <![CDATA[bird_name < '다']]>) order by bird_name;</if>
-		<if test='search == "ㄷ"'>select * from	guide where bird_name rlike '^(ㄷ)' or (bird_name >= '다'  and <![CDATA[bird_name < '라']]>) order by bird_name;</if>
-		<if test='search == "ㄹ"'>select * from	guide where bird_name rlike '^(ㄹ)' or (bird_name >= '라'  and <![CDATA[bird_name < '마']]>) order by bird_name;</if>
-		<if test='search == "ㅁ"'>select * from	guide where bird_name rlike '^(ㅁ)' or (bird_name >= '마'  and <![CDATA[bird_name < '바']]>) order by bird_name;</if>
-		<if test='search == "ㅂ"'>select * from	guide where bird_name rlike '^(ㅂ)' or (bird_name >= '바'  and <![CDATA[bird_name < '사']]>) order by bird_name;</if>
-		<if test='search == "ㅅ"'>select * from	guide where bird_name rlike '^(ㅅ|ㅆ)' or (bird_name >= '사'  and <![CDATA[bird_name < '아']]>) order by bird_name;</if>
-		<if test='search == "ㅇ"'>select * from	guide where bird_name rlike '^(ㅇ)' or (bird_name >= '아'  and <![CDATA[bird_name < '자']]>) order by bird_name;</if>
-		<if test='search == "ㅈ"'>select * from	guide where bird_name rlike '^(ㅈ|ㅉ)' or (bird_name >= '자'  and <![CDATA[bird_name < '차']]>) order by bird_name;</if>
-		<if test='search == "ㅊ"'>select * from	guide where bird_name rlike '^(ㅊ)' or (bird_name >= '차'  and <![CDATA[bird_name < '카']]>) order by bird_name;</if>
-		<if test='search == "ㅋ"'>select * from	guide where bird_name rlike '^(ㅋ)' or (bird_name >= '카'  and <![CDATA[bird_name < '타']]>) order by bird_name;</if>
-		<if test='search == "ㅌ"'>select * from	guide where bird_name rlike '^(ㅌ)' or (bird_name >= '타'  and <![CDATA[bird_name < '파']]>) order by bird_name;</if>
-		<if test='search == "ㅍ"'>select * from	guide where bird_name rlike '^(ㅍ)' or (bird_name >= '파'  and <![CDATA[bird_name < '하']]>) order by bird_name;</if>
-		<if test='search == "ㅎ"'>select * from	guide where bird_name rlike '^(ㅎ)' or (bird_name >= '하') order by bird_name;</if>
+		<if test='part == "ㄱ"'>select * from	guide where bird_name rlike '^(ㄱ|ㄲ)' or (bird_name >= '가'  and <![CDATA[bird_name < '나']]>) order by bird_name;</if>
+		<if test='part == "ㄴ"'>select * from	guide where bird_name rlike '^(ㄴ)' or (bird_name >= '나'  and <![CDATA[bird_name < '다']]>) order by bird_name;</if>
+		<if test='part == "ㄷ"'>select * from	guide where bird_name rlike '^(ㄷ)' or (bird_name >= '다'  and <![CDATA[bird_name < '라']]>) order by bird_name;</if>
+		<if test='part == "ㄹ"'>select * from	guide where bird_name rlike '^(ㄹ)' or (bird_name >= '라'  and <![CDATA[bird_name < '마']]>) order by bird_name;</if>
+		<if test='part == "ㅁ"'>select * from	guide where bird_name rlike '^(ㅁ)' or (bird_name >= '마'  and <![CDATA[bird_name < '바']]>) order by bird_name;</if>
+		<if test='part == "ㅂ"'>select * from	guide where bird_name rlike '^(ㅂ)' or (bird_name >= '바'  and <![CDATA[bird_name < '사']]>) order by bird_name;</if>
+		<if test='part == "ㅅ"'>select * from	guide where bird_name rlike '^(ㅅ|ㅆ)' or (bird_name >= '사'  and <![CDATA[bird_name < '아']]>) order by bird_name;</if>
+		<if test='part == "ㅇ"'>select * from	guide where bird_name rlike '^(ㅇ)' or (bird_name >= '아'  and <![CDATA[bird_name < '자']]>) order by bird_name;</if>
+		<if test='part == "ㅈ"'>select * from	guide where bird_name rlike '^(ㅈ|ㅉ)' or (bird_name >= '자'  and <![CDATA[bird_name < '차']]>) order by bird_name;</if>
+		<if test='part == "ㅊ"'>select * from	guide where bird_name rlike '^(ㅊ)' or (bird_name >= '차'  and <![CDATA[bird_name < '카']]>) order by bird_name;</if>
+		<if test='part == "ㅋ"'>select * from	guide where bird_name rlike '^(ㅋ)' or (bird_name >= '카'  and <![CDATA[bird_name < '타']]>) order by bird_name;</if>
+		<if test='part == "ㅌ"'>select * from	guide where bird_name rlike '^(ㅌ)' or (bird_name >= '타'  and <![CDATA[bird_name < '파']]>) order by bird_name;</if>
+		<if test='part == "ㅍ"'>select * from	guide where bird_name rlike '^(ㅍ)' or (bird_name >= '파'  and <![CDATA[bird_name < '하']]>) order by bird_name;</if>
+		<if test='part == "ㅎ"'>select * from	guide where bird_name rlike '^(ㅎ)' or (bird_name >= '하') order by bird_name;</if>
 	</select>
   
+  <select id="getGuidePageList" resultType="com.spring.javaProjectS5.vo.GuideVO">
+    select * from guide <if test='part != "전체"'> where part = #{part} </if> order by idx desc limit #{startIndexNo},#{pageSize};
+  </select>
+  
+  <select id="totRecCnt" resultType="int">
+  	select count(*) from guide <if test='part != "전체"'> where part = #{part} </if>;
+  </select>
+
+  <select id="getGuidePageListSearch" resultType="com.spring.javaProjectS5.vo.GuideVO">
+    select * from guide where search = #{search} and searchString = #{searchString} <if test='part != "전체"'> and part = #{part} </if> order by idx desc limit #{startIndexNo},#{pageSize};
+  </select>
+  
+  <select id="totRecCntPart" resultType="int">
+  	select count(*) from guide <if test='part != "전체"'> where bird_name like concat('%',#{part},'%') </if>;
+  </select>
+  
+  
+
   <insert id="setGuideWrite">
     insert into guide values(default,#{vo.bird_name},#{vo.bird_SName},#{vo.bird_class},#{vo.bird_species},#{vo.bird_advent},#{vo.bird_observe},#{vo.bird_frequency},#{vo.bird_Breedtype},#{vo.bird_Habitattype},#{vo.bird_Mainbreed},#{vo.bird_Mainhabit},#{vo.bird_shape},#{vo.bird_beak},#{vo.bird_tail},#{vo.bird_size},#{vo.bird_system},#{vo.bird_hunt},#{vo.bird_food},#{vo.bird_etc},#{vo.photo});
   </insert>
+  
+  <select id="totRecCntSearch" resultType="int">
+  	select count(*) from guide where search=#{search} and searchString = #{searchString} <if test='part != "전체"'> and part = #{part}</if>;
+  </select>
+  
+  
   <!-- 관리자가 도감 작성을 위해 작성하였음 -->
 </mapper>

@@ -77,9 +77,14 @@ public class MessageController {
 			model.addAttribute("msg", "이미 다른 프로그램을 같은 날짜에 신청하셨습니다.");
 			model.addAttribute("url", "sign/signMain");
 		}
-		
-		
-		
+		else if(msgFlag.equals("bulletinBoardInputOk")) {
+			model.addAttribute("msg", "게시판 등록 성공.");
+			model.addAttribute("url", "bulletinBoard/bulletinBoardList");
+		}
+		else if(msgFlag.equals("bulletinBoardInputNo")) {
+			model.addAttribute("msg", "게시판 등록 실패.");
+			model.addAttribute("url", "bulletinBoard/bulletinBoardInput");
+		}
 		return "include/message";
 	}
 }

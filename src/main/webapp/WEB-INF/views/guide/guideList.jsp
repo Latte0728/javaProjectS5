@@ -45,6 +45,14 @@
     	background: #64FE2E;
     }
   </style>
+  <script>
+  	'use strict';
+	  function pageSizeCheck() {
+	    	let pageSize = $("#pageSize").val();
+	    	// pageSize 선언 후 val함수에 $("#pageSize") 값 받아옴
+	    	location.href = "guideList?pageSize="+pageSize;
+    }
+	 </script>  
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
@@ -57,46 +65,46 @@
   	<div class="easySearch" style="display:inline">	
 	  	<ul  style="margin:0; padding:0; display:inline-block" >
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㄱ">가</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㄱ">가</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㄴ">나</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㄴ">나</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㄷ">다</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㄷ">다</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㄹ">라</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㄹ">라</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅁ">마</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅁ">마</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅂ">바</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅂ">바</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅅ">사</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅅ">사</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅇ">아</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅇ">아</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅈ">자</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅈ">자</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅊ">차</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅊ">차</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅋ">카</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅋ">카</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅌ">타</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅌ">타</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅍ">파</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅍ">파</a>
 	  		</li>
 	  		<li>
-	  			<a href="${ctp}/guide/guideSearch?search=ㅎ">하</a>
+	  			<a href="${ctp}/guide/guidePart?part=ㅎ">하</a>
 	  		</li>
   		</ul>
   	</div>	
@@ -124,7 +132,21 @@
 	    </div>
   	</div>
   </c:forEach>
+	<p><br/></p>
 </div>
+<!-- 블록 페이징 처리 -->
+<div class="text-center" style="clear:both;">
+  <ul class="pagination justify-content-center">
+    <c:if test="${pageVO.pag > 1}"><li class="page-item"><a class="page-link text-secondary" href="guideList?pag=1&pageSize=${pageVO.pageSize}">첫페이지</a></li></c:if>
+  	<c:if test="${pageVO.curBlock > 0}"><li class="page-item"><a class="page-link text-secondary" href="guideList?pag=${(pageVO.curBlock-1)*pageVO.blockSize+1}&pageSize=${pageVO.pageSize}">이전블록</a></li></c:if>
+  	<c:forEach var="i" begin="${(pageVO.curBlock*pageVO.blockSize)+1}" end="${(pageVO.curBlock*pageVO.blockSize)+pageVO.blockSize}" varStatus="st">
+	    <c:if test="${i <= pageVO.totPage && i == pageVO.pag}"><li class="page-item active"><a class="page-link bg-secondary border-secondary" href="guideList?pag=${i}&pageSize=${pageVO.pageSize}">${i}</a></li></c:if>
+	    <c:if test="${i <= pageVO.totPage && i != pageVO.pag}"><li class="page-item"><a class="page-link text-secondary" href="guideList?pag=${i}&pageSize=${pageVO.pageSize}">${i}</a></li></c:if>
+  	</c:forEach>
+  	<c:if test="${pageVO.curBlock < pageVO.lastBlock}"><li class="page-item"><a class="page-link text-secondary" href="guideList?pag=${(pageVO.curBlock+1)*pageVO.blockSize+1}&pageSize=${pageVO.pageSize}">다음블록</a></li></c:if>
+  	<c:if test="${pageVO.pag < pageVO.totPage}"><li class="page-item"><a class="page-link text-secondary" href="guideList?pag=${pageVO.totPage}&pageSize=${pageVO.pageSize}">마지막페이지</a></li></c:if>
+  </ul>
+</div>  
 <p><br/></p>
 </body>
 </html>

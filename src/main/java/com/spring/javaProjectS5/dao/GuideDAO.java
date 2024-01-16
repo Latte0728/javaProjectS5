@@ -17,5 +17,20 @@ public interface GuideDAO {
 	public List<GuideVO> getGuideSearch(@Param("search") String search);
 
 	public List<GuideVO> getGuideSearchList(@Param("search") String search, @Param("searchString") String searchString);
+	
+	public List<GuideVO> getGuidePageList(@Param("startIndexNo") int startIndexNo, @Param("pageSize") int pageSize, @Param("part") String part);
+
+	public int totRecCnt(@Param("part") String part);
+
+	public List<GuideVO> getGuidePageListSearch(@Param("search") String search, @Param("searchString") String searchString, @Param("startIndexNo") int startIndexNo, @Param("pageSize") int pageSize, @Param("part") String part);
+
+	public int totRecCntSearch(@Param("part") String part, @Param("search") String search, @Param("searchString") String searchString);
+
+	public int totRecCntPart(@Param("part") String part);
+
+	public List<GuideVO> getGuidePart(@Param("startIndexNo") int startIndexNo, @Param("pageSize") int pageSize, @Param("part") String part);
+	
+	
+
 
 }

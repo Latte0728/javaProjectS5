@@ -99,5 +99,21 @@ public class GuideServiceImpl implements GuideService {
 	public List<GuideVO> getGuideSearchList(String search, String searchString) {
 		return guideDAO.getGuideSearchList(search,searchString);
 	}
+
+	@Override
+	public List<GuideVO> getGuidePageList(int startIndexNo, int pageSize, String part) {
+		return guideDAO.getGuidePageList(startIndexNo, pageSize, part);
+		
+	}
+
+	@Override
+	public List<GuideVO> getGuidePageListSearch(String search, String searchString, int startIndexNo, int pageSize, String part) {
+		return guideDAO.getGuidePageListSearch(search, searchString, startIndexNo, pageSize, part);
+	}
+
+	@Override
+	public List<GuideVO> getGuidePart(int startIndexNo, int pageSize, String part) {
+		return guideDAO.getGuidePart(startIndexNo, pageSize, part);
+	}
 	
 }

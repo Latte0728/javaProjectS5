@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaProjectS5.dao.BulletinBoardDAO">
+	
+	<select id="getBulletinBoardList" resultType="com.spring.javaProjectS5.vo.BulletinBoardVO">
+		select * from bulletinBoard order by idx desc;
+	</select>
+
+	<select id="getBulletinBoardContent" resultType="com.spring.javaProjectS5.vo.BulletinBoardVO">
+		select * from bulletinBoard where idx = #{idx};
+	</select>
+	
+	
+	
+	<insert id="setBulletinBoardInput">
+		INSERT INTO  bulletinBoard VALUES(default,#{vo.title},#{vo.nickName},default,#{vo.content},default,default);
+	</insert>
+</mapper>

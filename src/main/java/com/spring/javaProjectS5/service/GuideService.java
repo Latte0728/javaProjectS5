@@ -17,5 +17,17 @@ public interface GuideService {
 	public List<GuideVO> getGuideSearch(String search);
 
 	public List<GuideVO> getGuideSearchList(String search, String searchString);
+	
+	public List<GuideVO> getGuidePageList(int startIndexNo, int pageSize, String part);
+
+	public List<GuideVO> getGuidePageListSearch(String search, String searchString, int startIndexNo, int pageSize, String part);
+
+	public List<GuideVO> getGuidePart(int startIndexNo, int pageSize, String part);
+
+	
+
+	
+
+	
 
 }
