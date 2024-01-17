@@ -85,6 +85,14 @@ public class MessageController {
 			model.addAttribute("msg", "게시판 등록 실패.");
 			model.addAttribute("url", "bulletinBoard/bulletinBoardInput");
 		}
+		else if(msgFlag.equals("bulletinBoardDeleteOk")) {
+			model.addAttribute("msg", "게시글 삭제 완료");
+			model.addAttribute("url", "bulletinBoard/bulletinBoardList");
+		}
+		else if(msgFlag.equals("bulletinBoardDeleteNo")) {
+			model.addAttribute("msg", "게시글 삭제 실패");
+			model.addAttribute("url", "bulletinBoard/bulletinBoardContent?idx="+idx);
+		}
 		return "include/message";
 	}
 }

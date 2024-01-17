@@ -50,47 +50,45 @@
 <p><br/></p>
 <div class="container">
 	<h2>게시판</h2>
-	<form method="post"></form>
+	<form method="post">
 		<div class="searching">
-			<i class="fa-solid fa-xmark"></i>
-			<i class="fa-solid fa-magnifying-glass"></i>
-			<span>
-				<select class="form-control" id="search" name="search" style="width:10%" id="selectBox">
-					<option value="total">통합</option>
-					<option value="idx">번호</option>
-					<option value="title">제목</option>
-					<option value="writer">작성자</option>
-					<option value="cDate">작성일</option>
+			<div>
+				<select class="form-control" id="search" name="search" style="width:10%; display:inline" id="selectBox">
+					<option value="total" <c:if test="${search=='total'}">selected</c:if>>통합</option>
+					<option value="title"	<c:if test="${search=='title'}">selected</c:if>>제목</option>
+					<option value="nickName"<c:if test="${search=='nickName'}">selected</c:if>>작성자</option>
+					<option value="content"	<c:if test="${search=='content'}">selected</c:if>>작성일</option>
 				</select>
-			</span>
-			<span>
-				<input type="text" id="searchBox" name="searchBox" class="form-control" style="width:70%" >
-			</span>
+				<input type="text" id="searchBox" name="searchString" class="form-control" style="width:70%" >
+				<input type="submit" value="검색" class="btn btn-success"/>
+				<input type="button" value="전체 조회" onclick="location.href='bulletinBoardList';" class="btn btn-primary"/>
+			</div>
 		</div>
-		<p><br/></p>
-		<table class="table table-hover text-align:center">
-			<tr class="table-dark text-dark" >
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회수</th>
+	</form>
+	<div>
+		<input type="button" onclick="location.href='${ctp}/bulletinBoard/bulletinBoardInput';" class="btn btn-info" value="글쓰기"/>
+	</div>
+	<p><br/></p>
+	<table class="table table-hover text-align:center">
+		<tr class="table-dark text-dark" >
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		<c:forEach  var="vo" items="${vos}" varStatus="st">
+			<tr>
+				<td>${vo.idx}</td>
+				<td><a href="bulletinBoardContent?idx=${vo.idx}">${vo.title}</a></td>
+				<td>${vo.nickName}</td>
+				<td>${fn:substring(vo.WDate,0,10)}</td>
+				<td>${vo.readNum}</td>
 			</tr>
-			<c:forEach  var="vo" items="${vos}" varStatus="st">
-				<tr>
-					<td>${vo.idx}</td>
-					<td><a href="bulletinBoardContent?idx=${vo.idx}">${vo.title}</a></td>
-					<td>${vo.nickName}</td>
-					<td>${fn:substring(vo.WDate,0,19)}</td>
-					<td>${vo.readNum}</td>
-				</tr>
-			</c:forEach>
-			<tr><td colspan="5" class="m-0 p-0"></td></tr>
-		</table>
-		<p><br/></p>
-		<div>
-			<input type="button" onclick="location.href='${ctp}/bulletinBoard/bulletinBoardInput';" class="btn btn-info" value="글쓰기"/>
-		</div>
+		</c:forEach>
+		<tr><td colspan="5" class="m-0 p-0"></td></tr>
+	</table>
+	<p><br/></p>
 </div>  
 <p><br/></p>
 </body>

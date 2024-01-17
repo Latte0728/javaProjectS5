@@ -14,4 +14,10 @@ public interface BulletinBoardDAO {
 
 	public BulletinBoardVO getBulletinBoardContent(@Param("idx") int idx);
 
+	public List<BulletinBoardVO> getbulletinBoardList(@Param("search") String search, @Param("searchString") String searchString);
+
+	public void setReadNumUpdate(@Param("idx") int idx);
+
+	public int setBulletinBoardDelete(@Param("idx") int idx);
+
 }

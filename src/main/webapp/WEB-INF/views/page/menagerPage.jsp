@@ -107,7 +107,7 @@
 				<img src="${ctp}/resources/images/5.png" style="width:1110px; height:300px"/>
 			<hr class="new" />
 			<div class="complaint" style="margin-left:10px; display:inline-block">
-				<a style="text-decoration:none;" href="${ctp}//">
+				<a style="text-decoration:none;" href="${ctp}/bulletinBoard/bulletinBoardComplaint">
 					<i class="fa-solid fa-clipboard-check fa-4x" style="color:white;"></i>
 					<p><br/></p>
 		  		<font color="white">신고 확인</font>

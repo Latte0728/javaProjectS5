@@ -10,9 +10,30 @@
 		select * from bulletinBoard where idx = #{idx};
 	</select>
 	
-	
+	<select id="getbulletinBoardList" resultType="com.spring.javaProjectS5.vo.BulletinBoardVO">
+		<if test="search == '전체'">
+			select * from	bulletinBoard where title like concat('%',#{searchString},'%') or nickName like concat('%',#{searchString},'%') or content like concat('%',#{searchString},'%');
+		</if>
+	  <if test="search != '전체'">
+			select * from	bulletinBoard where ${search} like concat('%',#{searchString},'%');
+		</if>
+	</select>
+
+
+
 	
 	<insert id="setBulletinBoardInput">
 		INSERT INTO  bulletinBoard VALUES(default,#{vo.title},#{vo.nickName},default,#{vo.content},default,default);
 	</insert>
+	
+	
+	<update id="setReadNumUpdate">
+		update bulletinBoard set readNum = readNum+1 where idx= #{idx};
+	</update>
+	
+	
+	<delete id="setBulletinBoardDelete">
+		delete from bulletinBoard where idx = #{idx};
+	</delete>
+	
 </mapper>

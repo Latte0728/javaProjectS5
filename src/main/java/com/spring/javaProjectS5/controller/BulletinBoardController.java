@@ -2,6 +2,9 @@ package com.spring.javaProjectS5.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +31,14 @@ public class BulletinBoardController {
 		return "bulletinBoard/bulletinBoardList";
 	}
 	
+	@RequestMapping(value="/bulletinBoardList", method=RequestMethod.POST)
+	public String guideListPost(Model model, String searchString, String search) {
+		if(search.equals("total")) search = "전체";
+		List<BulletinBoardVO> vos = bulletinBoardService.getbulletinBoardList(search,searchString);
+		model.addAttribute("vos", vos);
+		model.addAttribute("search", search);
+		return "bulletinBoard/bulletinBoardList";
+	}
 	@RequestMapping(value="/bulletinBoardInput", method=RequestMethod.GET)
 	public String bulletinBoardInputGet(Model model) {
 		return "bulletinBoard/bulletinBoardInput";
@@ -40,11 +51,32 @@ public class BulletinBoardController {
 		else return "redirect:/message/bulletinBoardInputNo";
 	}
 	
+	//@ResponseBody
+	@RequestMapping(value="/bulletinBoardDelete", method=RequestMethod.GET)
+	public String bulletinBoardDeleteGet(int idx) {
+		int res = bulletinBoardService.setBulletinBoardDelete(idx);
+		//return res + "";
+		if(res != 0) return "redirect:/message/bulletinBoardDeleteOk";
+		else return "redirect:/message/bulletinBoardDeleteNo?idx="+idx;
+	}
+	
 	@RequestMapping(value="/bulletinBoardContent", method=RequestMethod.GET)
-	public String bulletinBoardInputGet(Model model, int idx) {
-		BulletinBoardVO vo = bulletinBoardService.getBulletinBoardContent(idx);
+	public String bulletinBoardInputGet(Model model, int idx, HttpSession session, HttpServletRequest request) {
 		
-		model.addAttribute("vo", vo);
-		return "bulletinBoard/bulletinBoardContent";
+		
+		// 조회수 증가
+		
+		  bulletinBoardService.setReadNumUpdate(idx);
+		  
+		  BulletinBoardVO vo = bulletinBoardService.getBulletinBoardContent(idx);
+		  
+		  model.addAttribute("vo", vo); return "bulletinBoard/bulletinBoardContent";
+		 
+	}
+
+	@RequestMapping(value="/bulletinBoardComplaint", method=RequestMethod.GET)
+	public String bulletinBoardComplaintGet() {
+		
+		return "bulletinBoard/bulletinBoardComplaint";
 	}
 }
