@@ -56,6 +56,7 @@
   			</td>
   		</tr>
   	</table>
+  	<input type="hidden" name="mid" value="${sMid}"/>
   </form>
 </div> 
 <p><br/></p>

@@ -19,21 +19,53 @@
 		</if>
 	</select>
 
-
+	<select id="getBoardParentReplyList"  resultType="com.spring.javaProjectS5.vo.BulletinBoardReplyVO">
+  	select * from bulletinBoardReply where bulletinBoardIdx = #{bulletinBoardIdx} order by idx desc;
+  </select>
+  
+  <select id="getBulletinBoardComplaintList" resultType="com.spring.javaProjectS5.vo.BulletinBoardComplaintVO">
+  	select * from bulletinBoardComplaint order by idx desc; 
+  </select>
+  
 
 	
-	<insert id="setBulletinBoardInput">
-		INSERT INTO  bulletinBoard VALUES(default,#{vo.title},#{vo.nickName},default,#{vo.content},default,default);
+	<insert id="setBulletinBoardInput"> <!-- 게시글 작성 -->
+		INSERT INTO  bulletinBoard VALUES(default,#{vo.title},#{vo.mid},#{vo.nickName},default,#{vo.content},default,default);
 	</insert>
 	
+	<insert id="setBoardReplyInput"> <!-- 댓글 입력  -->
+    INSERT INTO bulletinBoardReply VALUES (default, #{vo.bulletinBoardIdx}, #{vo.re_step}, #{vo.re_order}, #{vo.mid}, #{vo.nickName}, default, #{vo.content});
+  </insert>
 	
-	<update id="setReadNumUpdate">
-		update bulletinBoard set readNum = readNum+1 where idx= #{idx};
+	<insert id="BulletinBoardComplaintVO"> <!-- 신고창  -->
+    INSERT INTO bulletinBoardComplaint VALUES (default, #{vo.bulletinBoardIdx}, #{vo.mid}, default, #{vo.content});
+  </insert>
+	
+	
+	
+	
+	
+	
+	<update id="setReadNumUpdate"> <!-- 조회수 증가 업데이트 -->
+		UPDATE bulletinBoard SET readNum = readNum+1 WHERE idx= #{idx};
+	</update>
+
+	<update id="setbulletinBoardUpdate"> <!-- 게시글 수정 -->
+    UPDATE bulletinBoard
+    SET content = #{vo.content}, title = #{vo.title}
+    WHERE idx = #{vo.idx};
 	</update>
 	
+	 <update id="setReplayOrderUpdate">
+    update bulletinBoard set re_order = re_order + 1 where bulletinBoardIdx = #{bulletinBoardIdx} and re_order > #{re_order};
+  </update>
 	
 	<delete id="setBulletinBoardDelete">
 		delete from bulletinBoard where idx = #{idx};
+	</delete>
+	
+	<delete id="setBulletinBoardReplyDelete">
+		delete from bulletinBoardReply where idx = #{idx};
 	</delete>
 	
 </mapper>

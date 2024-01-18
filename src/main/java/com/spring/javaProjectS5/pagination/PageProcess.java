@@ -2,6 +2,8 @@ package com.spring.javaProjectS5.pagination;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.spring.javaProjectS5.dao.BulletinBoardDAO;
 import com.spring.javaProjectS5.dao.GuideDAO;
 
 @Service
@@ -10,6 +12,9 @@ public class PageProcess {
 	/*
 	 * @Autowired BulletinBoardDAO bulletinBoardDAO;
 	 */
+	
+	@Autowired
+	BulletinBoardDAO bulletinBoardDAO;
 	
 	@Autowired
 	GuideDAO guideDAO;
@@ -21,13 +26,11 @@ public class PageProcess {
 		int totRecCnt = 0;
 		String search = "";
 		
-		/*if(section.equals("board")) {
-			if(part.equals(""))	totRecCnt = bulletinBoardDao.totRecCnt();
-			else {
-				search = part;
-				totRecCnt = Dao.totRecCntSearch(search, searchString);
-			}
-		}*/
+		/*
+		 * if(section.equals("bulletinboard")) { if(part.equals("")) totRecCnt =
+		 * bulletinBoardDAO.totRecCnt(); else { search = part; totRecCnt =
+		 * BulletinBoardDAO.totRecCntSearch(search, searchString); } }
+		 */
 		if(section.equals("guide")) totRecCnt = guideDAO.totRecCnt(part);
 		if(section.equals("guidePart")) totRecCnt = guideDAO.totRecCntPart(part);
 		if(section.equals("guideSearch")) {

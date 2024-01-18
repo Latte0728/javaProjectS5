@@ -11,6 +11,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.spring.javaProjectS5.dao.BulletinBoardDAO;
+import com.spring.javaProjectS5.vo.BulletinBoardComplaintVO;
+import com.spring.javaProjectS5.vo.BulletinBoardReplyVO;
 import com.spring.javaProjectS5.vo.BulletinBoardVO;
 
 @Service
@@ -83,5 +85,45 @@ public class BulletinBoardServiceImpl implements BulletinBoardService {
 		File delFile = new File(origFilePath);
 		if(delFile.exists()) delFile.delete();
 	}
+
+	@Override
+	public int setbulletinBoardUpdate(BulletinBoardVO vo) {
+		return bulletinBoardDAO.setbulletinBoardUpdate(vo);
+	}
+
+	@Override
+	public List<BulletinBoardReplyVO> getBoardParentReplyList(int bulletinBoardIdx) {
+		return bulletinBoardDAO.getBoardParentReplyList(bulletinBoardIdx);
+	}
+
+	@Override
+	public void setReplayOrderUpdate(int boardIdx, int re_order) {
+		bulletinBoardDAO.setReplayOrderUpdate(boardIdx, re_order);		
+	}
+
+	@Override
+	public int setBoardReplyInput(BulletinBoardReplyVO vo) {
+		return bulletinBoardDAO.setBoardReplyInput(vo);
+	}
+
+	@Override
+	public int setBulletinBoardReplyDelete(int idx) {
+		return bulletinBoardDAO.setBulletinBoardReplyDelete(idx);
+	}
+
+	@Override
+	public int setBulletinBoardComplaint(BulletinBoardComplaintVO vo) {
+		return bulletinBoardDAO.BulletinBoardComplaintVO(vo);
+	}
+
+	@Override
+	public List<BulletinBoardComplaintVO> getBulletinBoardComplaintList() {
+		return bulletinBoardDAO.getBulletinBoardComplaintList();
+	}
 	
 }
+
+
+	
+	
+

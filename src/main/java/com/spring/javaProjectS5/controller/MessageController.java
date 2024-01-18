@@ -37,20 +37,13 @@ public class MessageController {
 			model.addAttribute("msg", mid + "회원님 로그아웃 되었습니다.");
 			model.addAttribute("url", "sign/signIn");
 		}
-		else if(msgFlag.equals("user2InputOk")) {
-			model.addAttribute("msg", "회원 가입 성공!!!");
-			model.addAttribute("url", "user2/user2List");
-		}
-		else if(msgFlag.equals("user2InputNo")) {
-			model.addAttribute("msg", "회원 가입 실패~~");
-			model.addAttribute("url", "user2/user2List");
-		}
+		
 		else if(msgFlag.equals("guideWriteOk")) {
 			model.addAttribute("msg", "글이 등록되었습니다");
 			model.addAttribute("url", "guide/guideWrite");
 		}
 		else if(msgFlag.equals("guideWriteNo")) {
-			model.addAttribute("msg", "글이 등록 실패");
+			model.addAttribute("msg", "글 등록 실패");
 			model.addAttribute("url", "guide/guideWrite");
 		}
 		else if(msgFlag.equals("reservationWriteOk")) {
@@ -58,7 +51,7 @@ public class MessageController {
 			model.addAttribute("url", "reservation/reservationList");
 		}
 		else if(msgFlag.equals("reservationWriteNo")) {
-			model.addAttribute("msg", "이벤트 등록이 오류.");
+			model.addAttribute("msg", "이벤트 등록 오류.");
 			model.addAttribute("url", "reservation/reservationWrite");
 		}
 		else if(msgFlag.equals("certificationNo")) {
@@ -92,6 +85,14 @@ public class MessageController {
 		else if(msgFlag.equals("bulletinBoardDeleteNo")) {
 			model.addAttribute("msg", "게시글 삭제 실패");
 			model.addAttribute("url", "bulletinBoard/bulletinBoardContent?idx="+idx);
+		}
+		else if(msgFlag.equals("bulletinBoardUpdateOk")) {
+			model.addAttribute("msg", "게시글이 성공적으로 수정되었어요!!");
+			model.addAttribute("url", "bulletinBoard/bulletinBoardContent?idx="+idx);
+		}
+		else if(msgFlag.equals("bulletinBoardUpdateNo")) {
+			model.addAttribute("msg", "게시글 수정 실패");
+			model.addAttribute("url", "bulletinBoard/bulletinBoardUpdate?idx="+idx);
 		}
 		return "include/message";
 	}
