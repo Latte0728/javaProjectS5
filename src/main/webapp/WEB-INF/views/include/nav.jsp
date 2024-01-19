@@ -45,6 +45,7 @@
 						<a href="${ctp}/sign/signMain">회원 방</a> |
 						<a href="${ctp}/sign/signUpdate">정보 수정</a> |
 						<a href="${ctp}/bulletinBoard/bulletinBoardList">게시판</a> |
+						<a href="${ctp}/bulletinBoard/bulletinBoardNotice">공지 사항</a> |
 						<c:if test="${empty sMid}">
 							<a href="${ctp}/sign/signIn">로그인</a> |
 						</c:if>

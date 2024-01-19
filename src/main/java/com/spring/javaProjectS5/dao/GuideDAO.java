@@ -29,6 +29,8 @@ public interface GuideDAO {
 	public int totRecCntPart(@Param("part") String part);
 
 	public List<GuideVO> getGuidePart(@Param("startIndexNo") int startIndexNo, @Param("pageSize") int pageSize, @Param("part") String part);
+
+	public void setGuideReadNumUpdate(@Param("idx") int idx);
 	
 	
 

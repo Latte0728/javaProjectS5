@@ -217,11 +217,9 @@
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <h2>게시글 내용 보기</h2>
+  <h2 style="text-align:center;">게시글 내용 보기</h2>
+  <p><br/></p>
    <table class="table table-borderless m-0 p-0">
-    <tr>
-      <td><h2 class="text-center">글 내 용 보 기</h2></td>
-    </tr>
   </table>
   <table class="table table-bordered">
     <tr>

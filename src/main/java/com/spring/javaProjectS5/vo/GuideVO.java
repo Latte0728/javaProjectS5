@@ -26,4 +26,5 @@ public class GuideVO {
 	private String bird_etc;
 	private String part;
 	private String photo;
+	private int readNum;
 }

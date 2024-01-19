@@ -52,15 +52,23 @@
   	select count(*) from guide <if test='part != "전체"'> where bird_name like concat('%',#{part},'%') </if>;
   </select>
   
+  <select id="totRecCntSearch" resultType="int">
+  	select count(*) from guide where search=#{search} and searchString = #{searchString} <if test='part != "전체"'> and part = #{part}</if>;
+  </select>
+  
   
 
   <insert id="setGuideWrite">
     insert into guide values(default,#{vo.bird_name},#{vo.bird_SName},#{vo.bird_class},#{vo.bird_species},#{vo.bird_advent},#{vo.bird_observe},#{vo.bird_frequency},#{vo.bird_Breedtype},#{vo.bird_Habitattype},#{vo.bird_Mainbreed},#{vo.bird_Mainhabit},#{vo.bird_shape},#{vo.bird_beak},#{vo.bird_tail},#{vo.bird_size},#{vo.bird_system},#{vo.bird_hunt},#{vo.bird_food},#{vo.bird_etc},#{vo.photo});
   </insert>
-  
-  <select id="totRecCntSearch" resultType="int">
-  	select count(*) from guide where search=#{search} and searchString = #{searchString} <if test='part != "전체"'> and part = #{part}</if>;
-  </select>
+
+
+
+
+  <update id="setGuideReadNumUpdate">
+  	UPDATE guide SET readNum = readNum+1 WHERE 	idx = #{idx};
+  </update>
+
   
   
   <!-- 관리자가 도감 작성을 위해 작성하였음 -->

@@ -145,7 +145,10 @@
 <div class="container">
 	<h2 id="guide1">도감</h2>
 	<p><br/></p>
-	<h3 id="gName1"><i class="fa fa-twitter fa-2x" aria-hidden="true" id="pic1"></i>${vo.bird_name}</h3>
+	<div class="row">
+		<div class="col"><h3 id="gName1"><i class="fa fa-twitter fa-2x" aria-hidden="true" id="pic1"></i>${vo.bird_name}</h3></div>
+		<div class="col text-right">조회수 : ${vo.readNum}</div>
+	</div>
 	<form class="guideForm1" enctype="multipart/form-data" method="post">
 		<table class="g_table1">
   		<tr>

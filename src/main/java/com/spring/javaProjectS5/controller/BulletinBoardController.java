@@ -32,7 +32,7 @@ public class BulletinBoardController {
 	public String bulletinBoardGet(Model model) {
 		List<BulletinBoardVO> vos = bulletinBoardService.getBulletinBoardList();
 		model.addAttribute("vos", vos);
-		return "bulletinBoard/bulletinBoardList";
+		return "bulletinBoard/bulletinBoardList";	
 	}
 	
 	@RequestMapping(value="/bulletinBoardList", method=RequestMethod.POST)
@@ -44,8 +44,13 @@ public class BulletinBoardController {
 		return "bulletinBoard/bulletinBoardList";
 	}
 	@RequestMapping(value="/bulletinBoardInput", method=RequestMethod.GET)
-	public String bulletinBoardInputGet(Model model) {
+	public String bulletinBoardInputGet() {
 		return "bulletinBoard/bulletinBoardInput";
+	}
+
+	@RequestMapping(value="/noticeWrite", method=RequestMethod.GET)
+	public String noticeWriteInputGet() {
+		return "bulletinBoard/noticeWrite";
 	}
 	
 	@RequestMapping(value="/bulletinBoardInput", method=RequestMethod.POST)
@@ -59,15 +64,20 @@ public class BulletinBoardController {
 	@RequestMapping(value="/bulletinBoardDelete", method=RequestMethod.GET)
 	public String bulletinBoardDeleteGet(int idx) {
 		int res = bulletinBoardService.setBulletinBoardDelete(idx);
-		//return res + "";
+		
 		if(res != 0) return "redirect:/message/bulletinBoardDeleteOk";
 		else return "redirect:/message/bulletinBoardDeleteNo?idx="+idx;
+	}
+	
+	
+	@RequestMapping(value="/noticeInput", method=RequestMethod.GET)
+	public String bulletinBoardNoticeGet() {
+		return "bulletinBoard/noticeInput";
 	}
 	
 	//@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value="/bulletinBoardContent", method=RequestMethod.GET)
 	public String bulletinBoardInputGet(Model model, int idx, HttpSession session, HttpServletRequest request) {
-		
 		
 		// 조회수 증가(중복 방지)
 		ArrayList<String> boardContentIdx = (ArrayList) session.getAttribute("sBoardContentIdx");
@@ -140,45 +150,30 @@ public class BulletinBoardController {
   	
   	int res = bulletinBoardService.setBulletinBoardComplaint(vo);
   	
-  	
   	if(res != 0) return "1"; 
   	else return "0"; 
   }
+  
+	/*
+	 * @RequestMapping(value="/noticeInput", method=RequestMethod.POST) public
+	 * String noticeInputPost(Model model,int idx, HttpSession session) { String
+	 * nickName = (String)session.getAttribute("sNickName"); if() return
+	 * "redirect:/message/authorizeNo"; bulletinBoardVO vo =
+	 * bulletinBoardService.setNoticeInput(idx); model.addAttribute("idx", idx);
+	 * model.addAttribute("vo", vo); return "bulletinBoard/noticeInput"; }
+	 */
+ 
 
-
-  /*else if(com.equals("/boardGoodCheck")) {
-	command = new BoardGoodCheckCommand();
-	command.execute(request, response);
-	return;*/
-  //}
-
-//부모댓글 입력처리(원본글에 대한 댓글)
+  //부모댓글 입력처리(원본글에 대한 댓글)
 	@ResponseBody
 	@RequestMapping(value = "/boardReplyInput", method = RequestMethod.POST)
 	public String boardReplyInputPost(BulletinBoardReplyVO vo) {
 		
 		int res = bulletinBoardService.setBoardReplyInput(vo);
 		
-		//System.out.println("vo" + vo );
 		return res+"";
 	}
 	
-	// 대댓글 입력처리((부모)댓글에 대한 답변글)
-	@ResponseBody
-	@RequestMapping(value = "/boardReplyInputRe", method = RequestMethod.POST)
-	public String boardReplyInputRePost(BulletinBoardReplyVO vo) {
-		// 답변글일경우는 1.re_step은 부모의 re_step+1, 2.re_order는 부모의 re_order보다 큰 댓글은 모두 +1처리후, 3.자신의 re_order+1처리한다.
-		
-		vo.setRe_step(vo.getRe_step() + 1);
-		
-		bulletinBoardService.setReplayOrderUpdate(vo.getBulletinBoardIdx(), vo.getRe_order());
-		
-		vo.setRe_order(vo.getRe_order() + 1);
-		
-		int res = bulletinBoardService.setBoardReplyInput(vo);
-		
-		return res+"";
-	}
 
 
 }

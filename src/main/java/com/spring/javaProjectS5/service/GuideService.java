@@ -24,6 +24,8 @@ public interface GuideService {
 
 	public List<GuideVO> getGuidePart(int startIndexNo, int pageSize, String part);
 
+	public void setGuideReadNumUpdate(int idx);
+
 	
 
 	

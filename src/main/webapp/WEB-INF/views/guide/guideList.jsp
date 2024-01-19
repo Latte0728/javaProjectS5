@@ -121,6 +121,20 @@
   		</form>
   	</div>
   </div>
+	<hr/>
+	<!-- 사진 2줄(6장)을 랜덤하게 화면에 뿌려주기 -->
+	<c:forEach var="vo"	items="${rVos}" varStatus="st">
+  	<div class="guideTotal">
+	    <div class="guideEa" style="width:280px;height:280px;margin:20px;">
+	      ${vo.bird_name}<br/>
+	      <c:set var="bird_imgs"   value="${fn:split(vo.photo,'/')}" />
+	      <a href="guideContent?idx=${vo.idx}"><img src="${ctp}/guide/${bird_imgs[0]}"  class="w3-border"  style="padding:10px" width="250px" /></a><br/>
+	      □ 학명 : ${vo.bird_SName}<br/>
+	      □ 목/과 : ${vo.bird_class}<br/>
+	    </div>
+  	</div>
+  </c:forEach>
+	<hr style="clear:both" />
   <c:forEach var="vo"	items="${vos}" varStatus="st">
   	<div class="guideTotal">
 	    <div class="guideEa" style="width:280px;height:280px;margin:20px;">

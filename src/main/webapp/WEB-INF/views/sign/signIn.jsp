@@ -40,9 +40,6 @@
 			position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%); 
 
 		}
-		.ptag{
-		margin-right:280px;
-		}
 		
 	</style>
 	<script>
@@ -61,7 +58,7 @@
 		  function signCheck(){
 			
 			if(id.value.length>=5 && pwd.value.length>=1 && pwd.value.length<=20) {
-			// 아이디 입력시의 글자 수가 5 이상 비밀번호 입력 시 글자 수가 20이하일 시 	
+			// 아이디 입력시의 글자 수가 5 이상 비밀번호 입력 시 글자 수가 1 ~ 20이하일 시 	
 						
 						signBtn.disabled=false;
 					}
@@ -114,7 +111,7 @@
 		    			str += "<br/>";
 	    			}
 	    			str += '</b></font>';
-	    			midShow.innerHTML = str;
+	    			$("#midShow").html(str);
     			}
     			else {
     				alert("검색한 아이디가 없습니다.")
@@ -127,9 +124,10 @@
     }
   
     // 비밀번호 검색폼 보여주기
-    function pwdSearch() {
+    function searchPassword() {
     	$("#searchMid").hide();
     	$("#searchPassword").show();
+    
     }
     
     // 비밀번호 검색처리
@@ -141,6 +139,7 @@
     		$("#midSearch").focus();
     		return false;
     	}
+    	
     	let query = {
     			mid   : mid,
     			email : email
@@ -214,7 +213,6 @@
 			<div class="selection">
 				<div class="sel">
 					<input type="checkbox" id="idSave" name="idSave" /> 아이디 저장 &nbsp;  &nbsp;
-					<input type="checkbox" id="keep" name="keep" /> 로그인 상태 유지 
 					<p><br/></p>
 					<input type="submit" id="SiGnin" name="siGnin" onclick="signCheck()" value="로그인" disabled class="btn btn-primary form-control" style="width:30%" />
 				</div>
@@ -231,19 +229,19 @@
 		</form>	
 			<p><br/></p>
 			<form name="searchForm">
-				<div class="searchMid" id="searchMid">
+				<div id="searchMid">
 					<i class="fa-solid fa-envelope"></i>
-					<span><p class="ptag">이메일</p></span><br/>
-					<span><input type= text class="search form-control" id="emailSearch2" name="emailSearch2" placeholder="회원 가입시의 이메일을 입력해주세요" style="width:30%" required/></span>
+					<span>이메일</span><br/>
+					<span><input type= text class="search form-control" id="emailSearch" name="emailSearch" placeholder="회원 가입시의 이메일을 입력해주세요" style="width:30%" /></span>
 					<span><input type="button" class="btn btn-primary" onclick="emailFind()"  value="검색" /></span>
 					<span><input type="reset" class="btn btn-danger" id="cancel" name="cancel" value="취소"  /></span>
 				</div>
-				<div id="searchPassword">
-					<span><i class="fa-solid fa-user"></i></span> 
-					<span><p class="ptag">아이디</p></span>
-					<span><input type= text class="search form-control" id="midSearch" name="midSearch" placeholder=" 아이디를 입력해주세요" style="width:30%" required/></span>
-					<span><i class="fa-solid fa-envelope"></i></span>
-					<span><p class="ptag">이메일</p></span>
+				<br/>
+				<div id="midShow"></div>
+				<div class="searchPassword" id = "searchPassword">
+					<span>아이디</span>
+					<span><input type= text class="search form-control" id="midSearch" name="midSearch" placeholder=" 아이디를 입력해주세요" style="width:30%" /></span>
+					<span>이메일</span>
 					<span><input type= text class="search form-control"  id="emailSearch2" class="form-control" placeholder="메일주소를 입력해주세요" style="width:30%" /></span>
 					<span><input type="submit" class="btn btn-primary" onclick="passwordFind()" value="확인" /></span>
 					<span><input type="reset" class="btn btn-danger" id="rest" name="rest" value="취소"  /></span>

@@ -17,16 +17,35 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     position: relative;
-    width:20%;
+    width:19%;
     height:20%;
     text-align:center;
 	}
 	.complaint{
 	 	content: ""; 
     top: 30px;
-    left: 10%;
+    left: 10px;
     transform: translateX(-50%);
     background-color: #FF0000;
+    padding: 10px 15px;
+    font-size:15px;
+	}
+	.notice{
+		box-sizing:border-box;
+    padding: 35px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    position: relative;
+    width:19%;
+    height:20%;
+    text-align:center;
+	}
+	.notice{
+	 	content: ""; 
+    top: 30px;
+    left: 10px;
+    transform: translateX(-50%);
+    background-color: #FF8000;
     padding: 10px 15px;
     font-size:15px;
 	}
@@ -36,7 +55,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     position: relative;
-    width:20%;
+    width:19%;
     height:20%;
     text-align:center;
     }
@@ -44,7 +63,7 @@
   .review {
     content: ""; 
     top: 30px;
-    left: 10%;
+    left: 10px;
     transform: translateX(-50%);
     background-color: #01DFD7;
     padding: 10px 15px;
@@ -56,7 +75,7 @@
 	    border: 1px solid #ccc;
 	    border-radius: 10px;
 	    position: relative;
-	    width:20%;
+	    width:19%;
 	    height:20%;
 	    text-align:center;
     }
@@ -64,7 +83,7 @@
     .book {
 	    content: ""; 
 	    top: 30px;
-	    left: 10%;
+	    left: 10px;
 	    transform: translateX(-50%);
 	    background-color: #b5d692;
 	    padding: 10px 15px;
@@ -77,7 +96,7 @@
 	    border: 1px solid #ccc;
 	    border-radius: 10px;
 	    position: relative;
-	    width:20%;
+	    width:19%;
 	    height:20%;
 	    text-align:center;
     }
@@ -85,8 +104,7 @@
     .statics {
 	    content: ""; 
 	    top: 30px;
-	    left: 10%;
-	    transform: translateX(-50%);
+	    left: 10px;
 	    background-color: #04B431;
 	    padding: 10px 15px;
 	    font-size:15px;
@@ -106,28 +124,35 @@
 			<hr class="new" />
 				<img src="${ctp}/resources/images/5.png" style="width:1110px; height:300px"/>
 			<hr class="new" />
-			<div class="complaint" style="margin-left:10px; display:inline-block">
+			<div class="complaint" style="margin-left:100px; display:inline-block">
 				<a style="text-decoration:none;" href="${ctp}/bulletinBoard/bulletinBoardComplaint">
 					<i class="fa-solid fa-clipboard-check fa-4x" style="color:white;"></i>
 					<p><br/></p>
 		  		<font color="white">신고 확인</font>
 				</a>
 			</div>	
-			<div class="review" style="margin-left:60px; display:inline-block">
+			<div class="notice" style="margin-left:10px; display:inline-block">
+				<a style="text-decoration:none;" href="${ctp}/bulletinBoard/noticeInput">
+					<i class="fa-solid fa-clipboard-check fa-4x" style="color:white;"></i>
+					<p><br/></p>
+		  		<font color="white">공지 작성</font>
+				</a>
+			</div>	
+			<div class="review" style="margin-left:10px; display:inline-block">
 				<a style="text-decoration:none;" href="${ctp}/guide/guideWrite">
 					<i class="fa-solid fa-dragon fa-4x" style="color:white;"></i>
 					<p><br/></p>
 		  		<font color="white">도감 작성</font>
 				</a>
 			</div>
-			<div class="book" style="margin-left:60px; display:inline-block">
+			<div class="book" style="margin-left:10px; display:inline-block">
 				<a style="text-decoration:none;" href="${ctp}/reservation/reservationAdminView">
 					<i class="fa-solid fa-book-open-reader fa-4x" style="color:white;"></i>
 					<p><br/></p>
 		  		<font color="white">프로그램 예약 현황</font>
 				</a>
 			</div>
-			<div class="statics" style="margin-left:60px; display:inline-block">
+			<div class="statics" style="margin-left:-100px; display:inline-block">
 				<a style="text-decoration:none;" href="${ctp}//">
 					<i class="fa-solid fa-chart-pie  fa-4x" style="color:white;"></i>
 					<p><br/></p>

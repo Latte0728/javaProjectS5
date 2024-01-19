@@ -115,5 +115,10 @@ public class GuideServiceImpl implements GuideService {
 	public List<GuideVO> getGuidePart(int startIndexNo, int pageSize, String part) {
 		return guideDAO.getGuidePart(startIndexNo, pageSize, part);
 	}
+
+	@Override
+	public void setGuideReadNumUpdate(int idx) {
+		guideDAO.setGuideReadNumUpdate(idx);
+	}
 	
 }

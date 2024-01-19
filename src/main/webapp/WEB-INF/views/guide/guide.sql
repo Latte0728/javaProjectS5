@@ -23,6 +23,7 @@ create table guide (
 	bird_etc					text not null, 							/* 기타*/
 	part							varchar(20) not null,				/* 분야..(bulletinBoard:게시판, 도감 목록:guide, ...) */
 	photo		  				varchar(250) default 'noimage.jpg',
+	readNum						int default 0,
 	unique key (bird_name)
 );
 

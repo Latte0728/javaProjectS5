@@ -124,7 +124,7 @@
   <div class="complaint" style="margin-left:68.1px; display:inline-block">
   	<i class="fa-solid fa-clipboard-list fa-4x" style="color:white;" ></i>
   	<p><br/></p>
-  	<font color="white">신고 현황</font>
+  	<font color="white">내가 올린 글 조회</font>
   </div>
   <div class="info" id="info" style="margin-left:68.1px; display:inline-block">
   	<a style="text-decoration:none;" href="${ctp}/sign/signUp">
