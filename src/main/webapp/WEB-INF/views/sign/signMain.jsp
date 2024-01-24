@@ -127,17 +127,18 @@
   	<font color="white">내가 올린 글 조회</font>
   </div>
   <div class="info" id="info" style="margin-left:68.1px; display:inline-block">
-  	<a style="text-decoration:none;" href="${ctp}/sign/signUp">
+  	<a style="text-decoration:none;" href="${ctp}/sign/signUserUpdate">
 	  	<i class="fa-solid fa-circle-info fa-4x"  style="color:white;" ></i>
 	  	<p><br/></p>
 	  	<font color="white">내 정보 수정</font>
   	</a>
   </div>
   <div class="Quit" style="margin-left:68.1px; display:inline-block">
-  	<i class="fa-solid fa-person-through-window fa-4x" style="color:white;" ></i>
+  	<a style="text-decoration:none;" href="${ctp}/sign/signUserDel">
+  		<i class="fa-solid fa-person-through-window fa-4x" style="color:white;" ></i>
   	<p><br/></p>
   	<font color="white">회원 탈퇴</font>	
-  	<a href=""></a>
+  	</a>
   </div>
 </div>
 

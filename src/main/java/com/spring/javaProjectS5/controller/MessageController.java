@@ -19,12 +19,23 @@ public class MessageController {
 		
 		if(msgFlag.equals("signUserDeleteOk")) {
 			model.addAttribute("msg", "회원이 삭제 되었습니다.");
-			model.addAttribute("url", "user/userList");
+			model.addAttribute("url", "sign/signUserDelete");
 		}
 		else if(msgFlag.equals("signUserDeleteNo")) {
 			model.addAttribute("msg", "회원 삭제 실패~~");
-			model.addAttribute("url", "user/userList");
+			model.addAttribute("url", "sign/signUserDelete");
 		}
+		
+		else if(msgFlag.equals("signUserUdpateOk")) {
+			model.addAttribute("msg", "수정이 완료되었습니다.");
+			model.addAttribute("url", "sign/signMain");
+		}
+		
+		else if(msgFlag.equals("signUserUdpateNo")) {
+			model.addAttribute("msg", "예기치 못한 오류로 인한 수정 실패.");
+			model.addAttribute("url", "sign/signUserUdpate");
+		}
+		
 		else if(msgFlag.equals("signInOk")) {
 			model.addAttribute("msg", mid + "회원님 로그인 되었습니다.");
 			model.addAttribute("url", "sign/signMain");
@@ -93,6 +104,22 @@ public class MessageController {
 		else if(msgFlag.equals("bulletinBoardUpdateNo")) {
 			model.addAttribute("msg", "게시글 수정 실패");
 			model.addAttribute("url", "bulletinBoard/bulletinBoardUpdate?idx="+idx);
+		}
+		else if(msgFlag.equals("noticeInputOk")) {
+			model.addAttribute("msg", "작성이 완료되었습니다.");
+			model.addAttribute("url", "notice/noticeList");
+		}
+		else if(msgFlag.equals("noticeInputNo")) {
+			model.addAttribute("msg", "예기치 못한 상황으로 인한 작성 오류.");
+			model.addAttribute("url", "notice/noticeInput");
+		}
+		else if(msgFlag.equals("noticeDeleteOk")) {
+			model.addAttribute("msg", "공지사항 게시글이 성공적으로 삭제되었습니다.");
+			model.addAttribute("url", "notice/noticeList");
+		}
+		else if(msgFlag.equals("noticeDeleteNo")) {
+			model.addAttribute("msg", "예기치 못한 상황으로 인한 삭제 오류.");
+			model.addAttribute("url", "notice/noticeContent?idx="+idx);
 		}
 		return "include/message";
 	}

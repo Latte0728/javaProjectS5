@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.mail.MessagingException;
+import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -275,18 +276,6 @@ public class SignController {
 		else return "0";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/signDel", method = RequestMethod.POST)
-	public String userDelPost(HttpSession session) {
-		String mid = (String) session.getAttribute("sMid");
-		int res = signUserService.setSignUserDel(mid);
-		
-		if(res == 1) {
-			session.invalidate();
-			return "1";
-		}
-		else return "0";
-	}
 	
 	@RequestMapping(value = "/signPwdCheck/{pwdFlag}", method = RequestMethod.GET)
 	public String signPwdCheckGet(@PathVariable String pwdFlag, Model model) {
@@ -315,15 +304,16 @@ public class SignController {
 		else return "0";
 	}
 	
-	@RequestMapping(value = "/signUpdate", method = RequestMethod.GET)
+	// 회원 수정
+	@RequestMapping(value = "/signUserUpdate", method = RequestMethod.GET)
 	public String signUpdateGet(Model model, HttpSession session) {
 		String mid = (String) session.getAttribute("sMid");
 		SignUserVO vo = signUserService.getSignUserIdCheck(mid);
 		model.addAttribute("vo", vo);
-		return "sign/signUpdate";
+		return "sign/signUserUpdate";
 	}
 	
-	@RequestMapping(value = "/signUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/signUserUpdate", method = RequestMethod.POST)
 	public String signUpdatePost(SignUserVO vo, HttpSession session) {
 		// 닉네임 체크
 		String nickName = (String) session.getAttribute("sNickName");
@@ -333,9 +323,9 @@ public class SignController {
 		int res = signUserService.setSignUserUpdateOk(vo);
 		if(res != 0) {
 			session.setAttribute("sNickName", vo.getNickName());
-			return "redirect:/message/signUpdateOk";
+			return "redirect:/message/signUserUpdateOk";
 		}
-		else return "redirect:/sign/signUpdateNo";
+		else return "redirect:/message/signUserUdpateNo";
 	}
 	
 	// 비밀번호 찾기
@@ -425,5 +415,18 @@ public class SignController {
 		}
 		if(vos.size() == 0) return "0";
 		else return res;
+	}
+
+	// 회원 탈퇴 
+	@ResponseBody
+	@RequestMapping(value="/signUserDel", method = RequestMethod.POST)
+	public String signUserDelPost(HttpSession session) {
+		String mid = (String) session.getAttribute("sMid");
+		int res = signUserService.setSignUserDel(mid);
+			if(res == 1) {
+				session.invalidate();
+				return "1";
+			}
+			else return "0";
 	}
 }

@@ -51,11 +51,3 @@ drop table bulletinBoardComplaint;
 -- 전체 bulletinBoard 테이블의 내용을 최신순으로 출력
 SELECT * FROM bulletinBoardComplaint ORDER BY idx desc;
 
--- 공지 사항 테이블
-create table bulletinBoardNotice(
-	idx 		int not null auto increment primary key,
-	title 	varchar(50) not null,  -- 공지 게시글 제목
-	attch 	varchar(200) not null, -- 파일 첨부
-	writer  varchar(30) not null,  -- 작성자
-	wDate 	datetime default now() -- 작성일
-);

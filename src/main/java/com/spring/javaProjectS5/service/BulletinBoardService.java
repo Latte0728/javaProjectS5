@@ -5,7 +5,6 @@ import java.util.List;
 import com.spring.javaProjectS5.vo.BulletinBoardComplaintVO;
 import com.spring.javaProjectS5.vo.BulletinBoardReplyVO;
 import com.spring.javaProjectS5.vo.BulletinBoardVO;
-import com.spring.javaProjectS5.vo.GuideVO;
 
 public interface BulletinBoardService {
 
@@ -34,5 +33,10 @@ public interface BulletinBoardService {
 	public int setBulletinBoardComplaint(BulletinBoardComplaintVO vo);
 
 	public List<BulletinBoardComplaintVO> getBulletinBoardComplaintList();
+
+
+	
+
+	
 
 }

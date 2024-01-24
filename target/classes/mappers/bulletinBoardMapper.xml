@@ -40,6 +40,10 @@
 	<insert id="BulletinBoardComplaintVO"> <!-- 신고창  -->
     INSERT INTO bulletinBoardComplaint VALUES (default, #{vo.bulletinBoardIdx}, #{vo.mid}, default, #{vo.content});
   </insert>
+
+	<insert id="setNoticeInput"> <!-- 공지사항 작성란 -->
+		INSERT INTO bulletinBoardNotice VALUES(default, #{vo.title}, #{vo.attch}, #{vo.writer}, #{vo.content}, #{vo.wDate});
+	</insert>
 	
 	
 	

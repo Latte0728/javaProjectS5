@@ -132,7 +132,7 @@
 				</a>
 			</div>	
 			<div class="notice" style="margin-left:10px; display:inline-block">
-				<a style="text-decoration:none;" href="${ctp}/bulletinBoard/noticeInput">
+				<a style="text-decoration:none;" href="${ctp}/notice/noticeInput">
 					<i class="fa-solid fa-clipboard-check fa-4x" style="color:white;"></i>
 					<p><br/></p>
 		  		<font color="white">공지 작성</font>

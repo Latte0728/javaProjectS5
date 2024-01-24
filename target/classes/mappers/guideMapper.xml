@@ -59,7 +59,7 @@
   
 
   <insert id="setGuideWrite">
-    insert into guide values(default,#{vo.bird_name},#{vo.bird_SName},#{vo.bird_class},#{vo.bird_species},#{vo.bird_advent},#{vo.bird_observe},#{vo.bird_frequency},#{vo.bird_Breedtype},#{vo.bird_Habitattype},#{vo.bird_Mainbreed},#{vo.bird_Mainhabit},#{vo.bird_shape},#{vo.bird_beak},#{vo.bird_tail},#{vo.bird_size},#{vo.bird_system},#{vo.bird_hunt},#{vo.bird_food},#{vo.bird_etc},#{vo.photo});
+    insert into guide values(default,#{vo.bird_name},#{vo.bird_SName},#{vo.bird_class},#{vo.bird_species},#{vo.bird_advent},#{vo.bird_observe},#{vo.bird_frequency},#{vo.bird_Breedtype},#{vo.bird_Habitattype},#{vo.bird_Mainbreed},#{vo.bird_Mainhabit},#{vo.bird_shape},#{vo.bird_beak},#{vo.bird_tail},#{vo.bird_size},#{vo.bird_system},#{vo.bird_hunt},#{vo.bird_food},#{vo.bird_etc},#{vo.photo},#{vo.readNum});
   </insert>
 
 

@@ -1,6 +1,9 @@
 package com.spring.javaProjectS5.service;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.javaProjectS5.dao.BulletinBoardDAO;
 import com.spring.javaProjectS5.vo.BulletinBoardComplaintVO;
 import com.spring.javaProjectS5.vo.BulletinBoardReplyVO;
 import com.spring.javaProjectS5.vo.BulletinBoardVO;
+import com.spring.javaProjectS5.vo.NoticeVO;
 
 @Service
 public class BulletinBoardServiceImpl implements BulletinBoardService {
@@ -120,7 +126,8 @@ public class BulletinBoardServiceImpl implements BulletinBoardService {
 	public List<BulletinBoardComplaintVO> getBulletinBoardComplaintList() {
 		return bulletinBoardDAO.getBulletinBoardComplaintList();
 	}
-	
+
+
 }
 
 

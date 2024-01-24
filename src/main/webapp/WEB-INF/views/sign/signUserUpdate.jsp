@@ -190,9 +190,8 @@
           <div class="input-group-append">
             <select name="email2" class="custom-select">
               <option value="naver.com"   ${email[1] == 'naver.com'   ? 'selected' : ''}>naver.com</option>
-              <option value="hanmail.net" ${email[1] == 'hanmail.net' ? 'selected' : ''}>hanmail.net</option>
               <option value="gmail.com"   ${email[1] == 'gmail.com'   ? 'selected' : ''}>gmail.com</option>
-              <option value="nate.com"    ${email[1] == 'nate.com'    ? 'selected' : ''}>nate.com</option>
+              
               
             </select>
           </div>

@@ -45,7 +45,6 @@ public class GuideServiceImpl implements GuideService {
 			sFileNames = sFileNames.substring(0, sFileNames.length()-1);
 			
 			vo.setPhoto(sFileNames);
-			System.out.println("vo : " + vo);
 			res = guideDAO.setGuideWrite(vo);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.spring.javaProjectS5.vo.BulletinBoardComplaintVO;
+import com.spring.javaProjectS5.vo.NoticeVO;
 import com.spring.javaProjectS5.vo.BulletinBoardReplyVO;
 import com.spring.javaProjectS5.vo.BulletinBoardVO;
 
@@ -35,8 +36,5 @@ public interface BulletinBoardDAO {
 	public int BulletinBoardComplaintVO(@Param("vo") BulletinBoardComplaintVO vo);
 
 	public List<BulletinBoardComplaintVO> getBulletinBoardComplaintList();
-
-
-	
 
 }

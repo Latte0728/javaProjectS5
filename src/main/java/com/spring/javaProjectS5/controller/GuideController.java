@@ -79,7 +79,6 @@ public class GuideController {
 
 	@RequestMapping(value="/guideWrite",	method=RequestMethod.POST)
 	public String guideWritePost(MultipartHttpServletRequest mFile, GuideVO vo) {
-		System.out.println("vo : " + vo);
 		int res = guideService.setGuideWrite(mFile, vo);
 		
 		if(res !=0) return "redirect:/message/guideWriteOk";
@@ -103,9 +102,6 @@ public class GuideController {
 		List<GuideVO> vos = guideService.getGuidePart(pageVO.getStartIndexNo(),pageSize,part);
 		model.addAttribute("vos", vos);
 		model.addAttribute("pageVO", pageVO);
-		System.out.println("vos : " + vos);
-		System.out.println("pageVO : " + pageVO);
-		System.out.println("part : " + part);
 		
 		return "guide/guideList";
 	}

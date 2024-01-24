@@ -23,6 +23,31 @@
 			  location.href = "${ctp}/sign/signOut";
 		  }
 	  }
+	  
+	  function signDelCheck() {
+		  let ans = confirm("회원 탈퇴하시겠습니까?");
+		  if(ans) {
+			  ans = confirm("탈퇴하시면 1개월간 같은 아이디로 다시 가입하실수 없습니다.\n그래도 탈퇴 하시겠습니까?");
+			  if(ans) {
+				  $.ajax({
+					  type : "post",
+					  url  : "${ctp}/sign/signUserDel",
+					  success:function(res) {
+						  if(res == "1") {
+							  alert("회원에서 탈퇴 되셨습니다.");
+							  location.href = '${ctp}/sign/signIn';
+						  }
+						  else {
+							  alert("회원 탈퇴신청 실패~~");
+						  }
+					  },
+					  error : function() {
+						  alert("전송오류!");
+					  }
+				  });
+			  }
+		  }
+	  }
 	</script>
 	<style>
 		li {display:inline;}
@@ -35,17 +60,16 @@
 				<ul id="menu">
 					<li>
 						<a href="${ctp}/exhibition/exhiBition">전시</a> | 
-						<a href="${ctp}/education/edu">교육</a> | 
 						<a href="${ctp}/guide/guideList">도감</a> |
 						<a href="${ctp}/reservation/reservationList">프로그램 예약</a> |
 						<c:if test="${sLevel == 1}">
 					    <a href="${ctp}/page/menagerPage">관리자 페이지</a> |
 						</c:if>
-						<a href="${ctp}/sign/signReCheck">비밀번호 재확인</a> |
 						<a href="${ctp}/sign/signMain">회원 방</a> |
 						<a href="${ctp}/sign/signUpdate">정보 수정</a> |
 						<a href="${ctp}/bulletinBoard/bulletinBoardList">게시판</a> |
-						<a href="${ctp}/bulletinBoard/bulletinBoardNotice">공지 사항</a> |
+						<a href="${ctp}/notice/noticeList">공지 사항</a> |
+						<a href="${ctp}/bird/birdFeature">새의 특징</a> |
 						<c:if test="${empty sMid}">
 							<a href="${ctp}/sign/signIn">로그인</a> |
 						</c:if>

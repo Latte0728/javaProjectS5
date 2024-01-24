@@ -43,16 +43,12 @@ public class BulletinBoardController {
 		model.addAttribute("search", search);
 		return "bulletinBoard/bulletinBoardList";
 	}
+	
 	@RequestMapping(value="/bulletinBoardInput", method=RequestMethod.GET)
 	public String bulletinBoardInputGet() {
 		return "bulletinBoard/bulletinBoardInput";
 	}
 
-	@RequestMapping(value="/noticeWrite", method=RequestMethod.GET)
-	public String noticeWriteInputGet() {
-		return "bulletinBoard/noticeWrite";
-	}
-	
 	@RequestMapping(value="/bulletinBoardInput", method=RequestMethod.POST)
 	public String bulletinBoardInputPost(BulletinBoardVO vo) {
 		int res = bulletinBoardService.setBulletinBoardInput(vo);
@@ -60,7 +56,7 @@ public class BulletinBoardController {
 		else return "redirect:/message/bulletinBoardInputNo";
 	}
 	
-	//@ResponseBody
+	
 	@RequestMapping(value="/bulletinBoardDelete", method=RequestMethod.GET)
 	public String bulletinBoardDeleteGet(int idx) {
 		int res = bulletinBoardService.setBulletinBoardDelete(idx);
@@ -69,12 +65,7 @@ public class BulletinBoardController {
 		else return "redirect:/message/bulletinBoardDeleteNo?idx="+idx;
 	}
 	
-	
-	@RequestMapping(value="/noticeInput", method=RequestMethod.GET)
-	public String bulletinBoardNoticeGet() {
-		return "bulletinBoard/noticeInput";
-	}
-	
+	 
 	//@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value="/bulletinBoardContent", method=RequestMethod.GET)
 	public String bulletinBoardInputGet(Model model, int idx, HttpSession session, HttpServletRequest request) {
@@ -153,15 +144,6 @@ public class BulletinBoardController {
   	if(res != 0) return "1"; 
   	else return "0"; 
   }
-  
-	/*
-	 * @RequestMapping(value="/noticeInput", method=RequestMethod.POST) public
-	 * String noticeInputPost(Model model,int idx, HttpSession session) { String
-	 * nickName = (String)session.getAttribute("sNickName"); if() return
-	 * "redirect:/message/authorizeNo"; bulletinBoardVO vo =
-	 * bulletinBoardService.setNoticeInput(idx); model.addAttribute("idx", idx);
-	 * model.addAttribute("vo", vo); return "bulletinBoard/noticeInput"; }
-	 */
  
 
   //부모댓글 입력처리(원본글에 대한 댓글)
