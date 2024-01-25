@@ -65,6 +65,26 @@
     top: 30px;
     left: 10px;
     transform: translateX(-50%);
+    background-color: #F7FE2E;
+    padding: 10px 15px;
+  	font-size:15px;
+    }
+	.bird {
+  	box-sizing:border-box;
+    padding: 35px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    position: relative;
+    width:19%;
+    height:20%;
+    text-align:center;
+    }
+
+  .bird {
+    content: ""; 
+    top: 30px;
+    left: 10px;
+    transform: translateX(-50%);
     background-color: #01DFD7;
     padding: 10px 15px;
   font-size:15px;
@@ -143,6 +163,13 @@
 					<i class="fa-solid fa-dragon fa-4x" style="color:white;"></i>
 					<p><br/></p>
 		  		<font color="white">도감 작성</font>
+				</a>
+			</div>
+			<div class="bird" style="margin-left:10px; display:inline-block">
+				<a style="text-decoration:none;" href="${ctp}/bird/birdWrite">
+					<i class="fa-solid fa-dove fa-4x" style="color:white;"></i>
+					<p><br/></p>
+		  		<font color="white">새에 대한 궁금한 이야기</font>
 				</a>
 			</div>
 			<div class="book" style="margin-left:10px; display:inline-block">

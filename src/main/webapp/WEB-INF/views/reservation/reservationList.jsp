@@ -113,8 +113,8 @@
 			</div>
 			<hr/>
 			<div class="text-center">
-				<table class="table table-hover">
-					<tr class="table-dark text-dark">
+				<table class="table table-hover table-striped">
+					<tr class="table-info text-dark">
 						<th>번호</th>
 						<th>제목</th>
 						<th>시작일</th>

@@ -21,7 +21,7 @@
     	letter-spacing: -1px;
 			line-height: 1.2em;
 		}
-		.lic{
+		/* .lic{
   		border-left: 1px solid;
 	    border-top: 1px solid;
 	    border-bottom: 1px solid;
@@ -41,8 +41,46 @@
 	    border: 1px solid #efeff0;
 	    background: #e2e2e2;
 	    text-align: justify;
-  	} 
+  	}  */
+  	.fixed {
+		  position: fixed;
+		  bottom: 30px;
+		  left: 155px;
+		  
+		}
+		.img_bird {
+			display: flex; 
+			flex-direction: row-reverse;
+		}
+		.img_bird2 {
+			margin-left: 50px;
+	    margin-top: -30px;
+	    text-align: center;
+	    
+		}
   </style>
+  <script>
+	  var topButton = document.getElememtbyId("topButton");
+		
+		window.onscroll = function () {
+			scrollFunction();
+		}
+		  
+		function scrollFunction() {
+		  // 현재 문서의 body 부분의 스크롤 위치
+		  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		      // 만약 스크롤 위치가 20px 이상이면 버튼을 보이게 함
+		      topButton.style.display = "block";
+		  } else {
+		      // 그렇지 않으면 버튼을 숨김
+		      topButton.style.display = "none";
+		  }
+		}
+		  
+		function topCheck() {
+		  document.documentElement.scrollTop = 0; // For Chrome and IE  
+		}
+  </script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
@@ -51,22 +89,19 @@
 	<div class="nav_tab">
   	<ul>
   		<li class="lic">
-  			<a href="birdFeature?idx=${vo.idx}"><span>새의 특징(일반론)</span></a>
+  			<a href="birdFeature?idx=${vo.idx}" class="btn btn-success"><span>새의 특징(일반론)</span></a>
   		</li>
   		<li class="lic">
-  			<a href="birdEvolve?idx=${vo.idx}"><span>새의 진화</span></a>
-  		<li class="lic">
-  			<a href=""><span>해부학적 특징</span></a>
+  			<a href="birdEvolve?idx=${vo.idx}" class="btn btn-success"><span>새의 진화</span></a>
   		</li>
   		<li class="lic">
-  			<a href=""><span>깃(깃털)의 이해</span></a>
+  			<a href="javascript:birdTitleOut('ㄱ','info6-1.jpg')" class="btn btn-success"><span>외부 명칭</span></a>
   		</li>
-  		<li class="lic">
-  			<a href=""><span>비행 원리</span></a>
-  		</li>
-  		<li class="lic2">
-  			<a href=""><span>철새들의 이동</span></a>
-  		</li>
+  		<c:forEach var="vo" items="${vos}" varStatus="st">
+	  		<li class="lic">
+	  			<a href="javascript:birdTitleSearch('${vo.title}','${vo.photo}')" class="btn btn-success"><span>${vo.title}</span></a>
+	  		</li>
+  		</c:forEach>
   	</ul>
   </div>
   <hr/>
@@ -174,33 +209,64 @@
   	<p><br/></p>
   	<div class="box_bird">
   		<h4><b>1)시조새</b></h4>
+  		<div class="img_bird">
+  			<div class="img_bird2">
+			  	<img src="${ctp}/resources/images/7.jpg" /><br/>
+			  	[시조새 화석]
+		  	</div>
   		<p>
   		조류의 진화에 대한 대표적인 것이 공룡 같은 파충류로부터 진화했다는 것이다.<br/> 
-  		현재까지 알려진 가장 오래된 조류 화석은 1861년 8월 15일 H. Von Meyer가 Solnhofen의 채석장에서 발견한 것이다.<br/>
-  		이 화석을 ‘오래된 날개’라는 뜻의 시조새(Archaeopteryx)라 부르며, 이 시조새는 약 1억 5천만 년 전에 살았으리라 추정된다.<br/> 
-  		시조새는 몸길이가 40cm 정도로 날개와 꼬리 깃이 있고 머리가 작고 눈이 크며, 부리에 날카로운 이빨이 나 있다.<br/> 
-  		날개의 끝에 붙어있는 3개의 발가락에는 발톱이 달려있어 시조새가 나무와 관목에서 살았고, 나뭇가지 위로 기어오를 수 있었으리라 추측할 수 있다.<br/>
-  		시조새는 날개의 구조상 자유로이 날 수 없었을 것이며, 언덕이나 높은 곳에서 뛰어내려 공중을 활주했었을 것으로 여겨진다.<br/> 
-  		발달된 발과 다리는 새들이 뒷발로 걷거나 뛰는 것이 수각아목 공룡들로부터 진화했다는 설을 뒷받침 해주고 있다.<br/> 
-  		시조새는 새의 특징인 깃털을 가지고 있고 파충류의 특징인 긴 꼬리뼈, 날카로운 이빨, 앞 발톱 등을 가지므로 파충류와 조류의 중간형에 해당한다고 생각한다.<br/> 
-  		시조새 화석은 조류가 파충류(익룡 등)에서 진화했음을 보여 주는 진화의 고리로, 지금까지 발견된 가장 중요한 화석 중 하나로 평가받고 있다.<br/>
+  		현재까지 알려진 가장 오래된 조류 화석은 1861년 8월 15일 <br/>H. Von Meyer가 Solnhofen의 채석장에서 발견한 것이다.<br/>
+  		이 화석을 ‘오래된 날개’라는 뜻의 시조새(Archaeopteryx)라 부르며,<br/> 이 시조새는 약 1억 5천만 년 전에 살았으리라 추정된다.<br/> 
+  		시조새는 몸길이가 40cm 정도로 날개와 꼬리 깃이 있고 머리가 작고 눈이 크며, <br/>부리에 날카로운 이빨이 나 있다.<br/> 
+  		날개의 끝에 붙어있는 3개의 발가락에는 발톱이 달려있어 시조새가<br/> 나무와 관목에서 살았고, 나뭇가지 위로 기어오를 수 있었으리라 추측할 수 있다.<br/>
+  		시조새는 날개의 구조상 자유로이 날 수 없었을 것이며,<br/> 언덕이나 높은 곳에서 뛰어내려 공중을 활주했었을 것으로 여겨진다.<br/> 
+  		발달된 발과 다리는 새들이 뒷발로 걷거나 뛰는 것이 수각아목 공룡들로부터 <br/>진화했다는 설을 뒷받침 해주고 있다.<br/> 
+  		시조새는 새의 특징인 깃털을 가지고 있고 파충류의 특징인 <br/>긴 꼬리뼈, 날카로운 이빨, 앞 발톱 등을 가지므로 파충류와 조류의 중간형에 해당한다고 생각한다.<br/> 
+  		시조새 화석은 조류가 파충류(익룡 등)에서 진화했음을 보여 주는 진화의 고리로, <br/>지금까지 발견된 가장 중요한 화석 중 하나로 평가받고 있다.<br/>
   		</p>
+		 </div>
   	</div>
+  	<p><br/></p>
   	<div class="box_bird">
   		<h4><b>2)간수스</b></h4>
+  		<div class="img_bird">
+  			<div class="img_bird2">
+			  	<img src="${ctp}/resources/images/8.jpg" /><br/>
+			  	[간수스 화석]<br/>
+			  	<img src="${ctp}/resources/images/9.jpg" /><br/>
+			  	[간수스 화석을 이용한 간수스 모형]
+		  	</div>
   		<p>
-  			파충류와 조류의 중간형태를 띠고 있어 조류의 조상으로 여겨지고 있는 시조새보다, 현재의 새와 더 가까운 조상으로 생각되는 조류('간수스 위머너시스(Gansus yumenesis)') 화석이 25년 전 중국 간쑤성 위먼 지역에서 처음 발견되었으며 최근에도 새 화석이 발견되었다.<br/>
+  			파충류와 조류의 중간형태를 띠고 있어 조류의 조상으로 여겨지고 있는 시조새보다,<br/> 현재의 새와 더 가까운 조상으로 생각되는 조류('간수스 위머너시스(Gansus yumenesis)') 화석이 25년 전 중국 간쑤성 위먼 지역에서 처음 발견되었으며 최근에도 새 화석이 발견되었다.<br/>
   			'간수스 위머너시스(Gansus yumenesis)' 화석을 근거로 간수스가 오늘날 새와 보다 더 가까운 조상일 수 있다는 연구결과는 미국 과학저널 ‘사이언스’(A Nearly Modern Amphibious Bird from the Early Cretaceous of Northwestern China.)에도 소개되었다.<br/> 
   			사이언스는 간수스가 오리나 물새와 아주 비슷하게 생겼으며 약 1억 500만∼1억 1500만 년 전에 살았고, 상체의 뼈들을 볼 때 오늘날의 오리와 마찬가지로 물을 박차고 오를 수 있었을 것이라고 설명했다.<br/> 
   			또한 간수스는 헤엄칠 수 있을 것이라 생각하였는데, 이는 발가락 사이의 물갈퀴 막과 질긴 근육으로 둘러싸인 단단한 정강이뼈를 갖고 있기 때문이다.<br/> 
   			이러한 면에서 간수스는 현재의 새들과 가까운 오래 전 조류들의 대부분은 물속이나 물가에서 살았다는 사실도 보여주고 있다.<br/> 
   			간수스는 발목과 윗다리 뼈들이 서로 합쳐져 있는데 이것은 시조새와는 다른 골격구조이다.<br/> 
   			간수스는 조류의 시조로 여겨지는 시조새에서 현재의 새에 이르는 조류의 진화 단계의 한 부분이라 볼 수 있다.<br/>
-  			<p><br/></p>
   			[출처] A Nearly Modern Amphibious Bird from the Early Cretaceous of Northwestern ChinaHai-lu You, 
   			Matthew C. Lamanna, Jerald D. Harris, Luis M. Chiappe, Jingmai O'Connor, Shu-an Ji, Jun-chang Lu, Chong-xi Yuan, Da-qing Li, Xing Zhang, Kenneth J. Lacovara, Peter Dodson, and Qiang Ji Science 16 June 2006 312: 1640-1643 [DOI: 10.1126/science.1126377] (in Reports)
   		</p>
+		 </div>
+		</div>
+		<div class="box_bird"> 
+  		<div class="img_bird">
+  			<div class="img_bird2">
+			  	<img src="${ctp}/resources/images/10.jpg" /><br/>
+			  	<p>
+			  	[출처] 미국과학진흥협회(AAAS:American Association for the Advancement of Science) 
+			  				홈페이지 2006년 6월 15일 뉴스 <a href="http://www.aaas.org/news/releases/2006/0615birds.shtml"></a>
+		  		</p>
+		  	</div>
+		 	</div> 
   	</div>
+  	<div style="text-align:center">
+  		<input type="button" onclick="location.href='${ctp}/h';" value = "이전으로 돌아가기" class="btn btn-danger"/>
+  	</div>
+  <div>
+		<input type="button" id="topButton" onclick="topCheck();" class="btn btn-primary inline-block fixed" style="margin-left:1300px" value="TOP">
+	</div>
 </div> 
 <p><br/></p>
 </body>

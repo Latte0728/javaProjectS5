@@ -66,9 +66,9 @@
 					    <a href="${ctp}/page/menagerPage">관리자 페이지</a> |
 						</c:if>
 						<a href="${ctp}/sign/signMain">회원 방</a> |
-						<a href="${ctp}/sign/signUpdate">정보 수정</a> |
 						<a href="${ctp}/bulletinBoard/bulletinBoardList">게시판</a> |
 						<a href="${ctp}/notice/noticeList">공지 사항</a> |
+						<a href="${ctp}/birdMe/birdMeList">내가 본 새</a> |
 						<a href="${ctp}/bird/birdFeature">새의 특징</a> |
 						<c:if test="${empty sMid}">
 							<a href="${ctp}/sign/signIn">로그인</a> |

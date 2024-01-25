@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaProjectS5.dao.BirdDAO">
+
+	<select id="getTitle" resultType="com.spring.javaProjectS5.vo.BirdVO">
+		SELECT * FROM bird;
+	</select>
+
+
+
+
+	<insert id="setBirdWrite">
+		INSERT INTO bird VALUES(default, #{title}, #{sFileName});
+	</insert>	
+	
+	
+</mapper>

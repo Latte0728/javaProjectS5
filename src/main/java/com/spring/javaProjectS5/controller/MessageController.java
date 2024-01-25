@@ -121,6 +121,22 @@ public class MessageController {
 			model.addAttribute("msg", "예기치 못한 상황으로 인한 삭제 오류.");
 			model.addAttribute("url", "notice/noticeContent?idx="+idx);
 		}
+		else if(msgFlag.equals("BirdWriteOk")) {
+			model.addAttribute("msg", "작성 완료");
+			model.addAttribute("url", "bird/birdFeature");
+		}
+		else if(msgFlag.equals("BirdWriteNo")) {
+			model.addAttribute("msg", "작성 실패");
+			model.addAttribute("url", "bird/birdWrite");
+		}
+		else if(msgFlag.equals("birdMeInputOk")) {
+			model.addAttribute("msg", "작성에 성공하셨습니다.");
+			model.addAttribute("url", "birdMe/birdMeList");
+		}
+		else if(msgFlag.equals("birdMeInputNo")) {
+			model.addAttribute("msg", "작성오류.");
+			model.addAttribute("url", "birdMe/birdMeInput");
+		}
 		return "include/message";
 	}
 }

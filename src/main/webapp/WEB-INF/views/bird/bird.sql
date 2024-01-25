@@ -1,11 +1,11 @@
 show tables;
 
-create table birdFeature(
-	idx int auto_crement  primary key,
-	content  varchar(100) not null,
-
+create table bird(
+	idx int not null auto_increment primary key,
+	title varchar(100) not null,
+	photo varchar(100)
 );
 
-drop table birdFeature;
+drop table bird;
 
-desc birdFeature;
+desc bird;
