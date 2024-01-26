@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.javaProjectS5.service.NoticeService;
+import com.spring.javaProjectS5.vo.ExhibitionVO;
 import com.spring.javaProjectS5.vo.NoticeVO;
 
 @Controller
@@ -23,9 +24,17 @@ public class NoticeController {
 
 	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
 	public String noticeListGet(Model model) {
+		
 		List<NoticeVO> vos = noticeService.getNoticeList();
 		model.addAttribute("vos", vos);
 		return "notice/noticeList";
+	}
+
+	@RequestMapping(value="/noticeList", method=RequestMethod.POST)
+	public String noticeListPost(String searchText, Model model) {
+		List<NoticeVO> vos = noticeService.getNoticeList(searchText);
+		model.addAttribute("vos", vos);
+ 		return "notice/noticeList";
 	}
 	
 	

@@ -19,6 +19,20 @@
   		window.history.back();
   		
   	}
+		function goodCheck() {
+	    	$.ajax({
+	    		url  : "birdMeGoodCheck",
+	    		type : "post",
+	    		data : {idx : ${vo.idx}},
+	    		success:function(res) {
+	    			if(res == "0") alert('이미 좋아요 버튼을 클릭하셨습니다.');
+	    			else location.reload();
+	    		},
+	    		error : function() {
+	    			alert("전송 오류!!");
+	    		}
+	    	});
+	    }
   </script>
 </head>
 <body>
@@ -49,6 +63,10 @@
   		<tr>
   			<th>조회수</th>
   			<td>${vo.readNum}</td>
+  		</tr>
+  		<tr>	
+  			<th>좋아요</th>
+  			<td><font color="red"><a href="javascript:goodCheck()">❤</a></font></td>
   		</tr>
   		<tr>
   			<th>관찰 내용</th>

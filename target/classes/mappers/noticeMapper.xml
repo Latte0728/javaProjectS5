@@ -3,14 +3,17 @@
 <mapper namespace="com.spring.javaProjectS5.dao.NoticeDAO">
 	
 	<select id="getNoticeList" resultType="com.spring.javaProjectS5.vo.NoticeVO">
-		select * from notice order by idx desc;
+		SELECT * FROM notice ORDER BY idx desc;
 	</select>
 
 	<select id="getNoticeContent" resultType="com.spring.javaProjectS5.vo.NoticeVO">
     SELECT * FROM notice WHERE idx = #{idx};
 	</select>
 
-
+	<!-- <select id="getNoticeList" resultType="com.spring.javaProjectS5.vo.NoticeVO">
+		SELE * FROM	notice WHERE title like concat('%',#{searchText},'%');
+	</select>	 -->
+	
   
 
 	<insert id="setNoticeInput"> <!-- 공지사항 작성란 -->

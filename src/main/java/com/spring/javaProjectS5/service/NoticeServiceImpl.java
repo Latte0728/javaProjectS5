@@ -135,6 +135,10 @@ public class NoticeServiceImpl implements NoticeService {
 		File delFile = new File(origFilePath);
 		if(delFile.exists()) delFile.delete();
 	}
+	@Override
+	public List<NoticeVO> getNoticeList(String searchText) {
+		return noticeDAO.getNoticeList(searchText);
+	}
 
 	
 }

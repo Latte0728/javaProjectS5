@@ -59,7 +59,7 @@
 			<nav class="navmenu">
 				<ul id="menu">
 					<li>
-						<a href="${ctp}/exhibition/exhiBition">전시</a> | 
+						<a href="${ctp}/exhibition/exhibitionList">전시</a> | 
 						<a href="${ctp}/guide/guideList">도감</a> |
 						<a href="${ctp}/reservation/reservationList">프로그램 예약</a> |
 						<c:if test="${sLevel == 1}">

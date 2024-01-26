@@ -14,6 +14,31 @@
     	float: left;
     }
   </style>
+  <script>
+		function goodCheck(idx) {
+			let part = "birdMe";
+			let mid = '${sMid}';
+    	$.ajax({
+    		url  : "${ctp}/birdMe/birdMeGoodCheck",
+    		type : "post",
+    		data : {
+    			partIdx : idx,
+    			part: part,
+    			mid : mid
+    		},
+    		success:function(res) {
+    			if(res == "0") alert('이미 좋아요 버튼을 클릭하셨습니다.');
+    			else {
+    				alert("좋아요를 클릭하셨습니다.");
+    				location.reload();
+    			}
+    		},
+    		error : function() {
+    			alert("전송 오류!!");
+    		}
+    	});
+    }
+  </script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
@@ -41,10 +66,15 @@
   		</div>
   		<div class="birdGuid ml-4" style="line-height:30px">
   		  <br/><br/>
-  			${vo.observer}<br/>
-  			${vo.location}<br/>
-  			${fn:substring(vo.WDate,0,10)}<br/>
-  			${vo.readNum}
+  			관찰자 : ${vo.observer}<br/>
+  			장소 : ${vo.location}<br/>
+  			관찰일 : ${fn:substring(vo.WDate,0,10)}<br/>
+  			조회수 : ${vo.readNum}<br/>
+  			좋아요 :
+  			  <a href="javascript:goodCheck(${vo.idx})">
+  			    <c:if test="${vo.goodSw == 1}"><font color="red">♥</font></c:if>
+  			    <c:if test="${vo.goodSw != 1}">♥</c:if>
+  			  </a>
   		</div>
   		<c:if test="${st.count % 2 == 0}">
   			<div style="clear:both;"></div>

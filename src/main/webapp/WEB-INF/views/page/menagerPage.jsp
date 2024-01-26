@@ -172,6 +172,13 @@
 		  		<font color="white">새에 대한 궁금한 이야기</font>
 				</a>
 			</div>
+			<div class="bird" style="margin-left:10px; display:inline-block">
+				<a style="text-decoration:none;" href="${ctp}/exhibition/exhibitonInput">
+					<i class="fa-solid fa-dove fa-4x" style="color:white;"></i>
+					<p><br/></p>
+		  		<font color="white">주요 전시 동물 작성 창</font>
+				</a>
+			</div>
 			<div class="book" style="margin-left:10px; display:inline-block">
 				<a style="text-decoration:none;" href="${ctp}/reservation/reservationAdminView">
 					<i class="fa-solid fa-book-open-reader fa-4x" style="color:white;"></i>

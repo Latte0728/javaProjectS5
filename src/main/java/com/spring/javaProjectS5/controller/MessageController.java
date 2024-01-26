@@ -137,6 +137,22 @@ public class MessageController {
 			model.addAttribute("msg", "작성오류.");
 			model.addAttribute("url", "birdMe/birdMeInput");
 		}
+		else if(msgFlag.equals("exhibitionInputOk")) {
+			model.addAttribute("msg", "작성 완료.");
+			model.addAttribute("url", "exhibition/exhibitionList");
+		}
+		else if(msgFlag.equals("exhibitionInputNo")) {
+			model.addAttribute("msg", "작성오류.");
+			model.addAttribute("url", "exhibition/exhibitionInput");
+		}
+		else if(msgFlag.equals("exhibitionDeleteOk")) {
+			model.addAttribute("msg", "삭제 완료.");
+			model.addAttribute("url", "exhibition/exhibitionList");
+		}
+		else if(msgFlag.equals("exhibitionDeleteNo")) {
+			model.addAttribute("msg", "삭제 오류.");
+			model.addAttribute("url", "exhibition/exhibitionContent");
+		}
 		return "include/message";
 	}
 }

@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.javaProjectS5.dao.BirdDAO">
+<mapper namespace="com.spring.javaProjectS5.dao.BirdMeDAO">
 
 	<select id="getTitle" resultType="com.spring.javaProjectS5.vo.BirdVO">
 		SELECT * FROM bird;
 	</select>
 
-
+	<select id="getBirdMeList" resultType="com.spring.javaProjectS5.vo.BirdMeVO">
+		SELECT *, (select count(*) from birdGood where part='birdMe' and mid=#{mid} and partIdx=m.idx) as goodSw FROM birdMe m order by idx desc;
+	</select>
+	
+	<select id="getBirdGoodList" resultType="int">
+		SELECT count(*) FROM birdgood WHERE part = #{part} and partIdx = #{partIdx} and mid = #{mid};
+	</select>
+	
+	<select id="getbirdMeContent" resultType="com.spring.javaProjectS5.vo.BirdMeVO">
+		SELECT * FROM birdMe where idx = #{idx};
+	</select>
+	
 
 
 	<insert id="setBirdWrite">
 		INSERT INTO bird VALUES(default, #{title}, #{sFileName});
 	</insert>	
+	
+	<insert id="setBirdGoodInsert">
+		INSERT INTO birdgood VALUES(default,#{part},#{partIdx},#{mid});
+	</insert>
+	
+	
+	<update id="setBirdReadNumUpdate"><!-- 조회수 -->
+  	UPDATE birdMe SET readNum = readNum+1 WHERE idx = #{idx};
+  </update>
 	
 	
 </mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaProjectS5.dao.ExhibitionDAO">
+
+<select id="getExhibitionList" resultType="com.spring.javaProjectS5.vo.ExhibitionVO">
+	SELECT * FROM exhibition ORDER BY idx desc;
+</select>
+
+<select id="getexhibitonContent" resultType="com.spring.javaProjectS5.vo.ExhibitionVO">
+	SELECT * FROM exhibition WHERE idx = #{idx};
+</select>	
+
+<select id="getexhibitionList" resultType="com.spring.javaProjectS5.vo.ExhibitionVO">
+	select * from	exhibition where name like concat('%',#{searchText},'%');
+</select>
+	
+<insert id="setExhibitionInput">
+	INSERT INTO exhibition VALUES (default,#{vo.name},#{vo.SName},#{vo.CName},#{vo.EName},#{vo.distribution},#{vo.food},#{vo.breedInfo},#{vo.content});
+</insert>
+
+
+<delete id="setExhibitionDelete">
+	DELETE FROM exhibition where idx = #{idx};
+</delete>	
+</mapper>

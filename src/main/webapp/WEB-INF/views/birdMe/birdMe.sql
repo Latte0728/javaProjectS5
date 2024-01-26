@@ -7,9 +7,13 @@ create table birdMe (
 	wDate    datetime default now(),													/* 관찰일 */
 	location varchar(100) not null,													/* 발견 장소 */
 	readNum  int not null default 0,												/* 조회수  */
-	content  text  not null																				/* 관찰 내용 */
+	content  text  not null																	/* 관찰 내용 */
 );
 
 drop table birdMe;
 
 select * from birdMe;
+
+desc birdgood;
+
+SELECT *, (select count(*) from birdGood where part='birdMe' and mid='qkrwjdgkgk12' and partIdx=m.idx) as goodSw FROM birdMe m order by idx desc;

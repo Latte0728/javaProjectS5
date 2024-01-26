@@ -25,6 +25,7 @@
 	<resources mapping="/notice/**" location="/resources/data/notice/" />
 	<resources mapping="/reservation/**" location="/resources/data/reservation/" />
 	<resources mapping="/bird/**" location="/resources/data/bird/" />
+	<resources mapping="/exhibition/**" location="/resources/data/exhibition/" />
 	<!-- <resources mapping="/page/**" location="/resources/data/page/" /> -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

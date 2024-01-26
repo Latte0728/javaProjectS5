@@ -15,8 +15,8 @@ public class BirdMeServiceImpl implements BirdMeService {
 	@ Autowired
 	BirdMeDAO birdMeDAO;
 	@Override
-	public List<BirdMeVO> getBirdMeList() {
-		return birdMeDAO.getBirdMeList();
+	public List<BirdMeVO> getBirdMeList(String mid) {
+		return birdMeDAO.getBirdMeList(mid);
 	}
 	@Override
 	public int setBirdMeInput(BirdMeVO vo) {
@@ -29,6 +29,14 @@ public class BirdMeServiceImpl implements BirdMeService {
 	@Override
 	public void setBirdReadNumUpdate(int idx) {
 		 birdMeDAO.setBirdReadNumUpdate(idx);
+	}
+	@Override
+	public int getBirdGoodList(String part, int partIdx, String mid) {
+		return birdMeDAO.getBirdGoodList(part, partIdx, mid);
+	}
+	@Override
+	public void setBirdGoodInsert(String part, int partIdx, String mid) {
+		birdMeDAO.setBirdGoodInsert(part, partIdx, mid);
 	}
 
 }

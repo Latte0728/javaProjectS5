@@ -27,23 +27,6 @@
 			
 			location.href="${ctp}/bulletinBoard/bulletinBoardDelete?idx="+idx;
 			
-			/*
-			$.ajax({
-				url : "${ctp}/bulletinBoard/bulletinBoardDelete",
-				type : "post",
-				data : {idx:idx},
-				success : function(res) {
-					if(res != '0') {
-						alert("삭제 완료");
-						location.reload();
-					}
-					else alert("삭제 실패");
-				},
-				error : function() {
-					alert("전송 오류");
-				}
-			});
-			*/
 		  	
   	}
   	

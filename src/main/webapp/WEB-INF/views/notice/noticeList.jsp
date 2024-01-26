@@ -17,6 +17,10 @@
   <h1 style="text-align:center;">공지 사항</h1>
   <p><br/></p>
   	<form method="post" enctype="multipart/form-data" >
+	  	<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="검색어를 입력해주세요" id="searchText" name="searchText"/>
+				<input type="submit" value="검색" class="btn btn-info"/>
+			</div>
 		  <table class="table table-condensed" style="text-align:center;">
 		  	<tr class="text-dark table-dark" >
 					<th>번호</th>

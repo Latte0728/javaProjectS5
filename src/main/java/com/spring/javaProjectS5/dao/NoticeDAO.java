@@ -16,4 +16,6 @@ public interface NoticeDAO {
 
 	public int setNoticeDelete(@Param("idx") int idx);
 
+	public List<NoticeVO> getNoticeList(@Param("searchText") String searchText);
+
 }

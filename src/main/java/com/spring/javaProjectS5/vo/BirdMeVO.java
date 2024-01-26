@@ -11,4 +11,6 @@ public class BirdMeVO {
 	private String location;
 	private int readNum;
 	private String content;
+	
+	private int goodSw;
 }

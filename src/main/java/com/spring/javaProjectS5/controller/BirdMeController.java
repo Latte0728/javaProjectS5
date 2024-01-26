@@ -2,11 +2,14 @@ package com.spring.javaProjectS5.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.javaProjectS5.service.BirdMeService;
 import com.spring.javaProjectS5.vo.BirdMeVO;
@@ -22,10 +25,22 @@ public class BirdMeController {
 	BirdMeService birdMeService; 
 
 	@RequestMapping(value="/birdMeList", method = RequestMethod.GET)
-	public String birdMeListGet(Model model) {
-		List<BirdMeVO> vos	= birdMeService.getBirdMeList();
+	public String birdMeListGet(Model model, HttpSession session) {
+		String mid = (String)session.getAttribute("sMid");
+		List<BirdMeVO> vos	= birdMeService.getBirdMeList(mid);
 		model.addAttribute("vos",vos);
 		return "birdMe/birdMeList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/birdMeGoodCheck", method = RequestMethod.POST)
+	public String birdMeGoodCheckPost(String part, int partIdx, String mid) {
+		int res	= birdMeService.getBirdGoodList(part,partIdx,mid);
+
+		if(res != 0) return "0";
+		
+		birdMeService.setBirdGoodInsert(part,partIdx,mid);
+		return "1";
 	}
 
 //	@RequestMapping(value="/birdMeList", method = RequestMethod.POST)

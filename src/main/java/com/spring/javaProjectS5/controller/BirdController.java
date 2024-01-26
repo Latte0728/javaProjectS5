@@ -15,8 +15,6 @@ import com.spring.javaProjectS5.vo.BirdVO;
 @Controller
 
 
-
-
 @RequestMapping(value="/bird")
 // 중간 경로 지정
 
