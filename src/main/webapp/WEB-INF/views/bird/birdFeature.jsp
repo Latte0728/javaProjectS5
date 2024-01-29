@@ -21,27 +21,7 @@
     	letter-spacing: -1px;
 			line-height: 1.2em;
 		}
-		/*.lic{
-	  		border-left: 1px solid;
-		    border-top: 1px solid;
-		    border-bottom: 1px solid;
-	  	}
- 		.lic2{
-  		border-left: 1px solid;
-	    border-top: 1px solid;
-	    border-bottom: 1px solid;
-	    border-right: 1px solid;
-  	} 
-  	.box_bird{
-  		font-size: 1.2em;
-	    display: block;
-	    width: 100%;
-	    line-height: 1.7em;
-	    margin: 10px 0;
-	    border: 1px solid #efeff0;
-	    background: #e2e2e2;
-	    text-align: justify;
-  	} */
+		
   	.fixed {
 		  position: fixed;
 		  bottom: 30px;
@@ -168,7 +148,7 @@
 	  	다른 동물과 달리 새가 가진 특성은 다음과 같이 정의할 수 있다.
 	  </div>
 	  <p><br/></p>
-	  <div>
+	  <div style="border:1px solid">
 	  	<h4><b>가.깃털을 가지고 있다.</b></h4>
 	  	<p>
 	  		깃털을 가진 동물은 새가 유일하다.<br/>
@@ -178,11 +158,11 @@
 	  	</p>
 	  </div>
 	  <p><br/></p>
-	  <div class="box_bird">
+	  <div class="box_bird" style="border:1px solid gray">
 	  	<h4><b>나. 날개를 이용해 하늘을 날 수 있다.</b></h4>
 	  	<div class="img_bird">
 	  		<div class="img_bird2">
-			  	<img src="${ctp}/resources/images/2.jpg" /><br/>
+			  	<img src="${ctp}/resources/images/2.jpg" style="margin-right:5px;"/><br/>
 			  	[하늘을 나는 재두루미]
 	  		</div>
 		  		<p>
@@ -192,11 +172,11 @@
 		  </div>	
 	  </div>
 	  <p><br/></p>
-	  <div class="box_bird" >
+	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>다. 뛰어난 시력과 가벼운 뼈를 지녔다.</b></h4>
 	  	<div class="img_bird">
 	  		<div class="img_bird2">
-			  	<img src="${ctp}/resources/images/3.jpg" /><br/>
+			  	<img src="${ctp}/resources/images/3.jpg" style="margin-right:5px;"/><br/>
 			  	[큰 눈을 가진 금눈쇠올빼미]
 			  </div>	
 			  	<p style="flex:1">
@@ -207,13 +187,13 @@
 		  </div>
 	  </div>
 	  <p><br/></p>
-	  <div class="box_bird">
+	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>라. 몸은 유선형이며, 날기 위해 완강한 골조(骨組)</b></h4>
 	  	<div class="img_bird">
 	  		<div class="img_bird2">
-			  	<img src="${ctp}/resources/images/4.jpg" /><br/>
+			  	<img src="${ctp}/resources/images/4.jpg" style="margin-right:5px;"/><br/>
 			  	[나는 새 중 가장 무거운 큰고니]<br/>
-			  	<img src="${ctp}/resources/images/5.jpg" /><br/>
+			  	<img src="${ctp}/resources/images/5.jpg" style="margin-right:5px;"/><br/>
 			  	[날지 못하는 새 타조]
 		  </div>
 	  	<p>
@@ -226,11 +206,11 @@
 	  	</div>
 	  </div>
 	  <p><br/></p>
-	  <div class="box_bird">
+	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>마. 둥지를 짓고 알을 낳는다.</b></h4>
 	  	<div class="img_bird">
 	  		<div class="img_bird2">
-			  	<img src="${ctp}/resources/images/6.jpg" /><br/>
+			  	<img src="${ctp}/resources/images/6.jpg" style="margin-right:5px;"/><br/>
 			  	[검은머리갈매기 둥지]
 		  	</div>
 	  	<p>
@@ -241,7 +221,7 @@
 		 </div> 
 	  </div>
 	  <p><br/></p>
-	  <div class="box_bird">
+	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>바. 먼 거리를 이동한다.</b></h4>
 	  	<p>
 	  		도요류는 시베리아 북부에서 호주와 뉴질랜드까지 4,000km 이상을 매년 왕복하며 생활한다.<br/> 
@@ -250,7 +230,7 @@
 	  	</p>
 	  </div>
 	  <p><br/></p>
-	  <div class="box_bird">
+	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>사. 체온이 높다.</b></h4>
 	  	<p>
 	  		포유동물의 체온은 대체로 36도 내외이지만, 조류는 40도 안팎의 비교적 높은 체온을 가지고 있다.<br/> 

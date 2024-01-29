@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Interceptor 설정 -->
+	<beans:bean id="level1Interceptor" class="com.spring.javaProjectS5.interceptor.Level1Interceptor" />
+	<beans:bean id="level3Interceptor" class="com.spring.javaProjectS5.interceptor.Level3Interceptor" />
+	
+	<interceptors>
+	  <interceptor>		<!-- 비회원 -->
+	    <mapping path="/reservation/**"/>
+	    <mapping path="/sign/**"/>
+	    <mapping path="/bulletinBoard/**"/>
+	    <mapping path="/birdMe/**"/>
+	    <exclude-mapping path="/sign/kakaoSignIn"/>
+	    <exclude-mapping path="/sign/signIn"/>
+	    <exclude-mapping path="/sign/signUp"/>
+	    <exclude-mapping path="/sign/signOut"/>
+	    <exclude-mapping path="/sign/kakaosignOut"/>
+	    <exclude-mapping path="/sign/signIdCheck"/>
+	    <exclude-mapping path="/sign/signNickCheck"/>
+	    <exclude-mapping path="/sign/signPwdCheck"/>
+	    <exclude-mapping path="/sign/signPwdChangeOk"/>
+	    <exclude-mapping path="/sign/signPasswordSearch"/>
+	    <exclude-mapping path="/sign/signEmailCheck"/>
+	    <exclude-mapping path="/sign/signEmailCheckOk"/>
+	    <exclude-mapping path="/sign/signEmailSearch"/>
+	    <exclude-mapping path="/bulletinBoard/bulletinBoardList"/>
+	    <exclude-mapping path="/bulletinBoard/bulletinBoardContent"/>
+	    <exclude-mapping path="/reservation/reservationList"/>
+	    <exclude-mapping path="/birdMe/birdMeList"/>
+	    <exclude-mapping path="/birdMe/birdMeContent"/>
+	    <exclude-mapping path="/message/**"/>
+	    <beans:ref bean="level3Interceptor" />
+	  </interceptor>
+	  <interceptor>		<!-- 관리자 -->
+	    <mapping path="/page/**"/>
+	    <beans:ref bean="level1Interceptor" />
+	  </interceptor>
+	</interceptors>
+	
+</beans:beans>

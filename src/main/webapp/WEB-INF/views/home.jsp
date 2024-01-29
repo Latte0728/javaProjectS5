@@ -37,11 +37,12 @@
 	}
 	.ptext {
 		display:block;
+		text-shadow :2px 2px 8px rgba(0,0,0,.5);
 	}
 </style>
 <body>
 
-<p class="ptext">국내 자연생태계의 지속가능성<br/>
+<p class="ptext" >국내 자연생태계의 지속가능성<br/>
 <span> 국립생태원이 만들어갑니다.</span>
 </p>
 <video autoplay loop muted playsinline> 

@@ -74,8 +74,8 @@
   		</tr>
   	</table>
   </form>
-  <div style="text-align:center">
-  	<input type="button" onclick="btnreturn()" value="돌아가기" class="btn btn-info"/>
+  <div style="text-align:center;">
+  	<input type="button" onclick="btnreturn()" value="돌아가기" class="btn btn-info" />
   </div>
 </div>
 <p><br/></p>

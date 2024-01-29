@@ -101,6 +101,32 @@
       font-size:15px;
     }
  	</style>
+ 	<script>
+	  function signDelCheck() {
+		  let ans = confirm("회원 탈퇴하시겠습니까?");
+		  if(ans) {
+			  ans = confirm("탈퇴하시면 1개월간 같은 아이디로 다시 가입하실수 없습니다.\n그래도 탈퇴 하시겠습니까?");
+			  if(ans) {
+				  $.ajax({
+					  type : "post",
+					  url  : "${ctp}/sign/signUserDel",
+					  success:function(res) {
+						  if(res == "1") {
+							  alert("회원에서 탈퇴 되셨습니다.");
+							  location.href = '${ctp}/sign/signIn';
+						  }
+						  else {
+							  alert("회원 탈퇴신청 실패~~");
+						  }
+					  },
+					  error : function() {
+						  alert("전송오류!");
+					  }
+				  });
+			  }
+		  }
+	  }
+ 	</script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
@@ -134,7 +160,7 @@
   	</a>
   </div>
   <div class="Quit" style="margin-left:68.1px; display:inline-block">
-  	<a style="text-decoration:none;" href="${ctp}/sign/signUserDel">
+  	<a style="text-decoration:none;" href="javascript:signDelCheck()">
   		<i class="fa-solid fa-person-through-window fa-4x" style="color:white;" ></i>
   	<p><br/></p>
   	<font color="white">회원 탈퇴</font>	

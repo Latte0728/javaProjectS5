@@ -15,8 +15,17 @@
   		window.location.href = 'birdMeList.html';
   		
   	} 
-  	
   </script>
+  <script src="${ctp}/ckeditor/ckeditor.js"></script>
+  <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
+  <script>
+	  function checkForm() {
+		  var contentValue = CKEDITOR.instances['CKEDITOR'].getData().trim(); // CKEDITOR에서 내용 가져오기
+	    if (!contentValue) {
+	        alert("내용을 입력하세요."); // 내용이 비어있으면 경고 표시 및 제출 방지
+	        return false;
+	    }
+  </script>  
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />

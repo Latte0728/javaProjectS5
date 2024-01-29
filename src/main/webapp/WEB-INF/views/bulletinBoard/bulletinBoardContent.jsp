@@ -202,7 +202,7 @@
 <div class="container">
   <h2 style="text-align:center;">게시글 내용 보기</h2>
   <p><br/></p>
-   <table class="table table-borderless m-0 p-0">
+   <table class="table table-borderless m-0 p-0" >
   </table>
   <table class="table table-bordered">
     <tr>
@@ -231,15 +231,15 @@
   <table class="table table-borderless m-0 p-0">
     <tr>
       <td class="text-left">
-        <c:if test="${flag != 'search'}"><input type="button" value="돌아가기" onclick="location.href='bulletinBoardList';" class="btn btn-warning"/> &nbsp;</c:if>
-        <c:if test="${flag == 'search'}"><input type="button" value="돌아가기" onclick="location.href='bulletinBoardList';" class="btn btn-warning"/> &nbsp;</c:if>
+        <c:if test="${flag != 'search'}"><input type="button" value="돌아가기" onclick="location.href='bulletinBoardList';" class="btn btn-success"/> &nbsp;</c:if>
+        <c:if test="${flag == 'search'}"><input type="button" value="돌아가기" onclick="location.href='bulletinBoardList';" class="btn btn-primary"/> &nbsp;</c:if>
       </td>
       <td class="text-right">
         <%-- <c:if test="${vo.mid != sMid}"><a href="complaintInput.ad" class="btn btn-danger">신고하기</a></c:if> --%>
         <c:if test="${vo.mid != sMid}"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">신고하기</button></c:if>
         <c:if test="${sMid == vo.mid || sLevel == 1}">
         	<input type="button" value="수정하기" onclick="location.href='bulletinBoardUpdate?idx=${vo.idx}';" class="btn btn-info"/> &nbsp;
-        	<input type="button" value="삭제하기" onclick="deleteCheck()" class="btn btn-danger"/>
+        	<input type="button" value="삭제하기" onclick="deleteCheck()" class="btn btn-warning"/>
         </c:if>
       </td>
     </tr>

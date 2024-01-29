@@ -41,6 +41,6 @@
   
   
   <delete id="setSignUserDel">
-    update signUser set signDel = 'OK' where mid = #{mid};
+    update signUser set userDel = 'OK' where mid = #{mid};
   </delete>
 </mapper>

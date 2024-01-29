@@ -10,3 +10,5 @@ create table birdgood (
 SELECT * FROM birdgood WHERE part = 'birdMe' and partIdx = 1 and mid = 'qkrwjdgkgk12';
 
 SELECT count(*) FROM birdgood WHERE part = 'birdMe' and partIdx = 1 and mid = 'qkrwjdgkgk12';
+
+drop table birdgood;

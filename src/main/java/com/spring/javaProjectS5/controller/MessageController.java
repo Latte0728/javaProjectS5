@@ -1,5 +1,7 @@
 package com.spring.javaProjectS5.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MessageController {
 
 	@RequestMapping(value="/message/{msgFlag}", method = RequestMethod.GET)
-	public String msgGet(@PathVariable String msgFlag, String mid, Model model, 
+	public String msgGet(HttpServletRequest request,@PathVariable String msgFlag, String mid, Model model, 
 			@RequestParam(name="temp", defaultValue="",required=false) String temp,
 			@RequestParam(name="idx", defaultValue="0",required=false) int idx,
 			@RequestParam(name="pag", defaultValue="1",required=false) int pag,
@@ -19,11 +21,16 @@ public class MessageController {
 		
 		if(msgFlag.equals("signUserDeleteOk")) {
 			model.addAttribute("msg", "회원이 삭제 되었습니다.");
-			model.addAttribute("url", "sign/signUserDelete");
+			model.addAttribute("url", "sign/signIn");
 		}
 		else if(msgFlag.equals("signUserDeleteNo")) {
 			model.addAttribute("msg", "회원 삭제 실패~~");
 			model.addAttribute("url", "sign/signUserDelete");
+		}
+		
+		else if(msgFlag.equals("adminNo")) {
+			model.addAttribute("msg", "관리자가 아닙니다.");
+			model.addAttribute("url", "/");
 		}
 		
 		else if(msgFlag.equals("signUserUdpateOk")) {
@@ -40,12 +47,20 @@ public class MessageController {
 			model.addAttribute("msg", mid + "회원님 로그인 되었습니다.");
 			model.addAttribute("url", "sign/signMain");
 		}
+		else if(msgFlag.equals("signInNo")) {
+			model.addAttribute("msg", "로그인 실패");
+			model.addAttribute("url", "sign/signIn");
+		}
 		else if(msgFlag.equals("kakaosignInOk")) {
 			model.addAttribute("msg", mid + "회원님 로그인 되었습니다.");
-			model.addAttribute("url", "sign/signMain");
+			model.addAttribute("url", "page/menagerPage");
 		}
 		else if(msgFlag.equals("signOut")) {
 			model.addAttribute("msg", mid + "회원님 로그아웃 되었습니다.");
+			model.addAttribute("url", "sign/signIn");
+		}
+		else if(msgFlag.equals("memberNo")) {
+			model.addAttribute("msg", "로그인 후 이용해주세요");
 			model.addAttribute("url", "sign/signIn");
 		}
 		

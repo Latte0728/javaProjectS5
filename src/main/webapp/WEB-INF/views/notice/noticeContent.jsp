@@ -48,7 +48,9 @@
 	  	</tr>	
 	  </table>
 	  <div>
-	  	<input type="button" value="삭제하기" onclick="deleteCheck()" class="btn btn-danger"/>
+	    <c:if test="${sLevel == 1}">
+	  		<input type="button" value="삭제하기" onclick="deleteCheck()" class="btn btn-danger"/>
+	  	</c:if>
 	  	<input type="button" value="돌아가기" onclick="history.back()" class="btn btn-info"/>
 	  </div>
 </div> 

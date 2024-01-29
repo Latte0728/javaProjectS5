@@ -244,7 +244,7 @@
 			</c:forEach>			
 		</div>
 		
-		<div>
+		<div style="text-align:center;">
 			<span style="display: inline-block; margin-left: 100px;">
 				<input type="button" onclick="location.href='${ctp}/h';" value="메인화면으로 돌아가기" class="btn1 btn btn-warning form-control" style="width:100%" />
 			</span>

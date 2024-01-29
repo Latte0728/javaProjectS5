@@ -24,63 +24,44 @@
 		  }
 	  }
 	  
-	  function signDelCheck() {
-		  let ans = confirm("회원 탈퇴하시겠습니까?");
-		  if(ans) {
-			  ans = confirm("탈퇴하시면 1개월간 같은 아이디로 다시 가입하실수 없습니다.\n그래도 탈퇴 하시겠습니까?");
-			  if(ans) {
-				  $.ajax({
-					  type : "post",
-					  url  : "${ctp}/sign/signUserDel",
-					  success:function(res) {
-						  if(res == "1") {
-							  alert("회원에서 탈퇴 되셨습니다.");
-							  location.href = '${ctp}/sign/signIn';
-						  }
-						  else {
-							  alert("회원 탈퇴신청 실패~~");
-						  }
-					  },
-					  error : function() {
-						  alert("전송오류!");
-					  }
-				  });
-			  }
-		  }
-	  }
+
 	</script>
 	<style>
 		li {display:inline;}
+		
+		.w3-container {
+			margin-left:500px;
+			text-decoration:none;
+		}
+		
 	</style>
 </head>
 <body>
-		<!-- navigation -->
-		<div class="container">
-			<nav class="navmenu">
-				<ul id="menu">
-					<li>
-						<a href="${ctp}/exhibition/exhibitionList">전시</a> | 
-						<a href="${ctp}/guide/guideList">도감</a> |
-						<a href="${ctp}/reservation/reservationList">프로그램 예약</a> |
-						<c:if test="${sLevel == 1}">
-					    <a href="${ctp}/page/menagerPage">관리자 페이지</a> |
-						</c:if>
-						<a href="${ctp}/sign/signMain">회원 방</a> |
-						<a href="${ctp}/bulletinBoard/bulletinBoardList">게시판</a> |
-						<a href="${ctp}/notice/noticeList">공지 사항</a> |
-						<a href="${ctp}/birdMe/birdMeList">내가 본 새</a> |
-						<a href="${ctp}/bird/birdFeature">새의 특징</a> |
-						<c:if test="${empty sMid}">
-							<a href="${ctp}/sign/signIn">로그인</a> |
-						</c:if>
-						<c:if test="${!empty sMid}">
-						  ${sMid}님 페이지 |
-							<a href="javascript:kakaoLogout()">로그 아웃</a> |
-						</c:if>
-						<a href="${ctp}/sign/signUp">회원 가입</a> 
-					</li>
-				</ul>
-			</nav>
-		</div>
+	<div class="w3-container">
+		  <div class="w3-bar w3-light-white">
+		    <a href="${ctp}/exhibition/exhibitionList" class="w3-bar-item w3-button">전시</a>
+		    <a href="${ctp}/guide/guideList" class="w3-bar-item w3-button">도감</a>
+		    <a href="${ctp}/reservation/reservationList" class="w3-bar-item w3-button">프로그램 예약</a>
+		    <a href="${ctp}/bird/birdFeature" class="w3-bar-item w3-button">새에 대한 궁금한 이야기</a>
+		    <div class="w3-dropdown-hover">
+		      <button class="w3-button">커뮤니티</button>
+		      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+		        <a href="${ctp}/notice/noticeList" class="w3-bar-item w3-button">공지사항</a>
+		        <a href="${ctp}/bulletinBoard/bulletinBoardList" class="w3-bar-item w3-button">게시판</a>
+		      	<a href="${ctp}/birdMe/birdMeList" class="w3-bar-item w3-button">내가 본 새</a>
+		      </div>
+		    </div>
+		    <div>
+			    <c:if test="${empty sMid}">
+										<a href="${ctp}/sign/signIn">로그인</a> |
+									</c:if>
+									<c:if test="${!empty sMid}">
+									  ${sMid}님 페이지 |
+										<a href="javascript:kakaoLogout()">로그 아웃</a> |
+									</c:if>
+									<a href="${ctp}/sign/signUp">회원 가입</a>
+				</div>				 
+		  </div>
+</div>
 </body>
 </html>
