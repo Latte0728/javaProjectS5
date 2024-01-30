@@ -17,6 +17,7 @@ public interface ExhibitionDAO {
 
 	public int setExhibitionDelete(@Param("idx") int idx);
 
+	// 검색창 버튼 구현 단계
 	public List<ExhibitionVO> getexhibitionList(@Param("searchText") String searchText);
 
 	

@@ -27,4 +27,6 @@ public class GuideVO {
 	private String part;
 	private String photo;
 	private int readNum;
+	
+	private String qrCodeName;
 }

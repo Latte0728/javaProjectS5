@@ -6,16 +6,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>.jsp</title>
+  <title>클라이언트 요청 문제(400errorPage)</title>
   <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/include/nav.jsp" />
 <p><br/></p>
-<div class="container">
-  <h2>현재 페이지는 작업중으로 불편을 드려서 죄송합니다.</h2>
+<div class="container text-center">
   <hr/>
-  <img src="">
+  <img src="${ctp}/images/errorpage.jpg" width="50%">
   <div>
   	<a href="${ctp}/" class="btn btn-danger">Home화면으로 돌아가기</a>
   </div>

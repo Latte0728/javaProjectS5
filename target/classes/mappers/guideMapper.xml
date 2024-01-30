@@ -20,24 +20,24 @@
   
   <select id="getGuidePart" resultType="com.spring.javaProjectS5.vo.GuideVO">
 		<!-- select * from	guide where bird_name like concat(#{search},'%'); -->
-		<if test='part == "ㄱ"'>select * from	guide where bird_name rlike '^(ㄱ|ㄲ)' or (bird_name >= '가'  and <![CDATA[bird_name < '나']]>) order by bird_name;</if>
-		<if test='part == "ㄴ"'>select * from	guide where bird_name rlike '^(ㄴ)' or (bird_name >= '나'  and <![CDATA[bird_name < '다']]>) order by bird_name;</if>
-		<if test='part == "ㄷ"'>select * from	guide where bird_name rlike '^(ㄷ)' or (bird_name >= '다'  and <![CDATA[bird_name < '라']]>) order by bird_name;</if>
-		<if test='part == "ㄹ"'>select * from	guide where bird_name rlike '^(ㄹ)' or (bird_name >= '라'  and <![CDATA[bird_name < '마']]>) order by bird_name;</if>
-		<if test='part == "ㅁ"'>select * from	guide where bird_name rlike '^(ㅁ)' or (bird_name >= '마'  and <![CDATA[bird_name < '바']]>) order by bird_name;</if>
-		<if test='part == "ㅂ"'>select * from	guide where bird_name rlike '^(ㅂ)' or (bird_name >= '바'  and <![CDATA[bird_name < '사']]>) order by bird_name;</if>
-		<if test='part == "ㅅ"'>select * from	guide where bird_name rlike '^(ㅅ|ㅆ)' or (bird_name >= '사'  and <![CDATA[bird_name < '아']]>) order by bird_name;</if>
-		<if test='part == "ㅇ"'>select * from	guide where bird_name rlike '^(ㅇ)' or (bird_name >= '아'  and <![CDATA[bird_name < '자']]>) order by bird_name;</if>
-		<if test='part == "ㅈ"'>select * from	guide where bird_name rlike '^(ㅈ|ㅉ)' or (bird_name >= '자'  and <![CDATA[bird_name < '차']]>) order by bird_name;</if>
-		<if test='part == "ㅊ"'>select * from	guide where bird_name rlike '^(ㅊ)' or (bird_name >= '차'  and <![CDATA[bird_name < '카']]>) order by bird_name;</if>
-		<if test='part == "ㅋ"'>select * from	guide where bird_name rlike '^(ㅋ)' or (bird_name >= '카'  and <![CDATA[bird_name < '타']]>) order by bird_name;</if>
-		<if test='part == "ㅌ"'>select * from	guide where bird_name rlike '^(ㅌ)' or (bird_name >= '타'  and <![CDATA[bird_name < '파']]>) order by bird_name;</if>
-		<if test='part == "ㅍ"'>select * from	guide where bird_name rlike '^(ㅍ)' or (bird_name >= '파'  and <![CDATA[bird_name < '하']]>) order by bird_name;</if>
-		<if test='part == "ㅎ"'>select * from	guide where bird_name rlike '^(ㅎ)' or (bird_name >= '하') order by bird_name;</if>
+		<if test='part == "ㄱ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㄱ|ㄲ)' or (bird_name >= '가'  and <![CDATA[bird_name < '나']]>) order by bird_name;</if>
+		<if test='part == "ㄴ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㄴ)' or (bird_name >= '나'  and <![CDATA[bird_name < '다']]>) order by bird_name;</if>
+		<if test='part == "ㄷ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㄷ)' or (bird_name >= '다'  and <![CDATA[bird_name < '라']]>) order by bird_name;</if>
+		<if test='part == "ㄹ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㄹ)' or (bird_name >= '라'  and <![CDATA[bird_name < '마']]>) order by bird_name;</if>
+		<if test='part == "ㅁ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅁ)' or (bird_name >= '마'  and <![CDATA[bird_name < '바']]>) order by bird_name;</if>
+		<if test='part == "ㅂ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅂ)' or (bird_name >= '바'  and <![CDATA[bird_name < '사']]>) order by bird_name;</if>
+		<if test='part == "ㅅ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅅ|ㅆ)' or (bird_name >= '사'  and <![CDATA[bird_name < '아']]>) order by bird_name;</if>
+		<if test='part == "ㅇ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅇ)' or (bird_name >= '아'  and <![CDATA[bird_name < '자']]>) order by bird_name;</if>
+		<if test='part == "ㅈ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅈ|ㅉ)' or (bird_name >= '자'  and <![CDATA[bird_name < '차']]>) order by bird_name;</if>
+		<if test='part == "ㅊ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅊ)' or (bird_name >= '차'  and <![CDATA[bird_name < '카']]>) order by bird_name;</if>
+		<if test='part == "ㅋ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅋ)' or (bird_name >= '카'  and <![CDATA[bird_name < '타']]>) order by bird_name;</if>
+		<if test='part == "ㅌ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅌ)' or (bird_name >= '타'  and <![CDATA[bird_name < '파']]>) order by bird_name;</if>
+		<if test='part == "ㅍ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅍ)' or (bird_name >= '파'  and <![CDATA[bird_name < '하']]>) order by bird_name;</if>
+		<if test='part == "ㅎ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㅎ)' or (bird_name >= '하') order by bird_name;</if>
 	</select>
   
   <select id="getGuidePageList" resultType="com.spring.javaProjectS5.vo.GuideVO">
-    select * from guide <if test='part != "전체"'> where part = #{part} </if> order by idx desc limit #{startIndexNo},#{pageSize};
+    select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from guide q <if test='part != "전체"'> where part = #{part} </if> order by idx desc limit #{startIndexNo},#{pageSize};
   </select>
   
   <select id="totRecCnt" resultType="int">

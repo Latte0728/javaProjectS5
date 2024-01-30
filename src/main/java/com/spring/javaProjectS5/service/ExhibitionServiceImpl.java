@@ -36,6 +36,7 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 		return exhibitonDAO.setExhibitionDelete(idx);
 	}
 
+	// 검색창 버튼 구현 단계
 	@Override
 	public List<ExhibitionVO> getexhibitionList(String searchText) {
 		return exhibitonDAO.getexhibitionList(searchText);

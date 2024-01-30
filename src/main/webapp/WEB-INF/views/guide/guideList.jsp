@@ -44,6 +44,20 @@
     	color: #000000;
     	background: #64FE2E;
     }
+    
+    .container img{
+    	position:relative;
+    	z-index: 1;
+    }
+    .container .qrCode{
+    	position:absolute;
+    	width:70px;
+    	height:70px;
+    	z-index:2;
+    	margin-left: 179px;
+    	margin-top: 122px;
+    }
+    
   </style>
   <script>
   	'use strict';
@@ -140,9 +154,10 @@
 	    <div class="guideEa" style="width:280px;height:280px;margin:20px;">
 	      ${vo.bird_name}<br/>
 	      <c:set var="bird_imgs"   value="${fn:split(vo.photo,'/')}" />
-	      <a href="guideContent?idx=${vo.idx}"><img src="${ctp}/guide/${bird_imgs[0]}"  class="w3-border"  style="padding:10px" width="250px" /></a><br/>
+	      <img class="qrCode" src="${ctp}/qrCode/${vo.qrCodeName}.png" />
+	      <a href="guideContent?idx=${vo.idx}"><img src="${ctp}/guide/${bird_imgs[0]}"  class="w3-border "  style="padding:10px" width="250px" /></a><br/>
 	      □ 학명 : ${vo.bird_SName}<br/>
-	      □ 목/과 : ${vo.bird_class}<br/>
+	      □ 목/과 : ${vo.bird_class}<br/>${vo.qrCodeName};;;
 	    </div>
   	</div>
   </c:forEach>

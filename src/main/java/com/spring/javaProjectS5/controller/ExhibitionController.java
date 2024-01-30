@@ -53,7 +53,7 @@ public class ExhibitionController {
 		else return "redirect:/message/exhibitionInputNo";
 	}
 	
-	// 컨텐트 창 get 방식       exhibitionContent
+	// 전시 내용글 창 get 방식       
 	@RequestMapping(value="/exhibitionContent", method=RequestMethod.GET)
 	public String exhibitonContentGet(int idx, Model model) {
 		
@@ -62,13 +62,8 @@ public class ExhibitionController {
 		return "exhibition/exhibitionContent";
 	}
 	
-	//컨텐트 창 post 방식
-//	@RequestMapping(value="/exhibitionContent", method=RequestMethod.POST)
-//	public String exhibitonContentPost() {
-//		
-//		return "exhibition/exhibitionContent";
-//	}
-
+	
+	// 전시 내용글 삭제
 	@RequestMapping(value="/exhibitionDelete", method=RequestMethod.GET)
 	public String exhibitionDeleteGet(int idx) {
 		int res = exhibitionService.setExhibitionDelete(idx);

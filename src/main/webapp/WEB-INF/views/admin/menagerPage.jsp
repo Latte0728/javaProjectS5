@@ -193,6 +193,13 @@
 		  		<font color="white">선호 프로그램 통계</font>
 				</a>
 			</div>	
+			<div class="statics" style="margin-left:-100px; display:inline-block">
+				<a style="text-decoration:none;" href="${ctp}/admin/qrCreate">
+					<i class="fa-solid fa-chart-pie  fa-4x" style="color:white;"></i>
+					<p><br/></p>
+		  		<font color="white">QR코드 생성</font>
+				</a>
+			</div>	
 </div>
 <p><br/></p>
 </body>

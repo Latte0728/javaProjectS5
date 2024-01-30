@@ -39,6 +39,7 @@ public class GuideController {
 		if(part.equals("total")) part = "전체";
 		PageVO pageVO = pageProcess.totRecCnt(pag, pageSize, "guide", part, "");
 		List<GuideVO> vos = guideService.getGuidePageList(pageVO.getStartIndexNo(),pageSize,part);
+		System.out.println("vos : " + vos);
 		model.addAttribute("vos", vos);
 		model.addAttribute("pageVO", pageVO);
 		
@@ -100,6 +101,7 @@ public class GuideController {
 		PageVO pageVO = pageProcess.totRecCnt(pag, pageSize, "guidePart", part, "");
 		
 		List<GuideVO> vos = guideService.getGuidePart(pageVO.getStartIndexNo(),pageSize,part);
+		//System.out.println("vos : " + vos);
 		model.addAttribute("vos", vos);
 		model.addAttribute("pageVO", pageVO);
 		

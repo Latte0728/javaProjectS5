@@ -39,7 +39,7 @@
 	    <beans:ref bean="level3Interceptor" />
 	  </interceptor>
 	  <interceptor>		<!-- 관리자 -->
-	    <mapping path="/page/**"/>
+	    <mapping path="/admin/**"/>
 	    <beans:ref bean="level1Interceptor" />
 	  </interceptor>
 	</interceptors>

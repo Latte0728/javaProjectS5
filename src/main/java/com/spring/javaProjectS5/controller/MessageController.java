@@ -53,13 +53,17 @@ public class MessageController {
 		}
 		else if(msgFlag.equals("kakaosignInOk")) {
 			model.addAttribute("msg", mid + "회원님 로그인 되었습니다.");
-			model.addAttribute("url", "page/menagerPage");
+			model.addAttribute("url", "admin/menagerPage");
 		}
 		else if(msgFlag.equals("signOut")) {
 			model.addAttribute("msg", mid + "회원님 로그아웃 되었습니다.");
 			model.addAttribute("url", "sign/signIn");
 		}
 		else if(msgFlag.equals("memberNo")) {
+			model.addAttribute("msg", "로그인 후 이용해주세요");
+			model.addAttribute("url", "sign/signIn");
+		}
+		else if(msgFlag.equals("signUpOk")) {
 			model.addAttribute("msg", "로그인 후 이용해주세요");
 			model.addAttribute("url", "sign/signIn");
 		}

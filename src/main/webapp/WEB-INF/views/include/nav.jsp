@@ -53,13 +53,14 @@
 		    </div>
 		    <div>
 			    <c:if test="${empty sMid}">
-										<a href="${ctp}/sign/signIn">로그인</a> |
-									</c:if>
-									<c:if test="${!empty sMid}">
-									  ${sMid}님 페이지 |
-										<a href="javascript:kakaoLogout()">로그 아웃</a> |
-									</c:if>
-									<a href="${ctp}/sign/signUp">회원 가입</a>
+						<a href="${ctp}/sign/signIn">로그인</a> |
+						<a href="${ctp}/sign/signUp">회원 가입</a>
+					</c:if>
+					<c:if test="${!empty sMid}">
+					  ${sMid}님 페이지 |
+						<a href="javascript:kakaoLogout()">로그 아웃</a>
+						<c:if test="${sLevel == 1}">| <a href="${ctp}/admin/menagerPage">관리자</a></c:if>
+					</c:if>
 				</div>				 
 		  </div>
 </div>

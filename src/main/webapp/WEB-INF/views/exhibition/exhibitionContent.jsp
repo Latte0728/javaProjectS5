@@ -27,6 +27,7 @@
 <p><br/></p>
 <div class="container">
   <h2>주요 동물 안내</h2>
+  <p><br/></p>
   <form method="post">
   	<h3>${vo.name}</h3>
   	<hr/>
@@ -54,7 +55,7 @@
   		</ul>
   	</div>
   </form>
-  <div>
+  <div style="text-align:center">
   	<input type="button" onclick="location.href='exhibitionList';" class="btn btn-warning" value="돌아가기">
   	<c:if test="${sLevel == 1}">
   		<input type="button" onclick="exhibitionDelete();" class="btn btn-danger" value="삭제">

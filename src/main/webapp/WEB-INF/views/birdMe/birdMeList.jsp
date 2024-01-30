@@ -46,7 +46,7 @@
 <div class="container">
   <h2>내가 본 새</h2>
   <form method="post">
-  	<div class="input-group mb-3" class="form-control">
+  	<div class="input-group mb-3" >
   		<select name="search">
   			<option>새 이름</option>
   			<option>장소</option>

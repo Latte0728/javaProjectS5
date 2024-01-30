@@ -40,15 +40,15 @@
   </error-page>
   <error-page>
     <error-code>404</error-code>
-    <location>/errorPage/error400</location>
+    <location>/errorPage/error404</location>
   </error-page>
   <error-page>
     <error-code>405</error-code>
-    <location>/errorPage/error400</location>
+    <location>/errorPage/error405</location>
   </error-page>
   <error-page>
     <error-code>500</error-code>
-    <location>/errorPage/error400</location>
+    <location>/errorPage/error500</location>
   </error-page>
   
 	<!-- 한글처리(필터적용) - AOP -->
