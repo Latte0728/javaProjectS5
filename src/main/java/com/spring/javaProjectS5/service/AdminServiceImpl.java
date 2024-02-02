@@ -44,8 +44,8 @@ public class AdminServiceImpl implements AdminService{
 			
 			System.out.println("vo : " + vo);
 			qrCodeName = strToday + "_" + vo.getGuideIdx();
-			//String url = "http://49.142.157.251:9090";
-			String url = "http://localhost:9090";
+			String url = "http://49.142.157.251:9090";
+			//String url = "http://localhost:9090";
 			qrCodeName2 = url + request.getContextPath()+"/"+vo.getGuideUrl();
 			qrCodeName2 = new String(qrCodeName2.getBytes("UTF-8"), "ISO-8859-1");
 			

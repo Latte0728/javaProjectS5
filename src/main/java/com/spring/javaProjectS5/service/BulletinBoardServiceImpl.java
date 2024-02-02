@@ -50,12 +50,12 @@ public class BulletinBoardServiceImpl implements BulletinBoardService {
 	public void setReadNumUpdate(int idx) {
 		bulletinBoardDAO.setReadNumUpdate(idx);
 	}
-
+	
 	@Override
 	public int setBulletinBoardDelete(int idx) {
 		BulletinBoardVO vo = bulletinBoardDAO.getBulletinBoardContent(idx);
 		// boardContent 안에 그림 파일이 존재할 경우 그림파일을 삭제 처리함.
-		if(vo.getContent().indexOf("src=\"/") != 0) {
+		if(vo.getContent().indexOf("src=\"/") != -1) {
 			//         0         1         2         3         4         5
 			//         012345678901234567890123456789012345678901234567890
 			// <p><img src="/javaProjectS5/data/ckeditor/240117110349_1.jpg" style="height:725px;
@@ -125,6 +125,11 @@ public class BulletinBoardServiceImpl implements BulletinBoardService {
 	@Override
 	public List<BulletinBoardComplaintVO> getBulletinBoardComplaintList() {
 		return bulletinBoardDAO.getBulletinBoardComplaintList();
+	}
+
+	@Override
+	public BulletinBoardVO getBulletinBoardDelete(int idx) {
+		return bulletinBoardDAO.getBulletinBoardDelete(idx);
 	}
 
 

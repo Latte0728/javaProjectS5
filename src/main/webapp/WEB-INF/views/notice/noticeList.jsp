@@ -9,6 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>공지사항</title>
   <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
+  <style>
+  	th{
+  		background-color: #B5D692;
+  	}
+  </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
@@ -18,11 +23,11 @@
   <p><br/></p>
   	<form method="post" enctype="multipart/form-data" >
 	  	<div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="검색어를 입력해주세요" id="searchText" name="searchText"/>
+				<input type="text" class="form-control" placeholder="제목을 입력해주세요" id="searchText" name="searchText"/>
 				<input type="submit" value="검색" class="btn btn-info"/>
 			</div>
 		  <table class="table table-condensed" style="text-align:center;">
-		  	<tr class="text-dark table-dark" >
+		  	<tr class="text-dark" >
 					<th>번호</th>
 					<th>제목</th>
 					<th>첨부</th>

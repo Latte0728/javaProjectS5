@@ -52,12 +52,12 @@
 					<c:forEach var="vo" items="${vos}" varStatus="st">
 						<table class="table table-bordered">
 							<tr>
-							  <td>
+							  <td width="35%" class="text-center align-middle">
 									<c:set var="bird_temp" value="${fn:substring(vo.content,fn:indexOf(vo.content,'src=')+34,fn:length(vo.content))}"/>
 					  		  <c:set var="bird_img"   value="${fn:substring(bird_temp,0,fn:indexOf(bird_temp,'.jpg')+4)}" />
 						      <a href="exhibitionContent?idx=${vo.idx}"><img src="${ctp}/data/ckeditor/${bird_img}" class="w3-border" style="padding:10px" width="250px" /></a><br/>
 				      	</td>
-				      	<td>
+				      	<td width="65%">
 				      		<table class="table-borderless">
 				      			<tr><td><font size="3">동물군</font></td></tr>
 				      			<tr><td><font size="5"><b>${vo.name}</b> ${vo.SName}</font></td></tr>

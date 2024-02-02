@@ -37,4 +37,6 @@ public interface BulletinBoardDAO {
 
 	public List<BulletinBoardComplaintVO> getBulletinBoardComplaintList();
 
+	public BulletinBoardVO getBulletinBoardDelete(@Param("idx") int idx);
+
 }

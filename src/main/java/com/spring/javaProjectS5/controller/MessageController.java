@@ -33,7 +33,7 @@ public class MessageController {
 			model.addAttribute("url", "/");
 		}
 		
-		else if(msgFlag.equals("signUserUdpateOk")) {
+		else if(msgFlag.equals("signUserUpdateOk")) {
 			model.addAttribute("msg", "수정이 완료되었습니다.");
 			model.addAttribute("url", "sign/signMain");
 		}
@@ -45,8 +45,9 @@ public class MessageController {
 		
 		else if(msgFlag.equals("signInOk")) {
 			model.addAttribute("msg", mid + "회원님 로그인 되었습니다.");
-			model.addAttribute("url", "sign/signMain");
+			model.addAttribute("url", "/");
 		}
+		
 		else if(msgFlag.equals("signInNo")) {
 			model.addAttribute("msg", "로그인 실패");
 			model.addAttribute("url", "sign/signIn");
@@ -59,15 +60,10 @@ public class MessageController {
 			model.addAttribute("msg", mid + "회원님 로그아웃 되었습니다.");
 			model.addAttribute("url", "sign/signIn");
 		}
-		else if(msgFlag.equals("memberNo")) {
-			model.addAttribute("msg", "로그인 후 이용해주세요");
-			model.addAttribute("url", "sign/signIn");
-		}
 		else if(msgFlag.equals("signUpOk")) {
 			model.addAttribute("msg", "로그인 후 이용해주세요");
 			model.addAttribute("url", "sign/signIn");
 		}
-		
 		else if(msgFlag.equals("guideWriteOk")) {
 			model.addAttribute("msg", "글이 등록되었습니다");
 			model.addAttribute("url", "guide/guideWrite");
@@ -114,7 +110,7 @@ public class MessageController {
 		}
 		else if(msgFlag.equals("bulletinBoardDeleteNo")) {
 			model.addAttribute("msg", "게시글 삭제 실패");
-			model.addAttribute("url", "bulletinBoard/bulletinBoardContent?idx="+idx);
+			model.addAttribute("url", "bulletinBoard/bulletinBoardContent?idx?idx="+idx);
 		}
 		else if(msgFlag.equals("bulletinBoardUpdateOk")) {
 			model.addAttribute("msg", "게시글이 성공적으로 수정되었어요!!");
@@ -122,7 +118,7 @@ public class MessageController {
 		}
 		else if(msgFlag.equals("bulletinBoardUpdateNo")) {
 			model.addAttribute("msg", "게시글 수정 실패");
-			model.addAttribute("url", "bulletinBoard/bulletinBoardUpdate?idx="+idx);
+			model.addAttribute("url", "bulletinBoard/bulletinBoardContent");
 		}
 		else if(msgFlag.equals("noticeInputOk")) {
 			model.addAttribute("msg", "작성이 완료되었습니다.");
@@ -171,6 +167,10 @@ public class MessageController {
 		else if(msgFlag.equals("exhibitionDeleteNo")) {
 			model.addAttribute("msg", "삭제 오류.");
 			model.addAttribute("url", "exhibition/exhibitionContent");
+		}
+		else if(msgFlag.equals("bulletinBoardDeleteReplyOk")) {
+			model.addAttribute("msg", "댓글을 먼저 삭제해주세요.");
+			model.addAttribute("url", "bulletinBoard/bulletinBoardContent?idx="+idx);
 		}
 		return "include/message";
 	}

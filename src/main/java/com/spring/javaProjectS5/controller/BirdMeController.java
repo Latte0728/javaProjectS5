@@ -32,6 +32,7 @@ public class BirdMeController {
 		return "birdMe/birdMeList";
 	}
 	
+	// 좋아요
 	@ResponseBody
 	@RequestMapping(value="/birdMeGoodCheck", method = RequestMethod.POST)
 	public String birdMeGoodCheckPost(String part, int partIdx, String mid) {

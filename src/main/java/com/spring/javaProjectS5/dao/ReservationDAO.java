@@ -19,10 +19,12 @@ public interface ReservationDAO {
 
 	public ReservationInfoVO getReservationDuplicate(@Param("mid") String mid, @Param("wDate") String wDate);
 
-	public List<ReservationVO> getReservationMidList(@Param("mid") String mid);
+	public List<ReservationVO> getReservationConfirm(@Param("mid") String mid);
 
 	public List<ReservationVO> getScheduleList(@Param("ym") String ym);
 
 	public List<ReservationVO> getScheduleMenu(@Param("ymd") String ymd);
+
+	
 
 }

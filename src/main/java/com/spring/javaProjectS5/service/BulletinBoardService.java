@@ -34,6 +34,14 @@ public interface BulletinBoardService {
 
 	public List<BulletinBoardComplaintVO> getBulletinBoardComplaintList();
 
+	public BulletinBoardVO getBulletinBoardDelete(int idx);
+
+	
+
+	
+
+	
+
 
 	
 

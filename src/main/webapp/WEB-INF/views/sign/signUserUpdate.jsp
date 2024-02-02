@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>memberUpdateForm.jsp</title>
+  <title>signUpdateForm.jsp</title>
   <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="${ctp}/js/woo.js"></script>
@@ -137,7 +137,7 @@
     		return false;
     	}
     	
-    	let url = "${ctp}/memberNickCheck.mem?nickName="+nickName;
+    	let url = "${ctp}/sign/signNickCheck?nickName="+nickName;
     	
     	if(nickName.trim() == "") {
     		alert("닉네임을 입력하세요!");
@@ -303,13 +303,13 @@
     </div>
     <div  class="form-group">
       회원 사진(파일용량:2MByte이내) :
-      <img src="${ctp}/member/${vo.photo}" width="100px"/>
+      <img src="${ctp}/sign/${vo.photo}" width="100px"/>
       <input type="file" name="fName" id="file" onchange="imgCheck(this)" class="form-control-file border mb-1"/>
       <div><img id="photoDemo" width="100px"/></div>
     </div>
     <button type="button" class="btn btn-success" onclick="fCheck()">회원정보수정</button>&nbsp;
     <button type="reset" class="btn btn-info">다시작성</button>&nbsp;
-    <button type="button" class="btn btn-warning" onclick="location.href='memberMain';">돌아가기</button>
+    <button type="button" class="btn btn-warning" onclick="location.href='signMain';">돌아가기</button>
     
     <input type="hidden" name="email" />
     <input type="hidden" name="tel" />
@@ -319,6 +319,6 @@
   </form>
 </div>
 <p><br/></p>
-<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+<%-- <jsp:include page="/WEB-INF/views/include/footer.jsp" /> --%>
 </body>
 </html>

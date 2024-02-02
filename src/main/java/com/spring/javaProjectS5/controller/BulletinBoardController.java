@@ -35,6 +35,7 @@ public class BulletinBoardController {
 		return "bulletinBoard/bulletinBoardList";	
 	}
 	
+	// 검색 버튼 및 전체 조회
 	@RequestMapping(value="/bulletinBoardList", method=RequestMethod.POST)
 	public String guideListPost(Model model, String searchString, String search) {
 		if(search.equals("total")) search = "전체";
@@ -55,28 +56,31 @@ public class BulletinBoardController {
 		if(res != 0) return "redirect:/message/bulletinBoardInputOk";
 		else return "redirect:/message/bulletinBoardInputNo";
 	}
-	
+		
 	
 	@RequestMapping(value="/bulletinBoardDelete", method=RequestMethod.GET)
-	public String bulletinBoardDeleteGet(int idx) {
-		int res = bulletinBoardService.setBulletinBoardDelete(idx);
-		
-		if(res != 0) return "redirect:/message/bulletinBoardDeleteOk";
-		else return "redirect:/message/bulletinBoardDeleteNo?idx="+idx;
+	public String noticeDelete(int idx) {
+		// 댓글이 있는지 체크하고 댓글이 있으면 원본글을 삭제 못하게 처리한다.
+		List<BulletinBoardReplyVO> vos = bulletinBoardService.getBoardParentReplyList(idx);
+		if(vos.size() != 0) return "redirect:/message/bulletinBoardDeleteReplyOk?idx="+idx;
+		else {
+			int res = bulletinBoardService.setBulletinBoardDelete(idx);
+			if(res != 0) return "redirect:/message/bulletinBoardDeleteOk";
+			else return "redirect:/message/bulletinBoardDeleteNo?idx="+idx;
+		}
 	}
 	
 	 
-	//@SuppressWarnings({ "unchecked", "rawtypes" })
+	
 	@RequestMapping(value="/bulletinBoardContent", method=RequestMethod.GET)
 	public String bulletinBoardInputGet(Model model, int idx, HttpSession session, HttpServletRequest request) {
 		
 		// 조회수 증가(중복 방지)
-		ArrayList<String> boardContentIdx = (ArrayList) session.getAttribute("sBoardContentIdx");
+		ArrayList<String> boardContentIdx = (ArrayList)session.getAttribute("sBoardContentIdx");
 		// 세션에서 게시글의 번호(idx)를 가져옴
 		if(boardContentIdx == null) {
 			boardContentIdx = new ArrayList<String>();
 			// 게시글 번호가 세션에 없다면 ArrayList를 이용하여 배열로 하나 만듦(배열 안에 게시글 번호를 하나 담는다)
-			
 		}
 		String imsiContextIdx = "board" + idx;
 		// 게시글의 번호(idx)를 board 변수에 담아 생성함
@@ -92,6 +96,8 @@ public class BulletinBoardController {
 	  BulletinBoardVO vo = bulletinBoardService.getBulletinBoardContent(idx);
 	  
 	  model.addAttribute("vo", vo);
+	  
+	  
 	  
 	  // 댓글 처리 
 	  List<BulletinBoardReplyVO> rVos = bulletinBoardService.getBoardParentReplyList(idx);
@@ -117,7 +123,7 @@ public class BulletinBoardController {
 		if(res != 0) return "1";
 		else return "0";
 	}
-
+	
 	@RequestMapping(value="/bulletinBoardUpdate", method=RequestMethod.GET)
 	public String bulletinBoardUpdateGet(Model model, int idx) {
 		BulletinBoardVO vo = bulletinBoardService.getBulletinBoardContent(idx);
@@ -126,16 +132,16 @@ public class BulletinBoardController {
 		return "bulletinBoard/bulletinBoardUpdate";
 	}
 	
-		
+	// 게시글 수정	
   @RequestMapping(value="/bulletinBoardUpdate", method=RequestMethod.POST)
   public String bulletinBoardUpdatePost(BulletinBoardVO vo) {
   	
   	int res = bulletinBoardService.setbulletinBoardUpdate(vo);
-  	if(res != 0) return "redirect:/message/bulletinBoardUpdateOk"; 
+  	if(res != 0) return "redirect:/message/bulletinBoardUpdateOk?idx=" + vo.getIdx(); 
   	else return "redirect:/message/bulletinBoardUpdateNo"; 
   }
   
-  @ResponseBody
+  
   @RequestMapping(value="/bulletinBoardComplaintInput", method=RequestMethod.POST)
   public String bulletinBoardComplaintInputPost(BulletinBoardComplaintVO vo) {
   	

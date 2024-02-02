@@ -146,8 +146,8 @@ public class SignController {
 			
 		// 1.세션처리
 		String strLevel = "";
-		if(vo.getLevel() == 0) strLevel = "관리자";
-		else if(vo.getLevel() == 1) strLevel = "회원";
+		if(vo.getLevel() == 1) strLevel = "관리자";
+		else if(vo.getLevel() == 2) strLevel = "회원";
 		
 		
 		

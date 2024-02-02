@@ -6,14 +6,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>400error(400errorPage)</title>
+  <title>404error(400errorPage)</title>
   <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
 </head>
 <body>
 <p><br/></p>
 <div class="container text-center">
   <hr/>
-  <img src="${ctp}/images/errorpage400.jpg" width="50%">
+  <img src="${ctp}/images/errorpage405.jpg" width="50%">
   <div>
   	<a href="${ctp}/" class="btn btn-danger">Home화면으로 돌아가기</a>
   </div>

@@ -98,8 +98,8 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public List<ReservationVO> getReservationMidList(String mid) {
-		return reservationDAO.getReservationMidList(mid);
+	public List<ReservationVO> getReservationConfirm(String mid) {
+		return reservationDAO.getReservationConfirm(mid);
 	}
 
 	@Override

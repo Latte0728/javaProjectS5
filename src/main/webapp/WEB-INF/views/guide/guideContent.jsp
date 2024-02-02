@@ -237,7 +237,7 @@
   	 </tr>
 		</table>
 		 
-		<div>
+		<div style="text-align:center">
 		  <c:set var="bird_imgs" value="${fn:split(vo.photo,'/')}" />
 			<c:forEach var="photo" items="${bird_imgs}" varStatus="st">
 			  <img src="${ctp}/guide/${photo}" width="250px" class="m-2" />

@@ -15,7 +15,7 @@
 		select * from reservationInfo where mid = #{mid} and wDate = #{wDate} limit 1;
 	</select>
 	
-	<select id="getReservationMidList" resultType="com.spring.javaProjectS5.vo.ReservationInfoVO">
+	<select id="getReservationConfirm" resultType="com.spring.javaProjectS5.vo.ReservationInfoVO">
 		select i.*,r.title,r.startDate,r.endDate, datediff(r.startDate, now()) as date_diff ,r.content as imgContent from reservationInfo i, reservation r 
 		where i.reservationIdx = r.idx and i.mid = #{mid} order by idx desc;
 	</select>

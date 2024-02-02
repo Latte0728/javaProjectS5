@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>scheduleMenu.jsp</title>
+  <title>일정 확인</title>
   <jsp:include page="/WEB-INF/views/include/bs4.jsp"></jsp:include>
   <script>
     'use strict';
@@ -77,7 +77,7 @@
 <p><br/></p>
 <div class="container">
   <h4>${ymd} 일정입니다.</h4>
-  <p>오늘의 일정은 총 ${scheduleCnt}건 있습니다.</p>
+  <p>금일 예약 일정은 총 ${scheduleCnt}건 있습니다.</p>
   <hr/>
   <div>
     <input type="button" value="돌아가기" onclick="location.href='${ctp}/reservation/reservationAdminView?yy=${fn:split(ymd,'-')[0]}&mm=${fn:split(ymd,'-')[1]-1}';" class="btn btn-info"/>
@@ -88,12 +88,14 @@
     <table class="table table-hover text-center">
       <tr class="table-dark text-dark">
         <th>번호</th>
+      	<th>예약자</th>
         <th>간단 내역</th>
         <th>비고</th>
       </tr>
       <c:forEach var="vo" items="${vos}" varStatus="st">
         <tr>
           <td>${st.count}</td>
+        	<td>${vo.mid}</td>
           <td>
           	<a href="#" onclick="modalView('${fn:replace(vo.content,newLine,'<br/>')}')" data-toggle="modal" data-target="#myModal">
 	            <c:if test="${fn:indexOf(vo.content,newLine) != -1}">${fn:substring(vo.content,0,fn:indexOf(vo.content,newLine))}</c:if>

@@ -34,10 +34,6 @@ public class ReservationController {
 		else return "redirect:/message/reservationWriteNo";
 	}
 	
-	@RequestMapping(value="/reserve", method=RequestMethod.GET)
-	public String reserveGet() {
-		return "reservation/reserve";
-	}
 	
 	@RequestMapping(value="/reservationList", method=RequestMethod.GET)
 	public String reservationListGet(Model model) {
@@ -68,16 +64,10 @@ public class ReservationController {
 		else return "redirect:/message/reservationFormNo";
 	}
 	
-	
-	@RequestMapping(value="/reservationInfo", method=RequestMethod.GET)
-	public String reservationInfoGet() {
-		return "reservation/reservationInfo";
-	}
-	
 	@RequestMapping(value="/reservationConfirm", method=RequestMethod.GET)
 	public String reservationConfirmGet(HttpSession session, Model model) {
 		String mid = (String)session.getAttribute("sMid");
-		List<ReservationVO> vos = reservationService.getReservationMidList(mid);
+		List<ReservationVO> vos = reservationService.getReservationConfirm(mid);
 		model.addAttribute("vos", vos);
 		return "reservation/reservationConfirm";
 	}

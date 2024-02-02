@@ -15,7 +15,7 @@ public interface NoticeService {
 
 	public int setNoticeDelete(int idx);
 
-	public List<NoticeVO> getNoticeList(String searchText);
+	public List<NoticeVO> getNoticeSearch(String searchText);
 
 	
 }

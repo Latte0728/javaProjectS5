@@ -14,6 +14,7 @@
   <title>예약 프로그램 상세 정보</title>
   <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
 	<style>
+	/*
 		.h2_info{
 			text-align:center;
 		}
@@ -78,7 +79,7 @@
 		padding:5px;
 		marign-right:9px;
 		}  
-		
+	*/	
 	</style> 
 	<script>
 		function imgCheck(idx, title, imageOne){
@@ -98,54 +99,53 @@
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
 <p><br/></p>
-<div class="container"></div>
+<div class="container">
 	<h2 class="h2_info">프로그램 목록</h2>
 	<h4 class="h4_info">제목을 클릭하셔서 다양한 프로그램을 예약해보세요!!!</h4>
 	<div class="info_box">
-		<div>
-			<div style="text-align: center;">
-				<div class="row">
-					<c:forEach var="i" begin="0" end="3" varStatus="st">
-						  <c:set var="nextImg" value="${fn:substring(vos[i].content,fn:indexOf(vos[i].content,'src=')+37,fn:length(vos[i].content))}"/>
-						  <div class="col"><img src="${ctp}/reservation/${fn:substring(nextImg,0,fn:indexOf(nextImg,'\"'))}" class="w3-round-large" style="width:100%"/></div>
-					</c:forEach>
-			  </div>
-			</div>
-			<hr/>
-			<div class="text-center">
-				<table class="table table-hover table-striped">
-					<tr class="table-info text-dark">
-						<th>번호</th>
-						<th>제목</th>
-						<th>시작일</th>
-						<th>종료일</th>
-						<th>대상</th>
-						<th>모집정원</th>
+		<div style="text-align: center;">
+			<div class="row">
+				<c:forEach var="i" begin="0" end="3" varStatus="st">
+					  <c:set var="nextImg" value="${fn:substring(vos[i].content,fn:indexOf(vos[i].content,'src=')+37,fn:length(vos[i].content))}"/>
+					  <div class="col"><img src="${ctp}/reservation/${fn:substring(nextImg,0,fn:indexOf(nextImg,'\"'))}" class="w3-round-large" style="width:100%"/></div>
+				</c:forEach>
+		  </div>
+		</div>
+		<hr/>
+		<div class="text-center">
+			<table class="table table-hover table-striped">
+				<tr class="table-info text-dark">
+					<th>번호</th>
+					<th>제목</th>
+					<th>시작일</th>
+					<th>종료일</th>
+					<th>대상</th>
+					<th>모집정원</th>
+				</tr>
+				<c:forEach var="vo" items="${vos}" varStatus="st">
+				  <c:set var="nextImg" value="${fn:substring(vo.content,fn:indexOf(vo.content,'src=')+37,fn:length(vo.content))}"/>
+				  <c:set var="imageOne" value="${fn:substring(nextImg,0,fn:indexOf(nextImg,'\"'))}"/>
+					<tr>	
+						<td>${st.count}</td>
+						<td>
+						  <c:if test="${today < fn:substring(vo.startDate,0,10)}">
+						  	<a href="#" onclick="imgCheck('${vo.idx}','${vo.title}','${imageOne}')" data-toggle="modal" data-target="#myModal">${vo.title}</a>
+							</c:if>
+						  <c:if test="${today >= fn:substring(vo.startDate,0,10)}">
+						  	<a href="javascript:alert('예약신청일이 지나 예약을 할 수 없습니다.');">${vo.title}</a>
+							</c:if>
+						</td>
+						<td>${fn:substring(vo.startDate,0,10)}</td>
+						<td>${fn:substring(vo.endDate,0,10)}</td>
+						<td>${vo.training}</td>
+						<td>${vo.recruit}</td>
 					</tr>
-					<c:forEach var="vo" items="${vos}" varStatus="st">
-					  <c:set var="nextImg" value="${fn:substring(vo.content,fn:indexOf(vo.content,'src=')+37,fn:length(vo.content))}"/>
-					  <c:set var="imageOne" value="${fn:substring(nextImg,0,fn:indexOf(nextImg,'\"'))}"/>
-						<tr>	
-							<td>${st.count}</td>
-							<td>
-							  <c:if test="${today < fn:substring(vo.startDate,0,10)}">
-							  	<a href="#" onclick="imgCheck('${vo.idx}','${vo.title}','${imageOne}')" data-toggle="modal" data-target="#myModal">${vo.title}</a>
-								</c:if>
-							  <c:if test="${today >= fn:substring(vo.startDate,0,10)}">
-							  	<a href="javascript:alert('예약신청일이 지나 예약을 할 수 없습니다.');">${vo.title}</a>
-								</c:if>
-							</td>
-							<td>${fn:substring(vo.startDate,0,10)}</td>
-							<td>${fn:substring(vo.endDate,0,10)}</td>
-							<td>${vo.training}</td>
-							<td>${vo.recruit}</td>
-						</tr>
-					</c:forEach>
-					<tr><td colspan="6" class="m-0 p-0"></td></tr>
-				</table>
-			</div>
+				</c:forEach>
+				<tr><td colspan="6" class="m-0 p-0"></td></tr>
+			</table>
 		</div>
 	</div>
+</div>
 </div>
 <!-- The Modal -->
 <div class="modal fade" id="myModal">

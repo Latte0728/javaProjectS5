@@ -18,6 +18,7 @@
 		</if>
 	</select>
   
+  <!-- 해당 자음입력시 그 자음에 맞는 도감 목록이 나옴(예:가 입력시 ㄱ에 해당하는 도감 목록이 나옴) -->
   <select id="getGuidePart" resultType="com.spring.javaProjectS5.vo.GuideVO">
 		<!-- select * from	guide where bird_name like concat(#{search},'%'); -->
 		<if test='part == "ㄱ"'>select *,(select qrCodeName from qrCode where guideIdx = q.idx) as qrCodeName from	guide q where bird_name rlike '^(ㄱ|ㄲ)' or (bird_name >= '가'  and <![CDATA[bird_name < '나']]>) order by bird_name;</if>

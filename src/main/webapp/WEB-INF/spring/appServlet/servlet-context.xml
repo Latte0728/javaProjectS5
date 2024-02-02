@@ -14,8 +14,8 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/turnjs/**" location="/resources/turnjs/" />
 	<resources mapping="/images/**" location="/resources/images/" />
+	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/video/**" location="/resources/video/" />
 	<resources mapping="/sign/**" location="/resources/data/sign/" />
 	<resources mapping="/bulletinBoard/**" location="/resources/data/ckeditor/bulletinBoard/" />

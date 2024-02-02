@@ -17,7 +17,7 @@ public interface ReservationService {
 
 	public ReservationInfoVO getReservationDuplicate(String mid, String wDate);
 
-	public List<ReservationVO> getReservationMidList(String mid);
+	public List<ReservationVO> getReservationConfirm(String mid);
 
 	public void getSchedule();
 

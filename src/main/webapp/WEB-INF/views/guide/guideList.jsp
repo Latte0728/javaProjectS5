@@ -75,64 +75,34 @@
   <h2 style="text-align:center;">조류 도감 목록</h2>
   <p><br/></p>
   <h4>조류도감에서는 이름,학명 등의 종명 색인이나 종명 검색을 이용하여 누구나 쉽게 새를 찾아볼 수 있습니다.</h4>
-  <div class="easy" >
-  	<div class="easySearch" style="display:inline">	
-	  	<ul  style="margin:0; padding:0; display:inline-block" >
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㄱ">가</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㄴ">나</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㄷ">다</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㄹ">라</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅁ">마</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅂ">바</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅅ">사</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅇ">아</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅈ">자</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅊ">차</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅋ">카</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅌ">타</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅍ">파</a>
-	  		</li>
-	  		<li>
-	  			<a href="${ctp}/guide/guidePart?part=ㅎ">하</a>
-	  		</li>
-  		</ul>
-  	</div>	
-  	<div class="searchForm" style="display:inline">
-			<form method="post" style="text-align:right; display:inline-block" class="myForm">  	
-  			<select style="width:60px" name="search" id="search" >
-	  			<option value="total" <c:if test="${search=='total'}">selected</c:if>>통합</option>
-	  			<option value="bird_name" <c:if test="${search=='bird_name'}">selected</c:if>>이름</option>
-	  			<option value="bird_SName" <c:if test="${search=='bird_SName'}">selected</c:if>>학명</option>
-	  		</select>
-	  		<input type="text"  name="searchString" id="searchString" required />
-	  		<input type="submit" value="검색" id="btnSearch">	
-	  		<input type="button" value="전체" onclick="location.href='guideList';" id="btnSearch">	
-  		</form>
+  <div class="border pl-3 pt-3">
+  	<div class="form-group">
+			<a href="${ctp}/guide/guidePart?part=ㄱ" class="border p-2">가</a>
+			<a href="${ctp}/guide/guidePart?part=ㄴ" class="border p-2">나</a>
+			<a href="${ctp}/guide/guidePart?part=ㄷ" class="border p-2">다</a>
+			<a href="${ctp}/guide/guidePart?part=ㄹ" class="border p-2">라</a>
+			<a href="${ctp}/guide/guidePart?part=ㅁ" class="border p-2">마</a>
+			<a href="${ctp}/guide/guidePart?part=ㅂ" class="border p-2">바</a>
+			<a href="${ctp}/guide/guidePart?part=ㅅ" class="border p-2">사</a>
+			<a href="${ctp}/guide/guidePart?part=ㅇ" class="border p-2">아</a>
+			<a href="${ctp}/guide/guidePart?part=ㅈ" class="border p-2">자</a>
+			<a href="${ctp}/guide/guidePart?part=ㅊ" class="border p-2">차</a>
+			<a href="${ctp}/guide/guidePart?part=ㅋ" class="border p-2">카</a>
+			<a href="${ctp}/guide/guidePart?part=ㅌ" class="border p-2">타</a>
+			<a href="${ctp}/guide/guidePart?part=ㅍ" class="border p-2">파</a>
+			<a href="${ctp}/guide/guidePart?part=ㅎ" class="border p-2 mr-4">하</a>
+	  	<div class="searchForm form-group-append" style="display:inline">
+				<form method="post" style="text-align:right; display:inline-block" class="myForm">  	
+	  			<select name="search" id="search" >
+		  			<option value="total" <c:if test="${search=='total'}">selected</c:if>>통합</option>
+		  			<option value="bird_name" <c:if test="${search=='bird_name'}">selected</c:if>>이름</option>
+		  			<option value="bird_SName" <c:if test="${search=='bird_SName'}">selected</c:if>>학명</option>
+		  		</select>
+		  		<input type="text"  name="searchString" id="searchString" required />
+		  		<input type="submit" value="검색" id="btnSearch">	
+		  		<input type="button" value="전체" onclick="location.href='guideList';" id="btnSearch">	
+	  		</form>
+	  	</div>
   	</div>
   </div>
 	<hr/>
@@ -157,7 +127,7 @@
 	      <img class="qrCode" src="${ctp}/qrCode/${vo.qrCodeName}.png" />
 	      <a href="guideContent?idx=${vo.idx}"><img src="${ctp}/guide/${bird_imgs[0]}"  class="w3-border "  style="padding:10px" width="250px" /></a><br/>
 	      □ 학명 : ${vo.bird_SName}<br/>
-	      □ 목/과 : ${vo.bird_class}<br/>${vo.qrCodeName};;;
+	      □ 목/과 : ${vo.bird_class}<br/>
 	    </div>
   	</div>
   </c:forEach>

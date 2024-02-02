@@ -8,43 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>새의 특징</title>
   <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
-	<style>
-		.container{
-			width: 100%;
-	    font-family: '맑은 고딕', normal;
-	    
-		}
-		.nav_tab {
-			box-sizing: border-box;
-			border-box: 1px solid #720d2f;
-			font-size: 1.4em;
-    	letter-spacing: -1px;
-			line-height: 1.2em;
-		}
-		
-  	.fixed {
-		  position: fixed;
-		  bottom: 30px;
-		  left: 155px;
-		  
-		}
-		.img_bird {
-			display: flex; 
-			flex-direction: row-reverse;
-		}
-		.img_bird2 {
-			margin-left: 50px;
-	    margin-top: -30px;
-	    text-align: center;
-	    
-		}
-	</style>
 	<script>
 		'use strict';
 		function birdTitleSearch(title, photo) {
-			//alert(photo);
 			let str = '';
-			if(title == "파일(해부학적특징)") {
+			if(title == "해부학적특징") {
 				str += '<span class="btn btn-info mr-3">해부학적 이해</span>';
 				str += '<span class="btn btn-info" onclick="birdAnatomy()">골격의 이해</span><hr/>';
 			}
@@ -54,7 +22,7 @@
 		
 		function birdAnatomy() {
 			let str = '';
-			str += "<span class='btn btn-info mr-3' onclick=\"birdTitleSearch('파일(해부학적특징)','202402515726854_info3-2.jpg')\">해부학적 이해</span>";
+			str += "<span class='btn btn-info mr-3' onclick=\"birdTitleSearch('해부학적특징'),'202402515726854_info3-2.jpg')\">해부학적 이해</span>";
 			str += '<span class="btn btn-info">골격의 이해</span><hr/>';
 		  str += '<img src="${ctp}/bird/birdInfo3-1.jpg" />';
 			$("#demo").html(str);
@@ -106,24 +74,12 @@
 <jsp:include page="/WEB-INF/views/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <div class="nav_tab">
-  	<ul>
-  		<li class="lic">
-  			<a href="birdFeature?idx=${vo.idx}" class="btn btn-success"><span>새의 특징(일반론)</span></a>
-  		</li>
-  		<li class="lic">
-  			<a href="birdEvolve?idx=${vo.idx}" class="btn btn-success"><span>새의 진화</span></a>
-  		</li>
-  		<li class="lic">
-  			<a href="javascript:birdTitleOut('ㄱ','info6-1.jpg')" class="btn btn-success"><span>외부 명칭</span></a>
-  		</li>
-  		<c:forEach var="vo" items="${vos}" varStatus="st">
-	  		<li class="lic">
-	  			<a href="javascript:birdTitleSearch('${vo.title}','${vo.photo}')" class="btn btn-success"><span>${vo.title}</span></a>
-	  		</li>
-  		</c:forEach>
-  	</ul>
-  </div>
+	<a href="birdFeature?idx=${vo.idx}" class="btn btn-success"><span>새의 특징(일반론)</span></a>
+	<a href="birdEvolve?idx=${vo.idx}" class="btn btn-success"><span>새의 진화</span></a>
+	<a href="javascript:birdTitleOut('ㄱ','info6-1.jpg')" class="btn btn-success"><span>외부 명칭</span></a>
+	<c:forEach var="vo" items="${vos}" varStatus="st">
+		<a href="javascript:birdTitleSearch('${vo.title}','${vo.photo}')" class="btn btn-success"><span>${vo.title}</span></a>
+	</c:forEach>
   <p><br/></p>
   <hr/>
   <p><br/></p>
@@ -158,67 +114,77 @@
 	  	</p>
 	  </div>
 	  <p><br/></p>
-	  <div class="box_bird" style="border:1px solid gray">
+	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>나. 날개를 이용해 하늘을 날 수 있다.</b></h4>
-	  	<div class="img_bird">
-	  		<div class="img_bird2">
-			  	<img src="${ctp}/resources/images/2.jpg" style="margin-right:5px;"/><br/>
-			  	[하늘을 나는 재두루미]
-	  		</div>
-		  		<p>
-		  		몸이 너무 무겁거나 날 필요가 없는 몇몇 종을 제외하고 모든 새는 하늘을 날 수 있다.<br/> 
-		  		날개는 앞다리의 변형인데, 여기에 돋아있는 날개깃을 이용하여 하늘에서 자유로이 날아다닐 수 있는 것이다.<br/>
-		  		</p>
-		  </div>	
+	  	<table class="table table-borderless">
+		    <tr>
+		      <td><img src="${ctp}/resources/images/2.jpg" style="margin-right:5px;"/></td>
+		      <td>
+		        [하늘을 나는 재두루미]<br/>
+		  	    몸이 너무 무겁거나 날 필요가 없는 몇몇 종을 제외하고 모든 새는 하늘을 날 수 있다.<br/> 
+	  				날개는 앞다리의 변형인데, 여기에 돋아있는 날개깃을 이용하여 하늘에서 자유로이 날아다닐 수 있는 것이다.
+			  	</td>
+			  </tr>
+		  </table>	
 	  </div>
 	  <p><br/></p>
 	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>다. 뛰어난 시력과 가벼운 뼈를 지녔다.</b></h4>
 	  	<div class="img_bird">
-	  		<div class="img_bird2">
-			  	<img src="${ctp}/resources/images/3.jpg" style="margin-right:5px;"/><br/>
-			  	[큰 눈을 가진 금눈쇠올빼미]
-			  </div>	
-			  	<p style="flex:1">
-		  		빠른 속도로 하늘을 날아다니기 위해서는 뛰어난 시각을 가질 필요가 있다.<br/> 
-		  		새는 머리무게의 15%나 되는 커다란 눈을 가지고 있으며, 빠른 판단을 내림으로써 충돌을 피한다.<br/> 
-		  		몸이 무거우면 날아다닐 때 많은 에너지를 소모하게 되므로, 새의 뼈는 속이 비어 있다.<br/>
-			  	</p>
+  		  <table class="table table-borderless">
+  		    <tr>
+  		      <td><img src="${ctp}/resources/images/3.jpg" style="margin-right:5px;"/></td>
+  		      <td>
+			  	    [큰 눈을 가진 금눈쇠올빼미]<br/>
+				  		빠른 속도로 하늘을 날아다니기 위해서는 뛰어난 시각을 가질 필요가 있다.<br/> 
+				  		새는 머리무게의 15%나 되는 커다란 눈을 가지고 있으며, 빠른 판단을 내림으로써 충돌을 피한다.<br/> 
+				  		몸이 무거우면 날아다닐 때 많은 에너지를 소모하게 되므로, 새의 뼈는 속이 비어 있다.<br/>
+				  	</td>
+				  </tr>
+			  </table>
 		  </div>
 	  </div>
 	  <p><br/></p>
 	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>라. 몸은 유선형이며, 날기 위해 완강한 골조(骨組)</b></h4>
-	  	<div class="img_bird">
-	  		<div class="img_bird2">
-			  	<img src="${ctp}/resources/images/4.jpg" style="margin-right:5px;"/><br/>
-			  	[나는 새 중 가장 무거운 큰고니]<br/>
-			  	<img src="${ctp}/resources/images/5.jpg" style="margin-right:5px;"/><br/>
-			  	[날지 못하는 새 타조]
-		  </div>
-	  	<p>
-	  		공기의 저항을 줄일수록 날기 쉬우므로 조류의 몸은 유선형으로 진화하였다.<br/> 
-	  		몸의 돌출부는 깃털로 감싸져 있어 공기 저항을 최소화하며 더욱 쉽게 날 수 있다.<br/>
-	  		날기 위해서 체중을 줄여야만 하므로 뼈 속이 비워졌듯이, 무거운 이빨 대신 가벼운 부리를 발달시켰으며 꼬리뼈를 축합시켜 몸무게를 줄였다.<br/> 
-	  		새의 뼈는 얇고 가볍지만, 강하고 단단한 구조를 가지고 있다. 가장 무거운 새는 큰고니로 최대 14kg의 몸무게를 가진다.<br/> 
-	  		그러나 그보다 훨씬 몸이 무거운 타조는 나는 것을 버리고 빠르게 달릴 수 있는 다리를 발달시켰다.<br/>
-	  	</p>
-	  	</div>
+	  	<table class="table table-borderless">
+	  	  <tr>
+	  	    <td>
+	  	      <img src="${ctp}/resources/images/4.jpg" style="margin-right:5px;"/><br/>
+			  	  [나는 새 중 가장 무거운 큰고니]<br/>
+			  	</td>
+			  	<td rowspan="2">
+			  	  <img src="${ctp}/resources/images/5.jpg" style="margin-right:5px;"/><br/>
+			  	  [날지 못하는 새 타조]
+			  	</td>
+			  </tr>
+	  	  <tr>
+	  	    <td class="p-5">
+			  		공기의 저항을 줄일수록 날기 쉬우므로 조류의 몸은 유선형으로 진화하였다.<br/> 
+			  		몸의 돌출부는 깃털로 감싸져 있어 공기 저항을 최소화하며 더욱 쉽게 날 수 있다.<br/>
+			  		날기 위해서 체중을 줄여야만 하므로 뼈 속이 비워졌듯이, 무거운 이빨 대신 가벼운 부리를 발달시켰으며 꼬리뼈를 축합시켜 몸무게를 줄였다.<br/> 
+			  		새의 뼈는 얇고 가볍지만, 강하고 단단한 구조를 가지고 있다. 가장 무거운 새는 큰고니로 최대 14kg의 몸무게를 가진다.<br/> 
+			  		그러나 그보다 훨씬 몸이 무거운 타조는 나는 것을 버리고 빠르게 달릴 수 있는 다리를 발달시켰다.<br/>
+	  		  <td>
+	  	  </tr>
+	  	</table>
 	  </div>
 	  <p><br/></p>
 	  <div class="box_bird" style="border:1px solid">
 	  	<h4><b>마. 둥지를 짓고 알을 낳는다.</b></h4>
 	  	<div class="img_bird">
-	  		<div class="img_bird2">
-			  	<img src="${ctp}/resources/images/6.jpg" style="margin-right:5px;"/><br/>
-			  	[검은머리갈매기 둥지]
-		  	</div>
-	  	<p>
-	  		후손을 위해 둥지를 짓는다.<br/> 
-	  		묵은 둥지는 벌레나 균이 번성하기 쉽기 때문에 대부분 매년 새로 짓거나, <br/>옛날 둥지를 새로이 보수하여 사용한다.<br/> 
-	  		알은 어미가 키울 수 있을 만큼 낳아 품는데 독수리는 1개, 오리류는 15개 안팎의 알을 낳는다.<br/>
-	  	</p>
-		 </div> 
+	  		<table class="table table-borderless">
+	  			<tr>
+		  	    <td><img src="${ctp}/resources/images/6.jpg" style="margin-right:5px;"/></td>
+		  	    <td>
+				  	[검은머리갈매기 둥지]
+			  		후손을 위해 둥지를 짓는다.<br/> 
+			  		묵은 둥지는 벌레나 균이 번성하기 쉽기 때문에 대부분 매년 새로 짓거나, <br/>옛날 둥지를 새로이 보수하여 사용한다.<br/> 
+			  		알은 어미가 키울 수 있을 만큼 낳아 품는데 독수리는 1개, 오리류는 15개 안팎의 알을 낳는다.<br/>
+		  			</td>
+	  			</tr>
+	  		</table>	
+		  </div> 
 	  </div>
 	  <p><br/></p>
 	  <div class="box_bird" style="border:1px solid">
@@ -238,12 +204,12 @@
 	  	</p>
 	  </div>
 	  <div style="text-align:center">
-	  	<input type="button" onclick="location.href='${ctp}/h';" value = "이전으로 돌아가기" class="btn btn-danger"/>
+	  	<input type="button" onclick="location.href='${ctp}/h';" style="margin-top:20px;" value = "이전으로 돌아가기" class="btn btn-danger"/>
 	  </div>
 	</div>
 </div>
 <div>
-	<input type="button" id="topBtn" onclick="topCheck()';" class="btn btn-primary inline-block fixed" style="margin-left:1300px" value="TOP">
+	<input type="button" id="topBtn" onclick="topCheck()';" class="btn btn-primary inline-block fixed" style="margin-left:1450px" value="TOP">
 </div>
 <p><br/></p>
 </body>

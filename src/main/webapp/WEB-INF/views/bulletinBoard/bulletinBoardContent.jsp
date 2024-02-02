@@ -11,7 +11,7 @@
   <jsp:include page="/WEB-INF/views/include/bs4.jsp" />
   <style>
   	th{
-  		background-color:#ddd;
+  		background-color:#B5D692;
   		text-align:center;
   	}
   	.btn{
@@ -20,32 +20,16 @@
   	}
   </style>
   <script>
+  	// 게시글 삭제
   	function deleteCheck() {
 			let answer = confirm("삭제하시겠습니까?");
 			if(!answer)	return false;
 			let idx = ${vo.idx};
 			
 			location.href="${ctp}/bulletinBoard/bulletinBoardDelete?idx="+idx;
-			
-		  	
   	}
   	
-  	function goodCheck() {
-    	$.ajax({
-    		url  : "boardGoodCheck",
-    		type : "post",
-    		data : {idx : ${vo.idx}},
-    		success:function(res) {
-    			if(res == "0") alert('이미 좋아요 버튼을 클릭하셨습니다.');
-    			else location.reload();
-    		},
-    		error : function() {
-    			alert("전송 오류!!");
-    		}
-    	});
-    }
-  	
-  	 // 원본글에 대한 댓글 달기
+		// 원본글에 대한 댓글 달기
     function replyCheck() {
     	let content = $("#content").val();
     	if(content.trim() == "") {
@@ -53,8 +37,9 @@
     		$("#content").focus();
     		return false;
     	}
+    	
     	let query = {
-    			bulletinBoardIdx  : ${vo.idx},
+    			boardIdx  : ${vo.idx},
     			mid				: '${sMid}',
     			nickName	: '${sNickName}',
     			content		: content
@@ -77,7 +62,7 @@
     			alert("전송오류!!");
     		}
     	});
-    }
+ 	 }
     
     // 댓글 삭제하기
     function replyDelete(idx) {
@@ -100,7 +85,7 @@
     	});
     }
     
- // 신고시 '기타'텍스트항목 보여주기
+ 		// 신고시 '기타'텍스트항목 보여주기
     function etcShow() {
     	$("#complaintTxt").show();
     }
@@ -140,43 +125,11 @@
       });
     }
     
+    /*
     $(function(){
     	$(".replyCloseBtn").hide();
-    });
-    
-    // 대댓글 박스 보여주기
-    function replyShow(idx) {
-    	$("#replyShowBtn"+idx).hide();
-    	$("#replyCloseBtn"+idx).show();
-    	$("#replyDemo"+idx).slideDown(100);
-    }
-    
-    // 대댓글 박스 감추기
-    function replyClose(idx) {
-    	$("#replyShowBtn"+idx).show();
-    	$("#replyCloseBtn"+idx).hide();
-    	$("#replyDemo"+idx).slideUp(300);
-    }
-    
-    // 대댓글(부모글의 답변글) 입력처리
-    function replyCheckRe(idx,re_step,re_order) {
-    	let content = $("#contentRe"+idx).val();
-    	if(content.trim() == "") {
-    		alert("답변글을 입력하세요!");
-    		$("#contentRe"+idx).focus();
-    		return false;
-    	}
     	
-    	let query = {
-    		bulletinBoardIdx  : ${vo.idx},
-  			re_step   : re_step,
-  			re_order   : re_order,
-  			mid				: '${sMid}',
-  			nickName	: '${sNickName}',
-  			content		: content
-    	}
-    	
-    	$.ajax({
+	    $.ajax({
     		url  : "${ctp}/bulletinBoard/boardReplyInputRe",
     		type : "post",
     		data : query,
@@ -193,7 +146,8 @@
     			alert("전송오류!!");
     		}
     	});
-    }
+    });
+    */
   </script>
 </head>
 <body>
@@ -220,10 +174,6 @@
       <td>${vo.readNum}</td>
     </tr>
     <tr>
-      <th>좋아요</th>
-      <td><font color="red"><a href="javascript:goodCheck()">❤</a></font>(${vo.good}) / <a href="javascript:goodCheckPlus()">👍</a></td>
-    </tr>
-    <tr>
       <th>글내용</th>
       <td colspan="3" style="height:220px">${fn:replace(vo.content, newLine, "<br/>")}</td>
     </tr>
@@ -239,7 +189,7 @@
         <c:if test="${vo.mid != sMid}"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">신고하기</button></c:if>
         <c:if test="${sMid == vo.mid || sLevel == 1}">
         	<input type="button" value="수정하기" onclick="location.href='bulletinBoardUpdate?idx=${vo.idx}';" class="btn btn-info"/> &nbsp;
-        	<input type="button" value="삭제하기" onclick="deleteCheck()" class="btn btn-warning"/>
+        	<input type="button" value="삭제하기" onclick="deleteCheck();" class="btn btn-warning"/>
         </c:if>
       </td>
     </tr>
@@ -304,11 +254,8 @@
         <hr class="m-2"/>
         <form name="modalForm">
           <div class="form-check"><input type="radio" name="complaint" id="complaint1" value="욕설,비방,차별,혐오" class="form-check-input"/>욕설,비방,차별,혐오</div>
-          <div class="form-check"><input type="radio" name="complaint" id="complaint2" value="홍보,영리목적" class="form-check-input"/>홍보,영리목적</div>
           <div class="form-check"><input type="radio" name="complaint" id="complaint3" value="불법정보" class="form-check-input"/>불법정보</div>
-          <div class="form-check"><input type="radio" name="complaint" id="complaint4" value="음란,청소년유해" class="form-check-input"/>음란,청소년유해</div>
           <div class="form-check"><input type="radio" name="complaint" id="complaint5" value="개인정보노출,유포,거래" class="form-check-input"/>개인정보노출,유포,거래</div>
-          <div class="form-check"><input type="radio" name="complaint" id="complaint6" value="도배,스팸" class="form-check-input"/>도배,스팸</div>
           <div class="form-check"><input type="radio" name="complaint" id="complaint7" value="기타" class="form-check-input" onclick="etcShow()"/>기타</div>
           <div id="etc"><textarea rows="2" name="complaintTxt" id="complaintTxt" class="form-control" style="display:none;"></textarea></div>
           <hr class="m-1"/>
@@ -326,7 +273,6 @@
     </div>
   </div>
 </div>
-</div> 
 <p><br/></p>
 </body>
 </html>

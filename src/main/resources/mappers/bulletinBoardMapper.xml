@@ -27,7 +27,9 @@
   	select * from bulletinBoardComplaint order by idx desc; 
   </select>
   
-
+	<select id="getBulletinBoardDelete">
+		SELECT * FROM bulletinBoard WHERE idx = #{idx};
+	</select>
 	
 	<insert id="setBulletinBoardInput"> <!-- 게시글 작성 -->
 		INSERT INTO  bulletinBoard VALUES(default,#{vo.title},#{vo.mid},#{vo.nickName},default,#{vo.content},default,default);

@@ -38,9 +38,17 @@
 		}
 		.search{
 			position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-
 		}
 		
+		#emailSearch{
+			padding-left:40px;
+		}
+		#midSearch{
+			padding-left:45px;
+		}
+		#emailSearch2{
+			padding-left:45px;
+		}
 	</style>
 	<script>
 		'use strict';
@@ -192,10 +200,6 @@
 <div class="container">
 		<h2>로그인</h2>
 		<p><br/></p>
-		<p><b>국립생태원을 찾아주셔서 진심으로 감사드립니다.</b><br/>
-		로그인을 하셔서 국립생태원 내의 더욱 더 재미있고 다양한 서비스를 이용해보세요!
-		</p>
-		<p><br/></p>
 		<form class="signform" method="post">
 			<div class="did">
 				<div class="idform">
@@ -230,19 +234,22 @@
 			<p><br/></p>
 			<form name="searchForm">
 				<div id="searchMid">
-					<i class="fa-solid fa-envelope"></i>
-					<span>이메일</span><br/>
-					<span><input type= text class="search form-control" id="emailSearch" name="emailSearch" placeholder="회원 가입시의 이메일을 입력해주세요" style="width:30%" /></span>
+					<div class="search_Mid">
+						<span><input type= text class="search form-control" id="emailSearch" name="emailSearch" placeholder="이메일주소 입력" style="width:30%" /></span>
+					</div>
 					<span><input type="button" class="btn btn-primary" onclick="emailFind()"  value="검색" /></span>
 					<span><input type="reset" class="btn btn-danger" id="cancel" name="cancel" value="취소"  /></span>
 				</div>
 				<br/>
 				<div id="midShow"></div>
-				<div class="searchPassword" id = "searchPassword">
-					<span>아이디</span>
-					<span><input type= text class="search form-control" id="midSearch" name="midSearch" placeholder=" 아이디를 입력해주세요" style="width:30%" /></span>
-					<span>이메일</span>
-					<span><input type= text class="search form-control"  id="emailSearch2" class="form-control" placeholder="메일주소를 입력해주세요" style="width:30%" /></span>
+				<div class="searchPassword" id ="searchPassword">
+					<div>
+						<span><input type= text class="search form-control" id="midSearch" name="midSearch" placeholder=" 아이디 입력" style="width:30%" /></span>
+					</div>
+					<p><br/></p>
+					<div>
+						<span><input type= text class="search form-control"  id="emailSearch2" class="form-control" placeholder="이메일주소 입력" style="width:30%" /></span>
+					</div>
 					<span><input type="submit" class="btn btn-primary" onclick="passwordFind()" value="확인" /></span>
 					<span><input type="reset" class="btn btn-danger" id="rest" name="rest" value="취소"  /></span>
 				</div>

@@ -29,11 +29,10 @@
     #searchBox{
     	display:inline;
     }
-    #selectBox{
+    /* #selectBox{
     	display:inline;
     	margin-right:10px;
-    	
-    } 
+    } */ 
     .searching {
 			width: 100%;
 	    box-sizing: border-box;
@@ -41,7 +40,9 @@
 	    padding: 24px 77px;
 	    margin: 0 0 30px;
 	    overflow: hidden;
-		
+    }
+    th{
+    	background-color: #B5D692;
     }
 	</style>  
 </head>
@@ -50,27 +51,34 @@
 <p><br/></p>
 <div class="container">
 	<h2>게시판</h2>
+	<br/>
 	<form method="post">
-		<div class="searching">
-			<div>
-				<select class="form-control" id="search" name="search" style="width:10%; display:inline" id="selectBox">
-					<option value="total" <c:if test="${search=='total'}">selected</c:if>>통합</option>
-					<option value="title"	<c:if test="${search=='title'}">selected</c:if>>제목</option>
-					<option value="nickName"<c:if test="${search=='nickName'}">selected</c:if>>작성자</option>
-					<option value="content"	<c:if test="${search=='content'}">selected</c:if>>작성일</option>
-				</select>
-				<input type="text" id="searchBox" name="searchString" class="form-control" style="width:70%" >
-				<input type="submit" value="검색" class="btn btn-success"/>
-				<input type="button" value="전체 조회" onclick="location.href='bulletinBoardList';" class="btn btn-primary"/>
+	  <div class="row">
+			<div class="col-7 text-left">
+				<input type="button" onclick="location.href='${ctp}/bulletinBoard/bulletinBoardInput';" class="btn btn-info" value="글쓰기"/>
+			</div>
+	    <div class="col-5">
+				<div class="input-group">
+				  <div class="input-group-prepend">
+						<select class="form-control" name="search">
+							<option value="total" <c:if test="${search=='total'}">selected</c:if>>통합</option>
+							<option value="title"	<c:if test="${search=='title'}">selected</c:if>>제목</option>
+							<option value="nickName"<c:if test="${search=='nickName'}">selected</c:if>>작성자</option>
+							<option value="content"	<c:if test="${search=='content'}">selected</c:if>>작성일</option>
+						</select>
+					</div>
+					<input type="text" id="searchBox" name="searchString" class="form-control mr-2">
+				  <div class="input-group-apend">
+						<input type="submit" value="검색" class="btn btn-success"/>
+						<input type="button" value="전체 조회" onclick="location.href='bulletinBoardList';" class="btn btn-primary"/>
+					</div>
+				</div>
 			</div>
 		</div>
 	</form>
-	<div>
-		<input type="button" onclick="location.href='${ctp}/bulletinBoard/bulletinBoardInput';" class="btn btn-info" value="글쓰기"/>
-	</div>
-	<p><br/></p>
+	<br/>
 	<table class="table table-hover text-align:center">
-		<tr class="table-dark text-dark" >
+		<tr class="text-dark" >
 			<th>번호</th>
 			<th>제목</th>
 			<th>작성자</th>
